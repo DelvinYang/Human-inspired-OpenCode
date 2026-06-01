@@ -18,7 +18,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--target-domain", choices=["DE", "US", "CN", "INTERACTION_EXT", "SIX_DATASETS"])
     parser.add_argument("--target-datasets", nargs="+")
     parser.add_argument("--target-dataset-dir", type=Path)
-    parser.add_argument("--source-checkpoint", type=Path)
+    parser.add_argument("--source-checkpoint", type=Path, required=True)
     parser.add_argument("--phase", choices=["finetune_all", "calibrate_w", "finetune_with_target_w"], default="finetune_all")
     parser.add_argument("--target-w-path", type=Path)
     parser.add_argument("--target-fraction", type=float, default=0.05)

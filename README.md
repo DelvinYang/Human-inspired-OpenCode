@@ -1,14 +1,14 @@
 # Human-inspired Data-light Cultural Alignment
 
-This repository is the open-source release scaffold for the paper
+This repository is the open-source release for the paper
 "Human-inspired Data-light Cultural Alignment for Cross-regional Deployment of
 Autonomous Vehicles".
 
 The repository is organized to make the reviewed method installable, auditable,
 and reproducible without redistributing third-party driving datasets. Full raw
-datasets are not included. A small inD demo/test subset is the only data planned
-for publication in this repository; scripts for all other datasets are provided
-so users with proper dataset access can reproduce the pipeline locally.
+datasets are not included. A small inD demo/test subset is the only dataset
+excerpt redistributed in this repository; scripts for all other datasets are
+provided so users with proper dataset access can reproduce the pipeline locally.
 
 ## Release Scope
 
@@ -35,12 +35,13 @@ artifacts/               Local run outputs; ignored by git except for .gitkeep.
 
 ## System Requirements
 
-The final release is intended for Linux or macOS with Python 3.10 or 3.11.
-GPU acceleration is recommended for full training, but the inD demo should run
-on a normal desktop CPU once the implementation is added.
+The release is intended for Linux or macOS with Python 3.10 or newer. The demo
+has been smoke-tested with Python 3.12.7 and PyTorch 2.10.0 on macOS arm64.
+GPU acceleration is recommended for full training, but the inD demo runs on a
+normal desktop CPU.
 
-Exact tested operating systems, CUDA versions, and package versions should be
-recorded in `docs/software_checklist.md` before publication.
+Exact tested software versions and demo runtimes are recorded in
+`docs/software_checklist.md`.
 
 ## Installation
 
@@ -52,8 +53,9 @@ python -m pip install -r requirements.txt
 python -m pip install -e .
 ```
 
-Typical installation time on a normal desktop machine should be recorded after
-the implementation and dependency set are finalized.
+Installation time depends mainly on the PyTorch wheel selected for the local
+platform. The tested demo command runtimes are recorded in
+`docs/software_checklist.md`.
 
 ## Demo
 

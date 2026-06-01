@@ -1,12 +1,13 @@
 # Tests
 
-Tests should use only small fixtures and the inD demo subset.
+Tests use only the small inD demo subset.
 
-Planned checks:
+Run them from the repository root:
 
-- Package import smoke test.
-- Demo data schema validation.
-- One short demo preprocessing run.
-- One short demo training or evaluation run.
+```bash
+PYTHONPATH=src python -m unittest discover tests
+```
 
-Full-dataset tests should not be part of default CI.
+The default tests check package imports, fixed model dimensions, and the demo
+NPZ schema against the expected summary. Full-dataset tests should not be part
+of default CI.

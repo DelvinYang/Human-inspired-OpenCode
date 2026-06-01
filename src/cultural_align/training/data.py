@@ -11,7 +11,6 @@ import torch
 from torch.utils.data import DataLoader, Dataset
 
 
-SPLITS = ("train", "val", "test")
 ARRAY_KEYS = ("state", "action", "next_state", "next_action")
 
 
@@ -45,13 +44,6 @@ def fraction_mask(dataset: str, scene: np.ndarray, track: np.ndarray, fraction: 
     for i, (scene_id, track_id) in enumerate(zip(scene.astype(str), track.astype(str))):
         keep[i] = stable_unit_hash(f"{dataset}/{scene_id}/{track_id}") < fraction
     return keep
-
-
-def _read_npz_arrays(path: Path, idx: np.ndarray | slice | None = None) -> dict[str, np.ndarray]:
-    with np.load(path) as z:
-        if idx is None:
-            return {key: z[key].astype(np.float32) for key in ARRAY_KEYS}
-        return {key: z[key][idx].astype(np.float32) for key in ARRAY_KEYS}
 
 
 def _track_keys(z: np.lib.npyio.NpzFile) -> list[str]:
@@ -203,29 +195,6 @@ class TransitionDataset(Dataset):
         )
 
 
-class AccDataset(Dataset):
-    def __init__(self, arrays: dict[str, np.ndarray], stats: NormStats):
-        state_mean = np.asarray(stats.state_mean, dtype=np.float32)
-        state_std = np.asarray(stats.state_std, dtype=np.float32)
-        action_mean = np.asarray(stats.action_mean, dtype=np.float32)
-        action_std = np.asarray(stats.action_std, dtype=np.float32)
-        self.state_raw = arrays["state"].astype(np.float32)
-        self.action_raw = arrays["action"].astype(np.float32)
-        self.state = (self.state_raw - state_mean) / state_std
-        self.action = (self.action_raw - action_mean) / action_std
-
-    def __len__(self) -> int:
-        return int(self.action.shape[0])
-
-    def __getitem__(self, idx: int):
-        return (
-            torch.from_numpy(self.state[idx]),
-            torch.from_numpy(self.action[idx]),
-            torch.from_numpy(self.action_raw[idx]),
-            torch.from_numpy(self.state_raw[idx]),
-        )
-
-
 def make_transition_loader(
     arrays: dict[str, np.ndarray],
     stats: NormStats,
@@ -236,23 +205,6 @@ def make_transition_loader(
 ) -> DataLoader:
     return DataLoader(
         TransitionDataset(arrays, stats),
-        batch_size=batch_size,
-        shuffle=shuffle,
-        num_workers=num_workers,
-        pin_memory=pin_memory,
-    )
-
-
-def make_acc_loader(
-    arrays: dict[str, np.ndarray],
-    stats: NormStats,
-    batch_size: int,
-    shuffle: bool,
-    num_workers: int = 0,
-    pin_memory: bool = False,
-) -> DataLoader:
-    return DataLoader(
-        AccDataset(arrays, stats),
         batch_size=batch_size,
         shuffle=shuffle,
         num_workers=num_workers,

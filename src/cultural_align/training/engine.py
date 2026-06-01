@@ -297,7 +297,7 @@ def train_supervised(config: dict[str, Any] | SimpleNamespace) -> dict[str, Any]
 
 
 def _load_checkpoint(path: Path, device: torch.device) -> tuple[dict[str, torch.Tensor], NormStats, dict[str, Any]]:
-    payload = torch.load(path, map_location=device, weights_only=False)
+    payload = torch.load(path, map_location=device, weights_only=True)
     return payload["model_state_dict"], NormStats(**payload["stats"]), payload
 
 
@@ -314,10 +314,10 @@ def train_transfer(config: dict[str, Any] | SimpleNamespace) -> dict[str, Any]:
     if args.matmul_precision:
         torch.set_float32_matmul_precision(args.matmul_precision)
     device = resolve_device(args.device)
-    source_state = source_stats = source_payload = None
-    if getattr(args, "source_checkpoint", None):
-        source_state, source_stats, source_payload = _load_checkpoint(Path(args.source_checkpoint), device)
-        _inherit_checkpoint_model_args(args, source_payload)
+    if not getattr(args, "source_checkpoint", None):
+        raise ValueError("train_transfer requires source_checkpoint; use train_domain for source-domain training")
+    source_state, source_stats, source_payload = _load_checkpoint(Path(args.source_checkpoint), device)
+    _inherit_checkpoint_model_args(args, source_payload)
 
     target_datasets = resolve_datasets(getattr(args, "target_domain", None), getattr(args, "target_datasets", None))
     root = Path(args.target_dataset_dir or args.dataset_dir)
@@ -333,15 +333,13 @@ def train_transfer(config: dict[str, Any] | SimpleNamespace) -> dict[str, Any]:
         dataset: load_dataset_split(root, dataset, "test", max_samples=int(args.max_test_samples_per_dataset))[0]
         for dataset in target_datasets
     }
-    stats = source_stats if source_stats is not None else compute_stats(train_arrays)
+    stats = source_stats
     train_loader = make_transition_loader(train_arrays, stats, int(args.batch_size), True, int(args.num_workers), bool(args.pin_memory))
     val_loader = make_transition_loader(val_arrays, stats, int(args.eval_batch_size), False, int(args.num_workers), bool(args.pin_memory))
     test_loader = make_transition_loader(concat_arrays(list(test_parts.values())), stats, int(args.eval_batch_size), False, int(args.num_workers), bool(args.pin_memory))
     model = _make_model_from_args(args, stats).to(device)
-    load_report = None
-    if source_state is not None:
-        load_report = model.load_state_dict(source_state, strict=False)
-        load_report = {"missing": list(load_report.missing_keys), "unexpected": list(load_report.unexpected_keys)}
+    load_report = model.load_state_dict(source_state, strict=False)
+    load_report = {"missing": list(load_report.missing_keys), "unexpected": list(load_report.unexpected_keys)}
     phase = getattr(args, "phase", "finetune_all")
     if phase == "calibrate_w":
         for name, param in model.named_parameters():
