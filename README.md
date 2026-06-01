@@ -1,0 +1,95 @@
+# Human-inspired Data-light Cultural Alignment
+
+This repository is the open-source release scaffold for the paper
+"Human-inspired Data-light Cultural Alignment for Cross-regional Deployment of
+Autonomous Vehicles".
+
+The repository is organized to make the reviewed method installable, auditable,
+and reproducible without redistributing third-party driving datasets. Full raw
+datasets are not included. A small inD demo/test subset is the only data planned
+for publication in this repository; scripts for all other datasets are provided
+so users with proper dataset access can reproduce the pipeline locally.
+
+## Release Scope
+
+- Included: source code, configuration templates, documentation, and a small inD
+  demo/test subset.
+- Not included: full raw datasets, full processed datasets, model checkpoints
+  trained on third-party data, or any artifacts whose redistribution is
+  restricted by dataset providers.
+- Supported datasets by script: inD, highD, NGSIM, sinD, CitySim, and DJI.
+
+## Repository Layout
+
+```text
+configs/                 Dataset and experiment configuration templates.
+data/demo/ind/           Small inD demo/test subset and expected demo outputs.
+docs/                    Data policy, reproducibility, and checklist mapping.
+examples/                End-to-end demo commands.
+scripts/                 Command-line entry points for data, training, and evaluation.
+src/cultural_align/      Importable Python package for the method implementation.
+tests/                   Lightweight tests using the inD demo subset.
+artifacts/               Local run outputs; ignored by git except for .gitkeep.
+```
+
+## System Requirements
+
+The final release is intended for Linux or macOS with Python 3.10 or 3.11.
+GPU acceleration is recommended for full training, but the inD demo should run
+on a normal desktop CPU once the implementation is added.
+
+Exact tested operating systems, CUDA versions, and package versions should be
+recorded in `docs/software_checklist.md` before publication.
+
+## Installation
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip install -e .
+```
+
+Typical installation time on a normal desktop machine should be recorded after
+the implementation and dependency set are finalized.
+
+## Demo
+
+The demo will use only the small inD subset under `data/demo/ind/`.
+
+Planned flow:
+
+```bash
+python scripts/datasets/ind/build_ind_demo.py \
+  --config configs/datasets/ind_demo.yaml
+
+python scripts/experiments/train_demo.py \
+  --config configs/experiments/demo_ind.yaml
+
+python scripts/evaluation/evaluate_demo.py \
+  --config configs/experiments/demo_ind.yaml
+```
+
+Expected output files and acceptable demo metric ranges should be documented in
+`data/demo/ind/README.md` and `examples/README.md` once the demo data is added.
+
+## Running on User Data
+
+Users should obtain each raw dataset from the original provider and comply with
+that provider's license and access terms. After placing local raw data outside
+this repository, update the corresponding file in `configs/datasets/` and run
+the matching script under `scripts/datasets/`.
+
+Full data preparation and paper-level reproduction notes are maintained in
+`docs/reproducibility.md`.
+
+## License
+
+The code is released under the MIT License. Dataset files remain governed by
+their original providers' licenses and are not sublicensed by this repository.
+
+## Citation
+
+Please cite the paper if you use this code. A machine-readable citation template
+is provided in `CITATION.cff`.

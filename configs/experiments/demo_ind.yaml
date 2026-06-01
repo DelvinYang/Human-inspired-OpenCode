@@ -1,0 +1,14 @@
+experiment: ind_demo
+dataset_config: configs/datasets/ind_demo.yaml
+output_dir: artifacts/demo_ind
+seed: 42
+training:
+  epochs: 1
+  batch_size: 64
+  device: cpu
+evaluation:
+  metrics:
+    - rmse
+    - mae
+    - rbf_mmd
+    - r2

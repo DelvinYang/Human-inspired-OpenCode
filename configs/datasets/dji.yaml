@@ -1,0 +1,5 @@
+dataset: DJI
+release_scope: script_only
+raw_root: /path/to/DJI
+processed_root: artifacts/dji/processed
+notes: "Template only. Obtain DJI data from the original provider."

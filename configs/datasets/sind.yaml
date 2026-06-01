@@ -1,0 +1,5 @@
+dataset: sinD
+release_scope: script_only
+raw_root: /path/to/sinD
+processed_root: artifacts/sind/processed
+notes: "Template only. Obtain sinD from the original provider."

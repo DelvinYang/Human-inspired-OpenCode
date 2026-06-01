@@ -1,0 +1,5 @@
+dataset: CitySim
+release_scope: script_only
+raw_root: /path/to/CitySim
+processed_root: artifacts/citysim/processed
+notes: "Template only. Obtain CitySim from the original provider."

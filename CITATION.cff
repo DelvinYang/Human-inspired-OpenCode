@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the associated paper."
+title: "Human-inspired Data-light Cultural Alignment for Cross-regional Deployment of Autonomous Vehicles"
+authors:
+  - family-names: "Authors"
+    given-names: "Paper"
+year: 2026
+repository-code: "TBD"
+license: "MIT"

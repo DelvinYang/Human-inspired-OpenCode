@@ -1,0 +1,5 @@
+dataset: highD
+release_scope: script_only
+raw_root: /path/to/highD
+processed_root: artifacts/highd/processed
+notes: "Template only. Obtain highD from the original provider."

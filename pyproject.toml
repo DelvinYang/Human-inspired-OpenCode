@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "human-inspired-cultural-align"
+version = "0.1.0"
+description = "Code release scaffold for human-inspired data-light cultural alignment."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Authors" }
+]
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]

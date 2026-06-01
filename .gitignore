@@ -1,0 +1,64 @@
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local environments and secrets
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# Large generated artifacts
+artifacts/**
+outputs/**
+runs/**
+logs/**
+checkpoints/**
+model_sample/**
+models/**
+remote_results/**
+wandb/**
+tensorboard/**
+!artifacts/.gitkeep
+
+# Full or derived datasets are intentionally not versioned.
+data/raw/**
+data/full/**
+data/generated/**
+data/processed/**
+data/psiphi_datasets/**
+data/cache/**
+
+# Model and array artifacts. Demo data is explicitly allowed below.
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.mat
+
+# The only data intended for publication is a small inD demo/test subset.
+!data/demo/
+!data/demo/**
+!data/demo/**/*.pt
+!data/demo/**/*.pth
+!data/demo/**/*.pkl
+!data/demo/**/*.npy
+!data/demo/**/*.npz
+
+# Editor files
+.idea/
+.vscode/

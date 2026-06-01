@@ -1,0 +1,7 @@
+dataset: inD
+release_scope: demo
+raw_root: data/demo/ind/raw
+processed_root: data/demo/ind/processed
+expected_outputs: data/demo/ind/expected_outputs
+split: test
+notes: "Small inD demo/test subset only; full inD data is not redistributed."
