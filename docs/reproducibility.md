@@ -5,18 +5,28 @@ The repository supports two reproducibility levels.
 ## Level 1: Demo Reproduction
 
 This level uses only the small inD demo/test subset included in the repository.
-It is intended for reviewers and users to verify that installation, data
-loading, training, and evaluation work end to end.
+It is intended for reviewers and users to verify that installation and data
+loading work before full-dataset access is configured.
 
-Planned commands:
+Implemented preprocessing command:
 
 ```bash
-python scripts/datasets/ind/build_ind_demo.py --config configs/datasets/ind_demo.yaml
+python scripts/datasets/ind/build_ind_demo.py --config configs/datasets/ind_demo.yaml --clean
+```
+
+Expected result:
+
+```text
+samples=153
+split_counts={"train": 106, "val": 26, "test": 21}
+```
+
+Training and evaluation entry points are reserved for the model release:
+
+```bash
 python scripts/experiments/train_demo.py --config configs/experiments/demo_ind.yaml
 python scripts/evaluation/evaluate_demo.py --config configs/experiments/demo_ind.yaml
 ```
-
-Expected outputs and tolerances should be recorded in `examples/README.md`.
 
 ## Level 2: Paper-Scale Reproduction
 

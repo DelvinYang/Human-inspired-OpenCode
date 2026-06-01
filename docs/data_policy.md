@@ -7,8 +7,9 @@ inside this repository would create license and attribution risk.
 
 ## What Is Included
 
-- A small inD demo/test subset, after confirming it is compliant with the
-  applicable provider terms.
+- A small inD demo/test excerpt from recording `04`, limited to 1,929 trajectory
+  rows and 13 assigned vehicle tracks, intended for release only after final
+  confirmation against the applicable provider terms.
 - Code and scripts for all supported datasets, including INTERACTION.
 - Configuration templates that point users to local dataset locations.
 - Reference-path processing and filtering code plus the reviewed derived

@@ -6,16 +6,16 @@ release.
 
 | Checklist item | Repository location | Current status |
 | --- | --- | --- |
-| Source code | `src/cultural_align/`, `scripts/` | Scaffolded; implementation to be added |
-| Small demo/test dataset | `data/demo/ind/` | Directory scaffolded; data to be added |
+| Source code | `src/cultural_align/`, `scripts/` | Dataset and reference-path preprocessing implemented; model code pending |
+| Small demo/test dataset | `data/demo/ind/` | inD recording-04 excerpt added |
 | System requirements | `README.md`, this file | Scaffolded |
-| Dependencies and OS versions | `requirements.txt`, this file | Dependencies scaffolded; tested OS versions TBD |
-| Tested software versions | this file | TBD after validation |
+| Dependencies and OS versions | `requirements.txt`, this file | Dependencies listed; preprocessing smoke-test environment recorded below |
+| Tested software versions | this file | Preprocessing smoke-test versions recorded below |
 | Installation instructions | `README.md` | Scaffolded |
 | Typical install time | `README.md`, this file | TBD after validation |
-| Demo instructions | `README.md`, `examples/README.md` | Scaffolded |
-| Expected demo output | `data/demo/ind/README.md`, `examples/README.md` | TBD after demo data is added |
-| Expected demo run time | `examples/README.md` | TBD after validation |
+| Demo instructions | `README.md`, `examples/README.md` | Preprocessing demo implemented |
+| Expected demo output | `data/demo/ind/README.md`, `examples/README.md` | 153 samples across train/val/test |
+| Expected demo run time | `examples/README.md` | Preprocessing smoke run is under one second on the tested local machine |
 | How to run on user data | `README.md`, `docs/reproducibility.md` | Scaffolded |
 | Quantitative reproduction instructions | `docs/reproducibility.md` | Scaffolded |
 | License | `LICENSE`, `README.md` | MIT for code; datasets retain original licenses |
@@ -24,12 +24,11 @@ release.
 
 ## Tested Environment
 
-Fill this section after smoke tests:
-
-- Operating system:
-- Python version:
-- PyTorch version:
-- CUDA version, if applicable:
-- CPU/GPU:
-- Install time:
-- Demo run time:
+- Operating system: macOS 26.5 arm64
+- Python version: 3.12.7
+- PyTorch version: 2.10.0
+- CUDA version, if applicable: not used by preprocessing demo
+- CPU/GPU: local Apple Silicon CPU for preprocessing smoke test
+- Install time: TBD after final dependency lock
+- Demo preprocessing run time: 0.83 s wall time for
+  `scripts/datasets/ind/build_ind_demo.py --clean`

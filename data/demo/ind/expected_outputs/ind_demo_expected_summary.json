@@ -1,0 +1,128 @@
+{
+  "dataset": "inD",
+  "scene_id": "inD_04",
+  "raw_rows": 1929,
+  "tracks": [
+    25,
+    28,
+    29,
+    31,
+    32,
+    33,
+    35,
+    38,
+    42,
+    43,
+    45,
+    46,
+    47
+  ],
+  "samples": 153,
+  "split_counts": {
+    "train": 106,
+    "val": 26,
+    "test": 21
+  },
+  "feature_names": [
+    "xVelocity",
+    "xAcceleration",
+    "yVelocity",
+    "yAcceleration",
+    "dist_preceding",
+    "dist_following",
+    "dist_leftPreceding",
+    "dist_leftAlongside",
+    "dist_leftFollowing",
+    "dist_rightPreceding",
+    "dist_rightAlongside",
+    "dist_rightFollowing"
+  ],
+  "target_names": [
+    "xAcceleration",
+    "yAcceleration"
+  ],
+  "schema": "trajvista_xy_psiphi_v1",
+  "files": [
+    {
+      "file": "processed/test/inD/inD_psiphi_xy_00000.npz",
+      "samples": 21,
+      "state_shape": [
+        21,
+        12,
+        12
+      ],
+      "action_shape": [
+        21,
+        2
+      ],
+      "next_state_shape": [
+        21,
+        12,
+        12
+      ],
+      "next_action_shape": [
+        21,
+        2
+      ],
+      "meta_scene": [
+        "inD_04"
+      ]
+    },
+    {
+      "file": "processed/train/inD/inD_psiphi_xy_00000.npz",
+      "samples": 106,
+      "state_shape": [
+        106,
+        12,
+        12
+      ],
+      "action_shape": [
+        106,
+        2
+      ],
+      "next_state_shape": [
+        106,
+        12,
+        12
+      ],
+      "next_action_shape": [
+        106,
+        2
+      ],
+      "meta_scene": [
+        "inD_04"
+      ]
+    },
+    {
+      "file": "processed/val/inD/inD_psiphi_xy_00000.npz",
+      "samples": 26,
+      "state_shape": [
+        26,
+        12,
+        12
+      ],
+      "action_shape": [
+        26,
+        2
+      ],
+      "next_state_shape": [
+        26,
+        12,
+        12
+      ],
+      "next_action_shape": [
+        26,
+        2
+      ],
+      "meta_scene": [
+        "inD_04"
+      ]
+    }
+  ],
+  "sizes_bytes": {
+    "raw_csv": 269770,
+    "assignments": 7746,
+    "processed": 87887,
+    "demo_total": 369120
+  }
+}

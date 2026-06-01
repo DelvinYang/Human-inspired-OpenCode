@@ -1,0 +1,31 @@
+{
+  "dataset": "inD",
+  "scene_id": "inD_04",
+  "recording": "04",
+  "frame_start": 2028,
+  "frame_end": 3027,
+  "min_frames_per_track": 14,
+  "raw_rows": 1929,
+  "tracks": [
+    25,
+    28,
+    29,
+    31,
+    32,
+    33,
+    35,
+    38,
+    42,
+    43,
+    45,
+    46,
+    47
+  ],
+  "source_files": [
+    "04_tracks.csv",
+    "04_tracksMeta.csv",
+    "04_recordingMeta.csv"
+  ],
+  "assignment_file": "assignments/inD/inD_04.json",
+  "notes": "Small provider-data excerpt for repository smoke tests; not a full inD recording."
+}

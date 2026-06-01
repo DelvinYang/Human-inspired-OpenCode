@@ -57,13 +57,12 @@ the implementation and dependency set are finalized.
 
 ## Demo
 
-The demo will use only the small inD subset under `data/demo/ind/`.
-
-Planned flow:
+The demo uses only the small inD recording-04 excerpt under `data/demo/ind/`.
 
 ```bash
 python scripts/datasets/ind/build_ind_demo.py \
-  --config configs/datasets/ind_demo.yaml
+  --config configs/datasets/ind_demo.yaml \
+  --clean
 
 python scripts/experiments/train_demo.py \
   --config configs/experiments/demo_ind.yaml
@@ -72,8 +71,9 @@ python scripts/evaluation/evaluate_demo.py \
   --config configs/experiments/demo_ind.yaml
 ```
 
-Expected output files and acceptable demo metric ranges should be documented in
-`data/demo/ind/README.md` and `examples/README.md` once the demo data is added.
+The preprocessing step is fully implemented and writes compressed NPZ shards
+under `data/demo/ind/processed/`. The training and evaluation demo entry points
+remain placeholders until the model release code is added.
 
 ## Running on User Data
 

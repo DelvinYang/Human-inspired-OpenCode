@@ -1,0 +1,84 @@
+{
+  "dataset": "inD",
+  "samples": 153,
+  "split_counts": {
+    "train": 106,
+    "val": 26,
+    "test": 21
+  },
+  "files": {
+    "train": [
+      "data/demo/ind/processed/train/inD/inD_psiphi_xy_00000.npz"
+    ],
+    "val": [
+      "data/demo/ind/processed/val/inD/inD_psiphi_xy_00000.npz"
+    ],
+    "test": [
+      "data/demo/ind/processed/test/inD/inD_psiphi_xy_00000.npz"
+    ]
+  },
+  "elapsed_sec": 0.13725018501281738,
+  "schema": "trajvista_xy_psiphi_v1",
+  "state": [
+    "N",
+    12,
+    12
+  ],
+  "action": [
+    "N",
+    2
+  ],
+  "next_state": [
+    "N",
+    12,
+    12
+  ],
+  "next_action": [
+    "N",
+    2
+  ],
+  "meta": [
+    "meta_dataset",
+    "meta_scene",
+    "meta_track_id",
+    "meta_frame_k",
+    "meta_frame_next"
+  ],
+  "feature_names": [
+    "xVelocity",
+    "xAcceleration",
+    "yVelocity",
+    "yAcceleration",
+    "dist_preceding",
+    "dist_following",
+    "dist_leftPreceding",
+    "dist_leftAlongside",
+    "dist_leftFollowing",
+    "dist_rightPreceding",
+    "dist_rightAlongside",
+    "dist_rightFollowing"
+  ],
+  "target_names": [
+    "xAcceleration",
+    "yAcceleration"
+  ],
+  "source_root": "data/demo/ind/raw",
+  "assignment_dir": "data/demo/ind/assignments",
+  "label_source": "inD CSV xAcceleration/yAcceleration; no resampling and no differencing",
+  "assignment_filter": "vehicle class plus status=assigned only",
+  "neighbor_policy": "ego-heading XY eight-sector nearest vehicle distances within max_radius; missing=-1",
+  "max_radius": 60.0,
+  "skipped_nonvehicle_rows": 0,
+  "skipped_unassigned_or_rejected_rows": 0,
+  "skipped_nonconsecutive": 0,
+  "skipped_physical": 0,
+  "candidates": 153,
+  "scenes": [
+    {
+      "scene": "inD_04",
+      "assigned_tracks": 13,
+      "kept": 153,
+      "candidates": 153
+    }
+  ]
+}

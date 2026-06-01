@@ -58,11 +58,15 @@ data/cache/**
 !data/demo/**/*.pkl
 !data/demo/**/*.npy
 !data/demo/**/*.npz
+data/demo/**/.DS_Store
+data/demo/**/Thumbs.db
 
 # Publication-safe derived reference-path artifacts.
 !data/reference_paths/
 !data/reference_paths/**
 !data/reference_paths/**/*.npz
+data/reference_paths/**/.DS_Store
+data/reference_paths/**/Thumbs.db
 
 # Editor files
 .idea/
