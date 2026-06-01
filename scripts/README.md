@@ -20,6 +20,8 @@ Script directories are organized by role and dataset.
 - `evaluation/evaluate_demo.py`: demo checkpoint evaluation.
 - `evaluation/evaluate_model.py`: paper-scale checkpoint evaluation on NPZ test
   splits.
+- `evaluation/paper_metrics/actual_used/`: actual metric and table-generation
+  scripts used in the paper revision experiments.
 
 All dataset scripts require local raw data obtained from the original providers.
 Do not place provider-restricted full raw or processed data inside the git

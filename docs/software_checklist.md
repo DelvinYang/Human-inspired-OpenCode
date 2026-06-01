@@ -9,6 +9,7 @@ release.
 | Source code | `src/cultural_align/`, `scripts/` | Dataset, reference-path preprocessing, training, transfer, demo-metatype, and evaluation code added |
 | Small demo/test dataset | `data/demo/ind/` | inD recording-04 excerpt added |
 | Reviewer metatype checkpoint | `pretrained/metatypes/de_source_metatype/` | One DE-source proposed-method checkpoint added for transfer-path reproduction |
+| Paper metric code | `scripts/evaluation/paper_metrics/actual_used/`, `docs/metrics.md` | Actual revision metric scripts and metric mapping added |
 | System requirements | `README.md`, this file | Recorded for the tested demo environment |
 | Dependencies and OS versions | `requirements.txt`, this file | Dependencies listed; preprocessing smoke-test environment recorded below |
 | Tested software versions | this file | Preprocessing smoke-test versions recorded below |

@@ -30,6 +30,8 @@ docs/                    Data policy, reproducibility, and checklist mapping.
 examples/                End-to-end demo commands.
 pretrained/              Single released reviewer metatype checkpoint.
 scripts/                 Command-line entry points for data, training, and evaluation.
+scripts/evaluation/paper_metrics/
+                         Actual revision metric scripts and metric notes.
 src/cultural_align/      Importable Python package for the method implementation.
 tests/                   Lightweight tests using the inD demo subset.
 artifacts/               Local run outputs; ignored by git except for .gitkeep.

@@ -83,6 +83,11 @@ Paper-scale pipeline:
 4. Evaluate proposed-model checkpoints with `scripts/evaluation/evaluate_model.py`.
 5. Regenerate paper tables and supplementary figures.
 
+The exact revision metric scripts used for data-level, individual-level,
+collective-level, and long-tail evaluations are included under
+`scripts/evaluation/paper_metrics/actual_used/`. See `docs/metrics.md` for the
+metric-to-script mapping.
+
 All command examples should use local paths outside this repository for full
 raw datasets and provider-restricted processed outputs.
 
