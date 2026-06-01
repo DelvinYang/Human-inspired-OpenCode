@@ -12,8 +12,14 @@ Script directories are organized by role and dataset.
   builder.
 - `reference_paths/`: raw-scene caching, candidate mining, candidate
   finalization/QC, and raw-track assignment scripts.
-- `experiments/`: training and transfer experiment launchers.
-- `evaluation/`: metric and table-generation entry points.
+- `experiments/train_demo.py`: CPU smoke training on the included inD demo set.
+- `experiments/train_domain.py`: source-domain or pooled training for the
+  proposed model.
+- `experiments/train_transfer.py`: data-light target adaptation for the
+  proposed model.
+- `evaluation/evaluate_demo.py`: demo checkpoint evaluation.
+- `evaluation/evaluate_model.py`: paper-scale checkpoint evaluation on NPZ test
+  splits.
 
 All dataset scripts require local raw data obtained from the original providers.
 Do not place provider-restricted full raw or processed data inside the git

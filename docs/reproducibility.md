@@ -5,8 +5,8 @@ The repository supports two reproducibility levels.
 ## Level 1: Demo Reproduction
 
 This level uses only the small inD demo/test subset included in the repository.
-It is intended for reviewers and users to verify that installation and data
-loading work before full-dataset access is configured.
+It is intended for reviewers and users to verify that installation, data
+loading, training, and evaluation work before full-dataset access is configured.
 
 Implemented preprocessing command:
 
@@ -21,12 +21,17 @@ samples=153
 split_counts={"train": 106, "val": 26, "test": 21}
 ```
 
-Training and evaluation entry points are reserved for the model release:
+Demo training and evaluation:
 
 ```bash
-python scripts/experiments/train_demo.py --config configs/experiments/demo_ind.yaml
+python scripts/experiments/train_demo.py --config configs/experiments/demo_ind.yaml --clean
 python scripts/evaluation/evaluate_demo.py --config configs/experiments/demo_ind.yaml
 ```
+
+The proposed model architecture fixes the temporal hidden dimension at `64` and
+the Psi/Phi feature dimension at `64`. These dimensions are not exposed as
+configuration knobs, to keep released checkpoints and reproduced runs
+architecture-compatible.
 
 ## Level 2: Paper-Scale Reproduction
 
@@ -58,10 +63,11 @@ Dataset preprocessing scripts:
 Paper-scale pipeline:
 
 1. Build dataset-specific trajectory states.
-2. Train the proposed model.
-4. Run baseline scripts.
-5. Evaluate RMSE, MAE, RBF-MMD, R2, and long-tail subsets.
-6. Regenerate paper tables and supplementary figures.
+2. Train source-domain or pooled proposed models with
+   `scripts/experiments/train_domain.py`.
+3. Run data-light transfer with `scripts/experiments/train_transfer.py`.
+4. Evaluate proposed-model checkpoints with `scripts/evaluation/evaluate_model.py`.
+5. Regenerate paper tables and supplementary figures.
 
 All command examples should use local paths outside this repository for full
 raw datasets and provider-restricted processed outputs.

@@ -1,14 +1,14 @@
 # cultural_align Package
 
-This directory will contain the importable implementation.
+This directory contains the importable implementation.
 
-Planned modules:
+Modules:
 
 - `data`: dataset builders, schema definitions, and demo loaders.
 - `models`: successor-feature and preference-vector models.
 - `training`: training loops and transfer routines.
 - `evaluation`: metrics and result aggregation.
-- `baselines`: reproduced baseline methods.
 - `utils`: shared configuration, logging, and reproducibility utilities.
 
-Code files are intentionally left out of the initial scaffold.
+The public model keeps the paper architecture fixed: temporal hidden dimension
+`64` and Psi/Phi feature dimension `64`.

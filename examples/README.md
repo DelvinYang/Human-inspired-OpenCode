@@ -26,10 +26,17 @@ data/demo/ind/processed/val/inD/inD_psiphi_xy_00000.npz
 data/demo/ind/processed/test/inD/inD_psiphi_xy_00000.npz
 ```
 
-The model training and evaluation demo commands are placeholders until the
-public model code is added:
+Train and evaluate the demo model:
 
 ```bash
-python scripts/experiments/train_demo.py --config configs/experiments/demo_ind.yaml
+python scripts/experiments/train_demo.py --config configs/experiments/demo_ind.yaml --clean
 python scripts/evaluation/evaluate_demo.py --config configs/experiments/demo_ind.yaml
+```
+
+Expected training artifacts:
+
+```text
+artifacts/demo_ind/ours/best_model.pt
+artifacts/demo_ind/ours/summary.json
+artifacts/demo_ind/ours/evaluation_summary.json
 ```

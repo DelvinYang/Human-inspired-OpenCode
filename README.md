@@ -71,9 +71,16 @@ python scripts/evaluation/evaluate_demo.py \
   --config configs/experiments/demo_ind.yaml
 ```
 
-The preprocessing step is fully implemented and writes compressed NPZ shards
-under `data/demo/ind/processed/`. The training and evaluation demo entry points
-remain placeholders until the model release code is added.
+The preprocessing step writes compressed NPZ shards under
+`data/demo/ind/processed/`; the training step writes `best_model.pt` and
+`summary.json` under `artifacts/demo_ind/ours/`; the evaluation step writes
+`evaluation_summary.json` in the same directory. `artifacts/` is ignored by git.
+
+Paper-scale source-domain and data-light transfer runs use
+`scripts/experiments/train_domain.py` and `scripts/experiments/train_transfer.py`.
+Comparison-method implementations are not redistributed in this code release.
+The released model fixes the temporal hidden dimension at `64` and the Psi/Phi
+feature dimension at `64`, matching the paper runs.
 
 ## Running on User Data
 
