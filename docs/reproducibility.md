@@ -33,6 +33,20 @@ the Psi/Phi feature dimension at `64`. These dimensions are not exposed as
 configuration knobs, to keep released checkpoints and reproduced runs
 architecture-compatible.
 
+The repository also includes one proposed-method DE-source metatype checkpoint.
+Reviewers can use it to exercise the paper's data-light transfer path on the
+small inD demo subset. Because the included subset has only 106 training
+samples, the demo config uses `target_fraction: 1.0`; paper-scale runs should
+set the intended target fraction explicitly.
+
+```bash
+python scripts/experiments/train_demo_transfer.py \
+  --config configs/experiments/demo_transfer_from_de_metatype.yaml \
+  --clean
+python scripts/evaluation/evaluate_demo_transfer.py \
+  --config configs/experiments/demo_transfer_from_de_metatype.yaml
+```
+
 ## Level 2: Paper-Scale Reproduction
 
 This level requires users to obtain the full datasets from their original

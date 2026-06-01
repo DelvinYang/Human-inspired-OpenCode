@@ -13,10 +13,11 @@ provided so users with proper dataset access can reproduce the pipeline locally.
 ## Release Scope
 
 - Included: source code, configuration templates, documentation, and a small inD
-  demo/test subset.
+  demo/test subset, plus one compact DE-source metatype checkpoint for reviewer
+  reproduction of the proposed-model transfer path.
 - Not included: full raw datasets, full processed datasets, model checkpoints
-  trained on third-party data, or any artifacts whose redistribution is
-  restricted by dataset providers.
+  other than the single released reviewer metatype, or any artifacts whose
+  redistribution is restricted by dataset providers.
 - Supported datasets by script: inD, highD, NGSIM, sinD, CitySim, DJI, and
   INTERACTION.
 
@@ -27,6 +28,7 @@ configs/                 Dataset and experiment configuration templates.
 data/demo/ind/           Small inD demo/test subset and expected demo outputs.
 docs/                    Data policy, reproducibility, and checklist mapping.
 examples/                End-to-end demo commands.
+pretrained/              Single released reviewer metatype checkpoint.
 scripts/                 Command-line entry points for data, training, and evaluation.
 src/cultural_align/      Importable Python package for the method implementation.
 tests/                   Lightweight tests using the inD demo subset.
@@ -77,6 +79,22 @@ The preprocessing step writes compressed NPZ shards under
 `data/demo/ind/processed/`; the training step writes `best_model.pt` and
 `summary.json` under `artifacts/demo_ind/ours/`; the evaluation step writes
 `evaluation_summary.json` in the same directory. `artifacts/` is ignored by git.
+
+The repository also includes a compact proposed-method metatype checkpoint
+trained on the Germany source domain (`HighD` and `inD`). It is provided so
+reviewers can exercise the transfer code path without access to the full
+training datasets. The demo transfer config uses the full tiny demo training
+split to keep the smoke test stable; paper-scale data-light runs should set the
+target fraction through `scripts/experiments/train_transfer.py`.
+
+```bash
+python scripts/experiments/train_demo_transfer.py \
+  --config configs/experiments/demo_transfer_from_de_metatype.yaml \
+  --clean
+
+python scripts/evaluation/evaluate_demo_transfer.py \
+  --config configs/experiments/demo_transfer_from_de_metatype.yaml
+```
 
 Paper-scale source-domain and data-light transfer runs use
 `scripts/experiments/train_domain.py` and `scripts/experiments/train_transfer.py`.

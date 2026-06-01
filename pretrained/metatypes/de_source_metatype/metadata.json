@@ -1,0 +1,47 @@
+{
+  "name": "de_source_metatype",
+  "checkpoint": "best_model.pt",
+  "sha256": "6b61ebf3ffd9875a2b0a423a5776c27307b91251d718a2cdae80748d3563c13f",
+  "size_bytes": 672634,
+  "model": "HybridPsiCorrectionModel",
+  "architecture": {
+    "hidden_dim": 64,
+    "feature_dim": 64
+  },
+  "schema": "trajvista_xy_psiphi_v1",
+  "source_domain": "DE",
+  "source_datasets": [
+    "HighD",
+    "inD"
+  ],
+  "source_summary": {
+    "final_test_raw_rmse": [
+      0.003998437896370888,
+      0.0031108083203434944
+    ],
+    "final_test_raw_mae": [
+      0.0028249756433069706,
+      0.001675488892942667
+    ],
+    "previous_acc_baseline_rmse": [
+      0.009333064779639244,
+      0.006538697052747011
+    ],
+    "samples": 334636,
+    "best_epoch": 189,
+    "best_val_loss": 0.0002486308848950839
+  },
+  "release_scope": "Reviewer reproduction checkpoint for the proposed method. It contains trained parameters only and no raw or processed trajectory records.",
+  "conversion": {
+    "added_backbone_prefix_to_recurrent_layers": true,
+    "dropped_unused_legacy_decoder_keys": [
+      "decoder.0.bias",
+      "decoder.0.weight",
+      "decoder.3.bias",
+      "decoder.3.weight",
+      "decoder.5.bias",
+      "decoder.5.weight"
+    ],
+    "removed_local_filesystem_paths_from_checkpoint_args": true
+  }
+}

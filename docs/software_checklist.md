@@ -6,15 +6,16 @@ release.
 
 | Checklist item | Repository location | Current status |
 | --- | --- | --- |
-| Source code | `src/cultural_align/`, `scripts/` | Dataset, reference-path preprocessing, training, transfer, and evaluation code added |
+| Source code | `src/cultural_align/`, `scripts/` | Dataset, reference-path preprocessing, training, transfer, demo-metatype, and evaluation code added |
 | Small demo/test dataset | `data/demo/ind/` | inD recording-04 excerpt added |
+| Reviewer metatype checkpoint | `pretrained/metatypes/de_source_metatype/` | One DE-source proposed-method checkpoint added for transfer-path reproduction |
 | System requirements | `README.md`, this file | Recorded for the tested demo environment |
 | Dependencies and OS versions | `requirements.txt`, this file | Dependencies listed; preprocessing smoke-test environment recorded below |
 | Tested software versions | this file | Preprocessing smoke-test versions recorded below |
 | Installation instructions | `README.md` | Provided |
 | Typical install time | `README.md`, this file | Environment-dependent; PyTorch wheel download dominates clean installs |
 | Demo instructions | `README.md`, `examples/README.md` | Preprocessing, training, and evaluation demo implemented |
-| Expected demo output | `data/demo/ind/README.md`, `examples/README.md` | 153 samples across train/val/test |
+| Expected demo output | `data/demo/ind/README.md`, `examples/README.md` | 153 samples across train/val/test plus demo-transfer artifacts |
 | Expected demo run time | `examples/README.md` | Preprocessing smoke run is under one second on the tested local machine |
 | How to run on user data | `README.md`, `docs/reproducibility.md` | Provided |
 | Quantitative reproduction instructions | `docs/reproducibility.md` | Provided |
@@ -37,3 +38,7 @@ release.
   `scripts/experiments/train_demo.py --config configs/experiments/demo_ind.yaml --clean`
 - Demo evaluation run time: 0.90 s wall time for
   `scripts/evaluation/evaluate_demo.py --config configs/experiments/demo_ind.yaml`
+- Demo transfer run time: 1.93 s wall time for
+  `scripts/experiments/train_demo_transfer.py --config configs/experiments/demo_transfer_from_de_metatype.yaml --clean`
+- Demo transfer evaluation run time: 0.91 s wall time for
+  `scripts/evaluation/evaluate_demo_transfer.py --config configs/experiments/demo_transfer_from_de_metatype.yaml`

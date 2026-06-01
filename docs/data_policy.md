@@ -14,6 +14,10 @@ inside this repository would create license and attribution risk.
 - Configuration templates that point users to local dataset locations.
 - Reference-path processing and filtering code plus the reviewed derived
   reference-path metadata and track-assignment filters used by this release.
+- One compact DE-source metatype checkpoint under
+  `pretrained/metatypes/de_source_metatype/`. It contains trained parameters
+  and normalization statistics for the proposed method only; it does not include
+  raw or processed source trajectory records.
 
 ## What Is Not Included
 
@@ -21,7 +25,7 @@ inside this repository would create license and attribution risk.
 - Full processed tensors derived from raw datasets.
 - Full training, validation, or test splits.
 - Raw trajectory caches and map/image overlays used only for internal visual QA.
-- Checkpoints trained on restricted third-party data, unless separately cleared.
+- Paper-scale checkpoints other than the single released reviewer metatype.
 
 ## User Responsibility
 

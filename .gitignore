@@ -68,6 +68,11 @@ data/demo/**/Thumbs.db
 data/reference_paths/**/.DS_Store
 data/reference_paths/**/Thumbs.db
 
+# Publication-safe reviewer metatype checkpoint.
+!pretrained/
+!pretrained/**
+!pretrained/**/*.pt
+
 # Editor files
 .idea/
 .vscode/

@@ -40,3 +40,30 @@ artifacts/demo_ind/ours/best_model.pt
 artifacts/demo_ind/ours/summary.json
 artifacts/demo_ind/ours/evaluation_summary.json
 ```
+
+## Demo Transfer From Released Metatype
+
+This example uses the released DE-source proposed-method metatype under
+`pretrained/metatypes/de_source_metatype/` and fine-tunes it on the same small
+inD demo subset.
+
+```bash
+python scripts/experiments/train_demo_transfer.py \
+  --config configs/experiments/demo_transfer_from_de_metatype.yaml \
+  --clean
+
+python scripts/evaluation/evaluate_demo_transfer.py \
+  --config configs/experiments/demo_transfer_from_de_metatype.yaml
+```
+
+Expected transfer artifacts:
+
+```text
+artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/best_model.pt
+artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/summary.json
+artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/evaluation_summary.json
+```
+
+On the tested local machine, this smoke run reports transfer-demo RMSE
+`[0.0150, 0.0041]` on 21 inD demo test samples. The corresponding previous
+action reference RMSE is `[0.0236, 0.0216]`.
