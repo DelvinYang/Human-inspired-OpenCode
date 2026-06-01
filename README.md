@@ -17,7 +17,8 @@ so users with proper dataset access can reproduce the pipeline locally.
 - Not included: full raw datasets, full processed datasets, model checkpoints
   trained on third-party data, or any artifacts whose redistribution is
   restricted by dataset providers.
-- Supported datasets by script: inD, highD, NGSIM, sinD, CitySim, and DJI.
+- Supported datasets by script: inD, highD, NGSIM, sinD, CitySim, DJI, and
+  INTERACTION.
 
 ## Repository Layout
 
@@ -80,6 +81,39 @@ Users should obtain each raw dataset from the original provider and comply with
 that provider's license and access terms. After placing local raw data outside
 this repository, update the corresponding file in `configs/datasets/` and run
 the matching script under `scripts/datasets/`.
+
+Example full-data preprocessing command:
+
+```bash
+python scripts/datasets/highd/build_highd.py \
+  --raw-root /path/to/highD/data \
+  --assignment-dir artifacts/reference_paths_work/assignments \
+  --out-dir artifacts/datasets/trajvista_xy_psiphi_v1
+```
+
+Reference-path preparation is split into explicit steps:
+
+```bash
+python scripts/reference_paths/precache.py \
+  --dataset-root /path/to/raw_dataset_root \
+  --cache-root artifacts/reference_paths_work/cache/scenes \
+  --dataset HighD
+
+python scripts/reference_paths/mine_candidates.py \
+  --cache-root artifacts/reference_paths_work/cache/scenes \
+  --work-dir artifacts/reference_paths_work \
+  --dataset HighD
+
+python scripts/reference_paths/finalize_candidates.py \
+  --candidate-file artifacts/reference_paths_work/reference_paths/candidates/HighD/HighD_01.json \
+  --cache-root artifacts/reference_paths_work/cache/scenes \
+  --work-dir artifacts/reference_paths_work
+
+python scripts/reference_paths/assign_tracks.py \
+  --cache-root artifacts/reference_paths_work/cache/scenes \
+  --work-dir artifacts/reference_paths_work \
+  --dataset HighD
+```
 
 Full data preparation and paper-level reproduction notes are maintained in
 `docs/reproducibility.md`.

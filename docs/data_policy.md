@@ -9,8 +9,11 @@ inside this repository would create license and attribution risk.
 
 - A small inD demo/test subset, after confirming it is compliant with the
   applicable provider terms.
-- Code and scripts for all supported datasets.
+- Code and scripts for all supported datasets, including INTERACTION.
 - Configuration templates that point users to local dataset locations.
+- Reference-path processing and filtering code. Generated reference-path
+  metadata should be redistributed only when compatible with the source dataset
+  terms.
 
 ## What Is Not Included
 

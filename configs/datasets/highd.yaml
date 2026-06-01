@@ -1,5 +1,7 @@
-dataset: highD
+dataset: HighD
 release_scope: script_only
-raw_root: /path/to/highD
-processed_root: artifacts/highd/processed
+raw_root: /path/to/highD/data
+assignment_dir: artifacts/reference_paths_work/assignments
+processed_root: artifacts/datasets/trajvista_xy_psiphi_v1
+builder: scripts/datasets/highd/build_highd.py
 notes: "Template only. Obtain highD from the original provider."
