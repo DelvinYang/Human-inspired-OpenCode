@@ -11,15 +11,15 @@ inside this repository would create license and attribution risk.
   applicable provider terms.
 - Code and scripts for all supported datasets, including INTERACTION.
 - Configuration templates that point users to local dataset locations.
-- Reference-path processing and filtering code. Generated reference-path
-  metadata should be redistributed only when compatible with the source dataset
-  terms.
+- Reference-path processing and filtering code plus the reviewed derived
+  reference-path metadata and track-assignment filters used by this release.
 
 ## What Is Not Included
 
 - Full raw datasets.
 - Full processed tensors derived from raw datasets.
 - Full training, validation, or test splits.
+- Raw trajectory caches and map/image overlays used only for internal visual QA.
 - Checkpoints trained on restricted third-party data, unless separately cleared.
 
 ## User Responsibility

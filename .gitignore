@@ -59,6 +59,11 @@ data/cache/**
 !data/demo/**/*.npy
 !data/demo/**/*.npz
 
+# Publication-safe derived reference-path artifacts.
+!data/reference_paths/
+!data/reference_paths/**
+!data/reference_paths/**/*.npz
+
 # Editor files
 .idea/
 .vscode/

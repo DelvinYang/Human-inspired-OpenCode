@@ -1,0 +1,35 @@
+{
+  "scene_id": "HighD_23",
+  "dataset": "HighD",
+  "unit": "meter",
+  "n_tracks": 1314,
+  "n_reference_paths": 6,
+  "n_reject_prototypes": 0,
+  "counts": {
+    "assigned": 1314,
+    "rejected_ignore_track": 0,
+    "unassigned": 0,
+    "excluded_non_vehicle": 0,
+    "invalid_too_short": 0
+  },
+  "match_modes": {
+    "shape": 1314
+  },
+  "assigned_ratio": 1.0,
+  "usable_ratio_assigned_or_rejected": 1.0,
+  "ambiguous_assigned": 49,
+  "ambiguous_ratio": 0.03729071537290715,
+  "invert_ratio": 0.0,
+  "flags": {
+    "low_assigned_ratio": false,
+    "high_ambiguous_ratio": false,
+    "high_invert_ratio": false
+  },
+  "thresholds": {
+    "segment_mean": 6.0,
+    "lateral_mean": 3.5,
+    "lateral_p90": 8.0,
+    "reject_scale": 0.7
+  },
+  "top_unassigned_by_score": []
+}

@@ -1,0 +1,27 @@
+{
+  "scene_id": "sinD_changchun_changchun_1",
+  "dataset": "sinD",
+  "accepted_cluster_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "deleted_cluster_ids": [],
+  "rejected_cluster_ids": [
+    9
+  ]
+}

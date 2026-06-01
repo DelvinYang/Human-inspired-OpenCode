@@ -1,0 +1,15 @@
+{
+  "scene_id": "sinD_tianjin_tianjin_21",
+  "dataset": "sinD",
+  "accepted_cluster_ids": [
+    0,
+    1,
+    2,
+    3,
+    5
+  ],
+  "deleted_cluster_ids": [],
+  "rejected_cluster_ids": [
+    4
+  ]
+}

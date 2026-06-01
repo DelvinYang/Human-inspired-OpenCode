@@ -1,0 +1,17 @@
+{
+  "scene_id": "DJI_DJI_0033_33",
+  "dataset": "DJI",
+  "accepted_cluster_ids": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "deleted_cluster_ids": [
+    1
+  ]
+}

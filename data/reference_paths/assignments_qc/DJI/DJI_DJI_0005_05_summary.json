@@ -1,0 +1,72 @@
+{
+  "scene_id": "DJI_DJI_0005_05",
+  "dataset": "DJI",
+  "unit": "meter",
+  "n_tracks": 1398,
+  "n_reference_paths": 13,
+  "n_reject_prototypes": 0,
+  "counts": {
+    "assigned": 1395,
+    "rejected_ignore_track": 0,
+    "unassigned": 2,
+    "excluded_non_vehicle": 0,
+    "invalid_too_short": 1
+  },
+  "match_modes": {
+    "shape": 1395
+  },
+  "assigned_ratio": 0.9985683607730852,
+  "usable_ratio_assigned_or_rejected": 0.9985683607730852,
+  "ambiguous_assigned": 29,
+  "ambiguous_ratio": 0.02078853046594982,
+  "invert_ratio": 0.0,
+  "flags": {
+    "low_assigned_ratio": false,
+    "high_ambiguous_ratio": false,
+    "high_invert_ratio": false
+  },
+  "thresholds": {
+    "segment_mean": 6.0,
+    "lateral_mean": 3.5,
+    "lateral_p90": 8.0,
+    "reject_scale": 0.7
+  },
+  "top_unassigned_by_score": [
+    {
+      "track_id": "2486",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 9.61732214614767,
+      "segment_mean_distance": 4.647980835540793,
+      "lateral_mean": 4.3399758294993145,
+      "lateral_p90": 6.450808798350995,
+      "frechet_distance": 6.925604909031805,
+      "direction_mean_dot": 0.9937321579132868,
+      "monotonic_ratio": 1.0,
+      "reject_id": null,
+      "best_alt_path_id": "p012",
+      "score_gap": 0.08257348512398113,
+      "ambiguous": true,
+      "best_candidate_path_id": "p011"
+    },
+    {
+      "track_id": "1736",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 24.5284409255029,
+      "segment_mean_distance": 13.992175263756774,
+      "lateral_mean": 13.99217782386997,
+      "lateral_p90": 14.001147192768407,
+      "frechet_distance": 14.003424263448807,
+      "direction_mean_dot": 0.9825820002501409,
+      "monotonic_ratio": 1.0,
+      "reject_id": null,
+      "best_alt_path_id": "p004",
+      "score_gap": 0.5475763212769482,
+      "ambiguous": false,
+      "best_candidate_path_id": "p004"
+    }
+  ]
+}

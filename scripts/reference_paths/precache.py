@@ -13,7 +13,7 @@ from cultural_align.reference_paths.cache import build_scene_cache
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build reusable SceneRaw pkl caches from local raw datasets.")
-    parser.add_argument("--dataset-root", type=Path, required=True, help="Top-level root containing raw dataset folders.")
+    parser.add_argument("--dataset-root", type=Path, required=True, help="Top-level raw-data root or one dataset-specific raw root.")
     parser.add_argument("--cache-root", type=Path, required=True, help="Output cache root.")
     parser.add_argument("--dataset", default=None, help="Optional dataset name: HighD, inD, CitySim, sinD, NGSIM, or DJI.")
     parser.add_argument("--scene-id", default=None, help="Optional exact scene id.")

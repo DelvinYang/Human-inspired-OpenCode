@@ -1,0 +1,21 @@
+{
+  "scene_id": "sinD_xian_xian_7",
+  "dataset": "sinD",
+  "accepted_cluster_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11
+  ],
+  "deleted_cluster_ids": [],
+  "rejected_cluster_ids": [
+    8
+  ]
+}

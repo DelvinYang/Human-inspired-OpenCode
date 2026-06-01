@@ -1,0 +1,18 @@
+{
+  "scene_id": "sinD_chongqing_chongqing_5",
+  "dataset": "sinD",
+  "accepted_cluster_ids": [
+    0,
+    1,
+    2,
+    3,
+    5,
+    6,
+    8
+  ],
+  "deleted_cluster_ids": [],
+  "rejected_cluster_ids": [
+    7,
+    4
+  ]
+}

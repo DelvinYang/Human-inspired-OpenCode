@@ -12,7 +12,20 @@ license = { text = "MIT" }
 authors = [
   { name = "Authors" }
 ]
-dependencies = []
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=1.5",
+  "scipy>=1.10",
+  "scikit-learn>=1.2",
+  "hdbscan>=0.8.33",
+  "torch>=2.0",
+  "tqdm>=4.66",
+  "loguru>=0.7",
+  "matplotlib>=3.7",
+  "pyyaml>=6.0",
+  "pillow>=10.0",
+  "pyproj>=3.5",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]

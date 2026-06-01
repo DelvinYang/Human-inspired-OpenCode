@@ -33,7 +33,7 @@ def filter_candidate_tracks(
             continue
         if len(tr.xy) < min_frames:
             continue
-        if np.nan_to_num(tr.xy).shape != tr.xy.shape:
+        if not np.all(np.isfinite(np.asarray(tr.xy, dtype=np.float64))):
             continue
         if require_boundary and not _looks_boundary_to_boundary(scene, tr):
             continue
@@ -419,11 +419,18 @@ def _cluster_features(features: np.ndarray, min_cluster_size: int, min_samples: 
         from sklearn.cluster import DBSCAN
         from sklearn.metrics import pairwise_distances
 
-        dist = pairwise_distances(features)
+        sample_size = min(len(features), 1000)
+        if sample_size < len(features):
+            rng = np.random.default_rng(42)
+            sample_idx = rng.choice(len(features), size=sample_size, replace=False)
+            sample = features[sample_idx]
+        else:
+            sample = features
+        dist = pairwise_distances(sample)
         nonzero = dist[dist > 0]
         eps = float(np.percentile(nonzero, 10)) if nonzero.size else 1.0
-        labels = DBSCAN(eps=eps, min_samples=min_samples, metric="precomputed").fit_predict(dist)
-        return labels.astype(int), {}, "dbscan_fallback_missing_hdbscan"
+        labels = DBSCAN(eps=eps, min_samples=min_samples, metric="euclidean").fit_predict(features)
+        return labels.astype(int), {}, "dbscan_fallback_missing_hdbscan_sampled_eps"
 
 
 def _labels_to_candidates(

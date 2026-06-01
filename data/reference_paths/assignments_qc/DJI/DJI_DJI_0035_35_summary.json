@@ -1,0 +1,90 @@
+{
+  "scene_id": "DJI_DJI_0035_35",
+  "dataset": "DJI",
+  "unit": "meter",
+  "n_tracks": 637,
+  "n_reference_paths": 8,
+  "n_reject_prototypes": 0,
+  "counts": {
+    "assigned": 633,
+    "rejected_ignore_track": 0,
+    "unassigned": 3,
+    "excluded_non_vehicle": 0,
+    "invalid_too_short": 1
+  },
+  "match_modes": {
+    "shape": 633
+  },
+  "assigned_ratio": 0.9952830188679245,
+  "usable_ratio_assigned_or_rejected": 0.9952830188679245,
+  "ambiguous_assigned": 4,
+  "ambiguous_ratio": 0.00631911532385466,
+  "invert_ratio": 0.0,
+  "flags": {
+    "low_assigned_ratio": false,
+    "high_ambiguous_ratio": false,
+    "high_invert_ratio": false
+  },
+  "thresholds": {
+    "segment_mean": 6.0,
+    "lateral_mean": 3.5,
+    "lateral_p90": 8.0,
+    "reject_scale": 0.7
+  },
+  "top_unassigned_by_score": [
+    {
+      "track_id": "10557",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 11.37552343050857,
+      "segment_mean_distance": 6.375115132434553,
+      "lateral_mean": 6.374891503034573,
+      "lateral_p90": 6.429633628418716,
+      "frechet_distance": 6.437640395605765,
+      "direction_mean_dot": 0.9119093075183917,
+      "monotonic_ratio": 1.0,
+      "reject_id": null,
+      "best_alt_path_id": "p004",
+      "score_gap": 0.4102617465218645,
+      "ambiguous": false,
+      "best_candidate_path_id": "p004"
+    },
+    {
+      "track_id": "9911",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": true,
+      "score": 48.98509416798075,
+      "segment_mean_distance": 24.64213982131697,
+      "lateral_mean": 24.640024991393595,
+      "lateral_p90": 24.673685125232954,
+      "frechet_distance": 24.704087460490722,
+      "direction_mean_dot": -0.013146225285093965,
+      "monotonic_ratio": 0.569620253164557,
+      "reject_id": null,
+      "best_alt_path_id": "p007",
+      "score_gap": 0.02735255258569863,
+      "ambiguous": true,
+      "best_candidate_path_id": "p007"
+    },
+    {
+      "track_id": "9916",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 50.492736384324935,
+      "segment_mean_distance": 25.168920032864566,
+      "lateral_mean": 25.166310888727445,
+      "lateral_p90": 25.1811619810222,
+      "frechet_distance": 25.209334320495515,
+      "direction_mean_dot": 0.0029035399670520406,
+      "monotonic_ratio": 0.5063291139240507,
+      "reject_id": null,
+      "best_alt_path_id": "p007",
+      "score_gap": 0.0027352398611289563,
+      "ambiguous": true,
+      "best_candidate_path_id": "p007"
+    }
+  ]
+}

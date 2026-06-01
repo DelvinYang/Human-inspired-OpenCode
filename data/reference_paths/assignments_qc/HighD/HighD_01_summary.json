@@ -1,0 +1,90 @@
+{
+  "scene_id": "HighD_01",
+  "dataset": "HighD",
+  "unit": "meter",
+  "n_tracks": 1047,
+  "n_reference_paths": 4,
+  "n_reject_prototypes": 0,
+  "counts": {
+    "assigned": 1044,
+    "rejected_ignore_track": 0,
+    "unassigned": 3,
+    "excluded_non_vehicle": 0,
+    "invalid_too_short": 0
+  },
+  "match_modes": {
+    "shape": 1044
+  },
+  "assigned_ratio": 0.997134670487106,
+  "usable_ratio_assigned_or_rejected": 0.997134670487106,
+  "ambiguous_assigned": 43,
+  "ambiguous_ratio": 0.04118773946360153,
+  "invert_ratio": 0.0,
+  "flags": {
+    "low_assigned_ratio": false,
+    "high_ambiguous_ratio": false,
+    "high_invert_ratio": false
+  },
+  "thresholds": {
+    "segment_mean": 6.0,
+    "lateral_mean": 3.5,
+    "lateral_p90": 8.0,
+    "reject_scale": 0.7
+  },
+  "top_unassigned_by_score": [
+    {
+      "track_id": "164",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 9.634053560094474,
+      "segment_mean_distance": 6.130836886908537,
+      "lateral_mean": 0.4704240027560823,
+      "lateral_p90": 0.24849616898761626,
+      "frechet_distance": 13.515779632919928,
+      "direction_mean_dot": 0.9999881597689274,
+      "monotonic_ratio": 1.0,
+      "reject_id": null,
+      "best_alt_path_id": "p002",
+      "score_gap": 0.37614353247985705,
+      "ambiguous": false,
+      "best_candidate_path_id": "p003"
+    },
+    {
+      "track_id": "52",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 9.803776041686731,
+      "segment_mean_distance": 6.176250400255546,
+      "lateral_mean": 0.5957739038346116,
+      "lateral_p90": 0.4538361196006456,
+      "frechet_distance": 13.602405031877625,
+      "direction_mean_dot": 0.999996838169271,
+      "monotonic_ratio": 1.0,
+      "reject_id": null,
+      "best_alt_path_id": "p002",
+      "score_gap": 0.38401924883878735,
+      "ambiguous": false,
+      "best_candidate_path_id": "p003"
+    },
+    {
+      "track_id": "222",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 10.48399404728195,
+      "segment_mean_distance": 6.626248114590564,
+      "lateral_mean": 0.5057369781865048,
+      "lateral_p90": 0.31737293279254186,
+      "frechet_distance": 14.796200691835647,
+      "direction_mean_dot": 0.9999953533318987,
+      "monotonic_ratio": 1.0,
+      "reject_id": null,
+      "best_alt_path_id": "p002",
+      "score_gap": 0.33978362106661825,
+      "ambiguous": false,
+      "best_candidate_path_id": "p003"
+    }
+  ]
+}

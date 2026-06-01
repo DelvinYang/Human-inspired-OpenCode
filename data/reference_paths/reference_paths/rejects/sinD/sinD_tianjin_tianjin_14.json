@@ -1,0 +1,7 @@
+{
+  "scene_id": "sinD_tianjin_tianjin_14",
+  "dataset": "sinD",
+  "source": "raw_dataset",
+  "assignment_usage": "match ignore_track prototypes before normal reference paths; drop matched samples",
+  "rejects": []
+}

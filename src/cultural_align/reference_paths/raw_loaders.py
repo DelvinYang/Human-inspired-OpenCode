@@ -253,8 +253,70 @@ def _citysim_background_path(scene_dir: Path) -> Path:
     return matches[0] if matches else exact
 
 
+def _dirs(root: Path) -> list[Path]:
+    return sorted([p for p in root.iterdir() if p.is_dir()]) if root.exists() else []
+
+
+def _first_root(candidates: list[Path], predicate) -> Path:
+    for path in candidates:
+        if path.exists() and predicate(path):
+            return path
+    return candidates[0]
+
+
+def _highd_root(dataset_root: Path) -> Path:
+    return _first_root(
+        [dataset_root, dataset_root / "highdrawdata", dataset_root / "HighD", dataset_root / "highD"],
+        lambda p: bool(list(p.glob("*_tracks.csv"))),
+    )
+
+
+def _ind_root(dataset_root: Path) -> Path:
+    return _first_root(
+        [dataset_root, dataset_root / "data", dataset_root / "inD" / "data", dataset_root / "inD"],
+        lambda p: bool(list(p.glob("*_tracks.csv"))),
+    )
+
+
+def _citysim_root(dataset_root: Path) -> Path:
+    def looks_like_citysim(path: Path) -> bool:
+        return any((path / scene).is_dir() for scene in CITYSIM_INTERSECTIONS)
+
+    return _first_root(
+        [dataset_root, dataset_root / "Citysim", dataset_root / "CitySim", dataset_root / "citysim"],
+        looks_like_citysim,
+    )
+
+
+def _sind_root(dataset_root: Path) -> Path:
+    return _first_root(
+        [dataset_root, dataset_root / "sinD", dataset_root / "SIND", dataset_root / "SinD"],
+        lambda p: bool(list(p.glob("*/*/Veh_smoothed_tracks.csv"))),
+    )
+
+
+def _ngsim_root(dataset_root: Path) -> Path:
+    return _first_root(
+        [dataset_root, dataset_root / "NGSIM", dataset_root / "ngsim"],
+        lambda p: bool(list(p.glob("trajectories-*.csv"))),
+    )
+
+
+def _dji_root(dataset_root: Path) -> Path:
+    return _first_root(
+        [dataset_root, dataset_root / "DJI", dataset_root / "dji"],
+        lambda p: bool(list(p.glob("*/*_tracks.csv")) or list(p.glob("*_tracks.csv"))),
+    )
+
+
+def _dji_scene_dirs(root: Path) -> list[Path]:
+    if list(root.glob("*_tracks.csv")):
+        return [root]
+    return _dirs(root)
+
+
 def load_highd(dataset_root: Path) -> Iterable[SceneRaw]:
-    root = dataset_root / "highdrawdata"
+    root = _highd_root(dataset_root)
     for tracks_path in sorted(root.glob("*_tracks.csv")):
         prefix = tracks_path.name.split("_")[0]
         meta_path = root / f"{prefix}_tracksMeta.csv"
@@ -277,7 +339,7 @@ def load_highd(dataset_root: Path) -> Iterable[SceneRaw]:
 
 
 def load_ind(dataset_root: Path) -> Iterable[SceneRaw]:
-    root = dataset_root / "inD" / "data"
+    root = _ind_root(dataset_root)
     for tracks_path in sorted(root.glob("*_tracks.csv")):
         prefix = tracks_path.name.split("_")[0]
         meta_path = root / f"{prefix}_tracksMeta.csv"
@@ -301,8 +363,8 @@ def load_ind(dataset_root: Path) -> Iterable[SceneRaw]:
 
 
 def load_citysim(dataset_root: Path) -> Iterable[SceneRaw]:
-    root = dataset_root / "Citysim"
-    for scene_dir in sorted([p for p in root.iterdir() if p.is_dir()]):
+    root = _citysim_root(dataset_root)
+    for scene_dir in _dirs(root):
         if scene_dir.name not in CITYSIM_INTERSECTIONS:
             continue
         traj_dir = scene_dir / "Trajectories"
@@ -351,12 +413,12 @@ def load_citysim(dataset_root: Path) -> Iterable[SceneRaw]:
 
 
 def load_sind(dataset_root: Path) -> Iterable[SceneRaw]:
-    root = dataset_root / "sinD"
-    for city_dir in sorted([p for p in root.iterdir() if p.is_dir()]):
+    root = _sind_root(dataset_root)
+    for city_dir in _dirs(root):
         osm_path = next(iter(sorted(city_dir.glob("*.osm"))), None)
         lane_geometry, osm_extent = _sind_osm_geometry(osm_path)
         unregistered_map = next(iter(sorted(city_dir.glob("*.png"))), None)
-        for scene_dir in sorted([p for p in city_dir.iterdir() if p.is_dir()]):
+        for scene_dir in _dirs(city_dir):
             veh_path = scene_dir / "Veh_smoothed_tracks.csv"
             if not veh_path.exists():
                 continue
@@ -395,7 +457,7 @@ def load_sind(dataset_root: Path) -> Iterable[SceneRaw]:
 
 
 def load_ngsim(dataset_root: Path) -> Iterable[SceneRaw]:
-    root = dataset_root / "NGSIM"
+    root = _ngsim_root(dataset_root)
     for csv_path in sorted(root.glob("trajectories-*.csv")):
         df = pd.read_csv(csv_path, usecols=["Vehicle_ID", "Frame_ID", "Local_X", "Local_Y", "v_Vel", "Lane_ID"])
         df["plot_x_m"] = df["Local_Y"] * FT_TO_M
@@ -421,8 +483,8 @@ def load_ngsim(dataset_root: Path) -> Iterable[SceneRaw]:
 
 
 def load_dji(dataset_root: Path) -> Iterable[SceneRaw]:
-    root = dataset_root / "DJI"
-    for scene_dir in sorted([p for p in root.iterdir() if p.is_dir()]):
+    root = _dji_root(dataset_root)
+    for scene_dir in _dji_scene_dirs(root):
         tracks_files = sorted(scene_dir.glob("*_tracks.csv"))
         if not tracks_files:
             continue
@@ -463,38 +525,35 @@ def discover_scenes(dataset_root: str | Path, dataset: str | None = None) -> lis
     rows: list[dict] = []
     selected = [dataset] if dataset else list(LOADERS)
     if "HighD" in selected:
-        for p in sorted((root / "highdrawdata").glob("*_tracks.csv")):
+        for p in sorted(_highd_root(root).glob("*_tracks.csv")):
             prefix = p.name.split("_")[0]
             rows.append({"dataset": "HighD", "scene_id": f"HighD_{prefix}"})
     if "inD" in selected:
-        for p in sorted((root / "inD" / "data").glob("*_tracks.csv")):
+        for p in sorted(_ind_root(root).glob("*_tracks.csv")):
             prefix = p.name.split("_")[0]
             rows.append({"dataset": "inD", "scene_id": f"inD_{prefix}"})
     if "CitySim" in selected:
-        city_root = root / "Citysim"
-        if city_root.exists():
-            for p in sorted([x for x in city_root.iterdir() if x.is_dir()]):
-                if p.name not in CITYSIM_INTERSECTIONS:
-                    continue
-                if (p / "Trajectories").exists() or (p / "Trajectory").exists():
-                    rows.append({"dataset": "CitySim", "scene_id": f"CitySim_{p.name}"})
+        city_root = _citysim_root(root)
+        for p in _dirs(city_root):
+            if p.name not in CITYSIM_INTERSECTIONS:
+                continue
+            if (p / "Trajectories").exists() or (p / "Trajectory").exists():
+                rows.append({"dataset": "CitySim", "scene_id": f"CitySim_{p.name}"})
     if "sinD" in selected:
-        sind_root = root / "sinD"
-        if sind_root.exists():
-            for city in sorted([p for p in sind_root.iterdir() if p.is_dir()]):
-                for scene in sorted([p for p in city.iterdir() if p.is_dir()]):
-                    if (scene / "Veh_smoothed_tracks.csv").exists():
-                        rows.append({"dataset": "sinD", "scene_id": f"sinD_{city.name}_{scene.name}"})
+        sind_root = _sind_root(root)
+        for city in _dirs(sind_root):
+            for scene in _dirs(city):
+                if (scene / "Veh_smoothed_tracks.csv").exists():
+                    rows.append({"dataset": "sinD", "scene_id": f"sinD_{city.name}_{scene.name}"})
     if "NGSIM" in selected:
-        for p in sorted((root / "NGSIM").glob("trajectories-*.csv")):
+        for p in sorted(_ngsim_root(root).glob("trajectories-*.csv")):
             rows.append({"dataset": "NGSIM", "scene_id": f"NGSIM_{p.stem.replace('trajectories-', '')}"})
     if "DJI" in selected:
-        dji_root = root / "DJI"
-        if dji_root.exists():
-            for scene_dir in sorted([p for p in dji_root.iterdir() if p.is_dir()]):
-                for p in sorted(scene_dir.glob("*_tracks.csv")):
-                    prefix = p.name.split("_")[0]
-                    rows.append({"dataset": "DJI", "scene_id": f"DJI_{scene_dir.name}_{prefix}"})
+        dji_root = _dji_root(root)
+        for scene_dir in _dji_scene_dirs(dji_root):
+            for p in sorted(scene_dir.glob("*_tracks.csv")):
+                prefix = p.name.split("_")[0]
+                rows.append({"dataset": "DJI", "scene_id": f"DJI_{scene_dir.name}_{prefix}"})
     return rows
 
 

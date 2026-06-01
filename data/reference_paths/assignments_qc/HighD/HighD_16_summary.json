@@ -1,0 +1,72 @@
+{
+  "scene_id": "HighD_16",
+  "dataset": "HighD",
+  "unit": "meter",
+  "n_tracks": 998,
+  "n_reference_paths": 7,
+  "n_reject_prototypes": 0,
+  "counts": {
+    "assigned": 996,
+    "rejected_ignore_track": 0,
+    "unassigned": 2,
+    "excluded_non_vehicle": 0,
+    "invalid_too_short": 0
+  },
+  "match_modes": {
+    "shape": 996
+  },
+  "assigned_ratio": 0.9979959919839679,
+  "usable_ratio_assigned_or_rejected": 0.9979959919839679,
+  "ambiguous_assigned": 44,
+  "ambiguous_ratio": 0.04417670682730924,
+  "invert_ratio": 0.0,
+  "flags": {
+    "low_assigned_ratio": false,
+    "high_ambiguous_ratio": false,
+    "high_invert_ratio": false
+  },
+  "thresholds": {
+    "segment_mean": 6.0,
+    "lateral_mean": 3.5,
+    "lateral_p90": 8.0,
+    "reject_scale": 0.7
+  },
+  "top_unassigned_by_score": [
+    {
+      "track_id": "336",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 9.948791842592604,
+      "segment_mean_distance": 6.225857467955728,
+      "lateral_mean": 0.726076501552879,
+      "lateral_p90": 0.597061944474611,
+      "frechet_distance": 13.697543669686759,
+      "direction_mean_dot": 0.9999912575110599,
+      "monotonic_ratio": 1.0,
+      "reject_id": null,
+      "best_alt_path_id": "p002",
+      "score_gap": 0.3000354320503049,
+      "ambiguous": false,
+      "best_candidate_path_id": "p001"
+    },
+    {
+      "track_id": "401",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 10.795244614038321,
+      "segment_mean_distance": 6.694122404685814,
+      "lateral_mean": 0.8650183499193936,
+      "lateral_p90": 0.7994748543096654,
+      "frechet_distance": 14.805498723892981,
+      "direction_mean_dot": 0.999994949387785,
+      "monotonic_ratio": 1.0,
+      "reject_id": null,
+      "best_alt_path_id": "p002",
+      "score_gap": 0.3383992858067381,
+      "ambiguous": false,
+      "best_candidate_path_id": "p001"
+    }
+  ]
+}

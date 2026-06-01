@@ -1,0 +1,7 @@
+{
+  "scene_id": "HighD_56",
+  "dataset": "HighD",
+  "source": "raw_dataset",
+  "assignment_usage": "match ignore_track prototypes before normal reference paths; drop matched samples",
+  "rejects": []
+}

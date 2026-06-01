@@ -1,0 +1,17 @@
+{
+  "scene_id": "NGSIM_0820am-0835am",
+  "dataset": "NGSIM",
+  "accepted_cluster_ids": [
+    0,
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    11
+  ],
+  "deleted_cluster_ids": [],
+  "rejected_cluster_ids": []
+}

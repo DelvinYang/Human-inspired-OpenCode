@@ -1,0 +1,14 @@
+{
+  "scene_id": "inD_18",
+  "dataset": "inD",
+  "accepted_cluster_ids": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "deleted_cluster_ids": [],
+  "rejected_cluster_ids": [
+    0
+  ]
+}

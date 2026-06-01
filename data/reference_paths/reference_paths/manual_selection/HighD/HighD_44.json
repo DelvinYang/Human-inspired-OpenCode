@@ -1,0 +1,14 @@
+{
+  "scene_id": "HighD_44",
+  "dataset": "HighD",
+  "accepted_cluster_ids": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    12
+  ],
+  "deleted_cluster_ids": [],
+  "rejected_cluster_ids": []
+}

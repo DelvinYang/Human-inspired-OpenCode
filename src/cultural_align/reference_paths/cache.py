@@ -2,9 +2,12 @@ from __future__ import annotations
 
 import pickle
 from pathlib import Path
+import sys
+import types
 from typing import Iterable
 
 from .models import SceneRaw
+from . import models
 from .raw_loaders import iter_scenes
 
 
@@ -21,6 +24,7 @@ def write_scene_cache(scene: SceneRaw, cache_root: str | Path) -> Path:
 
 
 def read_scene_cache(path: str | Path) -> SceneRaw:
+    _install_legacy_pickle_aliases()
     with Path(path).open("rb") as f:
         return pickle.load(f)
 
@@ -55,3 +59,9 @@ def discover_cached_scenes(cache_root: str | Path, dataset: str | None = None) -
     for p in paths:
         rows.append({"dataset": p.parent.name, "scene_id": p.stem, "path": str(p)})
     return rows
+
+
+def _install_legacy_pickle_aliases() -> None:
+    sys.modules.setdefault("tools", types.ModuleType("tools"))
+    sys.modules.setdefault("tools.path_library", types.ModuleType("tools.path_library"))
+    sys.modules.setdefault("tools.path_library.models", models)

@@ -10,6 +10,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
 from cultural_align.reference_paths.cache import read_scene_cache
 from cultural_align.reference_paths.qc import write_paths_and_qc
+from cultural_align.reference_paths.selection import (
+    apply_manual_selection,
+    final_path_from_candidate,
+    load_json,
+    reject_payload,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -17,8 +23,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--candidate-file", type=Path, required=True)
     parser.add_argument("--cache-root", type=Path, required=True)
     parser.add_argument("--work-dir", type=Path, required=True)
-    parser.add_argument("--path-type", default="vehicle_path")
+    parser.add_argument("--path-type", default="unknown")
     parser.add_argument("--width", type=float, default=3.5)
+    parser.add_argument("--manual-selection-file", type=Path, default=None)
+    parser.add_argument("--allow-missing-selection-ids", action="store_true")
     parser.add_argument("--assignment-threshold", type=float, default=3.5)
     parser.add_argument("--uniqueness-threshold", type=float, default=0.10)
     parser.add_argument("--require-coverage", action="store_true")
@@ -28,35 +36,21 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    payload = json.loads(args.candidate_file.read_text(encoding="utf-8"))
+    payload = load_json(args.candidate_file)
     dataset = payload["dataset"]
     scene_id = payload["scene_id"]
     scene = read_scene_cache(args.cache_root / dataset / f"{scene_id}.pkl")
-    paths = []
-    for index, candidate in enumerate(payload.get("candidates", [])):
-        paths.append(
-            {
-                "path_id": f"p{index:03d}",
-                "type": args.path_type,
-                "width": args.width,
-                "centerline": candidate["candidate_seed"],
-                "source_candidate": {
-                    "cluster_id": candidate.get("cluster_id"),
-                    "size": candidate.get("size"),
-                    "persistence": candidate.get("persistence"),
-                },
-            }
-        )
+    selection_file = args.manual_selection_file or args.work_dir / "reference_paths" / "manual_selection" / dataset / f"{scene_id}.json"
+    manual_selection = load_json(selection_file) if selection_file.exists() else None
+    accepted, rejects, selection_meta = apply_manual_selection(payload, manual_selection, allow_missing_ids=args.allow_missing_selection_ids)
+    paths = [final_path_from_candidate(candidate, f"p{index:03d}") for index, candidate in enumerate(accepted)]
+    for path in paths:
+        path["type"] = args.path_type
+        path["width"] = args.width
 
     reject_file = args.work_dir / "reference_paths" / "rejects" / dataset / f"{scene_id}.json"
     reject_file.parent.mkdir(parents=True, exist_ok=True)
-    rejects = []
-    for item in payload.get("rejects", []):
-        reject = dict(item)
-        if "centerline" not in reject and "candidate_seed" in reject:
-            reject["centerline"] = reject["candidate_seed"]
-        rejects.append(reject)
-    reject_file.write_text(json.dumps({"dataset": dataset, "scene_id": scene_id, "rejects": rejects}, indent=2), encoding="utf-8")
+    reject_file.write_text(json.dumps(reject_payload(dataset, scene_id, rejects), indent=2), encoding="utf-8")
     path_file, qc_file, inter_file = write_paths_and_qc(
         args.work_dir,
         scene,
@@ -73,6 +67,7 @@ def main() -> None:
                 "dataset": dataset,
                 "scene_id": scene_id,
                 "n_paths": len(paths),
+                "selection": selection_meta,
                 "paths": str(path_file),
                 "qc": str(qc_file),
                 "inter_path_geom": str(inter_file),

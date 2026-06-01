@@ -87,7 +87,7 @@ Example full-data preprocessing command:
 ```bash
 python scripts/datasets/highd/build_highd.py \
   --raw-root /path/to/highD/data \
-  --assignment-dir artifacts/reference_paths_work/assignments \
+  --assignment-dir data/reference_paths/assignments \
   --out-dir artifacts/datasets/trajvista_xy_psiphi_v1
 ```
 
@@ -114,6 +114,9 @@ python scripts/reference_paths/assign_tracks.py \
   --work-dir artifacts/reference_paths_work \
   --dataset HighD
 ```
+
+The manually reviewed reference paths and track-assignment filters used by the
+release are included under `data/reference_paths/`.
 
 Full data preparation and paper-level reproduction notes are maintained in
 `docs/reproducibility.md`.

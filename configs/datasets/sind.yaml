@@ -1,7 +1,7 @@
 dataset: sinD
 release_scope: script_only
 raw_root: /path/to/sinD
-assignment_dir: artifacts/reference_paths_work/assignments
+assignment_dir: data/reference_paths/assignments
 processed_root: artifacts/datasets/trajvista_xy_psiphi_v1
 builder: scripts/datasets/sind/build_sind.py
 notes: "Template only. Obtain sinD from the original provider."

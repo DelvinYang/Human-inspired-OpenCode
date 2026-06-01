@@ -29,7 +29,9 @@ Reference-path pipeline:
 2. Mine cluster-average candidate centerlines with
    `scripts/reference_paths/mine_candidates.py`.
 3. Convert accepted candidates to reference paths and QC artifacts with
-   `scripts/reference_paths/finalize_candidates.py`.
+   `scripts/reference_paths/finalize_candidates.py`. When a matching
+   `reference_paths/manual_selection/<dataset>/<scene_id>.json` file exists,
+   this step applies the manually accepted, deleted, and rejected candidate IDs.
 4. Assign raw tracks to saved reference paths with
    `scripts/reference_paths/assign_tracks.py`.
 
@@ -53,3 +55,6 @@ Paper-scale pipeline:
 
 All command examples should use local paths outside this repository for full
 raw datasets and provider-restricted processed outputs.
+
+The release includes the reviewed reference-path metadata and final assignment
+filters under `data/reference_paths/`; raw trajectory caches remain excluded.

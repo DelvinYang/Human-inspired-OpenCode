@@ -1,0 +1,90 @@
+{
+  "scene_id": "DJI_DJI_0006_06",
+  "dataset": "DJI",
+  "unit": "meter",
+  "n_tracks": 1462,
+  "n_reference_paths": 13,
+  "n_reject_prototypes": 0,
+  "counts": {
+    "assigned": 1452,
+    "rejected_ignore_track": 0,
+    "unassigned": 3,
+    "excluded_non_vehicle": 0,
+    "invalid_too_short": 7
+  },
+  "match_modes": {
+    "shape": 1452
+  },
+  "assigned_ratio": 0.9979381443298969,
+  "usable_ratio_assigned_or_rejected": 0.9979381443298969,
+  "ambiguous_assigned": 21,
+  "ambiguous_ratio": 0.014462809917355372,
+  "invert_ratio": 0.0,
+  "flags": {
+    "low_assigned_ratio": false,
+    "high_ambiguous_ratio": false,
+    "high_invert_ratio": false
+  },
+  "thresholds": {
+    "segment_mean": 6.0,
+    "lateral_mean": 3.5,
+    "lateral_p90": 8.0,
+    "reject_scale": 0.7
+  },
+  "top_unassigned_by_score": [
+    {
+      "track_id": "4133",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 23.323103378106815,
+      "segment_mean_distance": 13.319408911756014,
+      "lateral_mean": 13.319408099050284,
+      "lateral_p90": 13.33078090258762,
+      "frechet_distance": 13.332559442235706,
+      "direction_mean_dot": 0.9974179227509667,
+      "monotonic_ratio": 1.0,
+      "reject_id": null,
+      "best_alt_path_id": "p012",
+      "score_gap": 0.578514346787766,
+      "ambiguous": false,
+      "best_candidate_path_id": "p012"
+    },
+    {
+      "track_id": "4117",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 23.38392710208342,
+      "segment_mean_distance": 13.36082566081796,
+      "lateral_mean": 13.360825388307825,
+      "lateral_p90": 13.363161156837526,
+      "frechet_distance": 13.36352402948379,
+      "direction_mean_dot": 0.9996800722621252,
+      "monotonic_ratio": 1.0,
+      "reject_id": null,
+      "best_alt_path_id": "p012",
+      "score_gap": 0.5773103300863618,
+      "ambiguous": false,
+      "best_candidate_path_id": "p012"
+    },
+    {
+      "track_id": "3663",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 23.65797376211551,
+      "segment_mean_distance": 13.436527770612972,
+      "lateral_mean": 13.436526645943308,
+      "lateral_p90": 13.497092511879941,
+      "frechet_distance": 13.506486849603197,
+      "direction_mean_dot": 0.951860988419116,
+      "monotonic_ratio": 1.0,
+      "reject_id": null,
+      "best_alt_path_id": "p012",
+      "score_gap": 0.562677916652838,
+      "ambiguous": false,
+      "best_candidate_path_id": "p012"
+    }
+  ]
+}

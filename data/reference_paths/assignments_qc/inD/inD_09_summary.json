@@ -1,0 +1,72 @@
+{
+  "scene_id": "inD_09",
+  "dataset": "inD",
+  "unit": "meter",
+  "n_tracks": 236,
+  "n_reference_paths": 6,
+  "n_reject_prototypes": 0,
+  "counts": {
+    "assigned": 160,
+    "rejected_ignore_track": 0,
+    "unassigned": 2,
+    "excluded_non_vehicle": 70,
+    "invalid_too_short": 4
+  },
+  "match_modes": {
+    "shape": 160
+  },
+  "assigned_ratio": 0.9876543209876543,
+  "usable_ratio_assigned_or_rejected": 0.9876543209876543,
+  "ambiguous_assigned": 0,
+  "ambiguous_ratio": 0.0,
+  "invert_ratio": 0.0,
+  "flags": {
+    "low_assigned_ratio": false,
+    "high_ambiguous_ratio": false,
+    "high_invert_ratio": false
+  },
+  "thresholds": {
+    "segment_mean": 6.0,
+    "lateral_mean": 3.5,
+    "lateral_p90": 8.0,
+    "reject_scale": 0.7
+  },
+  "top_unassigned_by_score": [
+    {
+      "track_id": "59",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": true,
+      "score": 9.204821905604977,
+      "segment_mean_distance": 2.6623209433881727,
+      "lateral_mean": 2.592697451905596,
+      "lateral_p90": 3.928519584401503,
+      "frechet_distance": 4.198034039187342,
+      "direction_mean_dot": 0.3780387331815309,
+      "monotonic_ratio": 0.7215189873417721,
+      "reject_id": null,
+      "best_alt_path_id": "p004",
+      "score_gap": 0.07038519956002665,
+      "ambiguous": true,
+      "best_candidate_path_id": "p000"
+    },
+    {
+      "track_id": "11",
+      "status": "unassigned",
+      "path_id": null,
+      "invert": false,
+      "score": 15.460204139714916,
+      "segment_mean_distance": 5.615064072430714,
+      "lateral_mean": 4.436626873493443,
+      "lateral_p90": 11.95425114102306,
+      "frechet_distance": 13.845107225205737,
+      "direction_mean_dot": 0.7966311547643816,
+      "monotonic_ratio": 1.0,
+      "reject_id": null,
+      "best_alt_path_id": "p003",
+      "score_gap": 0.2240753998097513,
+      "ambiguous": false,
+      "best_candidate_path_id": "p004"
+    }
+  ]
+}
