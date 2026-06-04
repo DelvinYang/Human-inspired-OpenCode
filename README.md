@@ -142,7 +142,10 @@ artifacts/demo_ind/ours/evaluation_summary.json
 
 On the tested local machine, the demo reports test RMSE
 `[0.0205, 0.0196]` on 21 inD demo test samples. The corresponding R2 mean is
-`0.9951`. Runtime on the tested normal desktop was approximately:
+`0.9951`; the complete evaluation output also reports RBF-MMD `0.005683`,
+VA95 `0.8003`, RPA `0.0068`, ADE `0.1596`, FDE `0.3410`, and CR `1.000`
+on 2 reconstructed demo trajectories. Runtime on the tested normal desktop was
+approximately:
 
 ```text
 preprocessing: 0.83 s
@@ -180,8 +183,11 @@ artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/evaluation_summary
 ```
 
 On the tested local machine, this transfer demo reports test RMSE
-`[0.0106, 0.0100]` on 21 inD demo test samples. Runtime was approximately
-2.27 s for transfer training and 0.85 s for transfer evaluation.
+`[0.0106, 0.0100]` on 21 inD demo test samples. The complete evaluation output
+reports R2 mean `0.9987`, RBF-MMD `0.006032`, VA95 `0.1916`, RPA `0.0079`,
+ADE `0.1073`, FDE `0.2505`, and CR `1.000` on 2 reconstructed demo
+trajectories. Runtime was approximately 2.27 s for transfer training and
+0.85 s for transfer evaluation.
 
 To run the release demo sequence in one command:
 
@@ -205,8 +211,9 @@ artifacts/demo_ind_pretrained_eval/evaluation_summary.json
 ```
 
 On the tested local machine, this evaluation reports RMSE `[0.0089, 0.0038]`,
-MAE `[0.0075, 0.0031]`, R2 mean `0.9995`, RBF-MMD `0.000212`, and standardized
-loss `0.000111` on 21 inD demo test samples. Runtime was approximately 1.6 s.
+MAE `[0.0075, 0.0031]`, R2 mean `0.9995`, RBF-MMD `0.003154`, VA95 `0.2525`,
+RPA `0.0081`, ADE `0.0845`, FDE `0.1836`, CR `1.000`, and standardized loss
+`0.000111` on 21 inD demo test samples. Runtime was approximately 1.6 s.
 
 The Appendix long-tail qualitative case figure demo runs the R plotting script
 and writes the three case PDFs used in the Appendix.

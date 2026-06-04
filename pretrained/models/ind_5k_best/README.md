@@ -21,4 +21,4 @@ python scripts/evaluation/evaluate_ind_pretrained_demo.py \
 
 Expected output is written to
 `artifacts/demo_ind_pretrained_eval/evaluation_summary.json` and includes RMSE,
-MAE, R2, RBF-MMD, and standardized loss.
+MAE, R2, RBF-MMD, VA95, RPA, ADE, FDE, CR, and standardized loss.

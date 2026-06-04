@@ -63,18 +63,25 @@ def metrics(path):
         "mean_rmse": sum(rmse) / len(rmse),
         "r2_mean": data["r2_mean"],
         "rbf_mmd": data["rbf_mmd"],
+        "va95": data.get("va95", float("nan")),
+        "rpa": data.get("rpa", float("nan")),
+        "ade": data.get("ade", float("nan")),
+        "fde": data.get("fde", float("nan")),
+        "cr": data.get("cr", float("nan")),
         "samples": data["samples"],
+        "trajectories": data.get("trajectories", 0),
     }
 
 print("\n== Demo metric summary")
-print(f"{'Run':<28} {'RMSE [ax, ay]':<24} {'Mean RMSE':>10} {'R2 mean':>10} {'RBF-MMD':>12} {'Samples':>8}")
-print("-" * 98)
+print(f"{'Run':<28} {'RMSE [ax, ay]':<24} {'Mean RMSE':>10} {'R2 mean':>10} {'RBF-MMD':>12} {'VA95':>10} {'RPA':>10} {'ADE':>10} {'FDE':>10} {'CR':>8} {'N/T':>9}")
+print("-" * 147)
 values = []
 for label, path in rows:
     item = metrics(path)
     values.append((label, item))
     rmse = "[" + ", ".join(f"{v:.4f}" for v in item["rmse"]) + "]"
-    print(f"{label:<28} {rmse:<24} {item['mean_rmse']:>10.4f} {item['r2_mean']:>10.4f} {item['rbf_mmd']:>12.6f} {item['samples']:>8}")
+    nt = f"{item['samples']}/{item['trajectories']}"
+    print(f"{label:<28} {rmse:<24} {item['mean_rmse']:>10.4f} {item['r2_mean']:>10.4f} {item['rbf_mmd']:>12.6f} {item['va95']:>10.4f} {item['rpa']:>10.4f} {item['ade']:>10.4f} {item['fde']:>10.4f} {item['cr']:>8.3f} {nt:>9}")
 
 scratch = values[0][1]["mean_rmse"]
 transfer = values[1][1]["mean_rmse"]

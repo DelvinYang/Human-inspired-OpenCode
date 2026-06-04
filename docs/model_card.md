@@ -35,7 +35,8 @@ manuscript experiments.
 
 On the included inD demo test split, the current smoke-test run evaluates 21
 state-transition samples and reports RMSE `[0.0205, 0.0196]` for the two action
-dimensions, with mean RMSE `0.0200`, mean R2 `0.9951`, and RBF-MMD `0.000417`.
+dimensions, with mean RMSE `0.0200`, mean R2 `0.9951`, RBF-MMD `0.005683`,
+VA95 `0.8003`, RPA `0.0068`, ADE `0.1596`, FDE `0.3410`, and CR `1.000`.
 These values check that the released code path is functioning.
 
 Full quantitative claims are reported by the paper-scale experiments.
@@ -46,10 +47,12 @@ These numbers document the included checkpoint; the inD demo transfer command
 checks the transfer path on the repository demo subset.
 
 The released metatype transfer smoke test reports inD demo RMSE
-`[0.0106, 0.0100]` on 21 samples.
+`[0.0106, 0.0100]`, mean R2 `0.9987`, VA95 `0.1916`, ADE `0.1073`, FDE
+`0.2505`, and CR `1.000` on 21 samples and 2 reconstructed demo trajectories.
 
 The released inD checkpoint evaluation demo reports RMSE `[0.0089, 0.0038]`,
-mean R2 `0.9995`, and RBF-MMD `0.000212` on the same 21-sample demo test split.
+mean R2 `0.9995`, RBF-MMD `0.003154`, ADE `0.0845`, FDE `0.1836`, and CR
+`1.000` on the same 21-sample demo test split.
 
 ## Data Notes
 

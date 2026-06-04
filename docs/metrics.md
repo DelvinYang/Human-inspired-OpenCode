@@ -24,3 +24,9 @@ calculations with local data and checkpoint paths.
 
 The final released metric scripts cover the data-level, individual-level,
 collective-level, and long-tail metrics listed above.
+
+The release demo evaluator (`scripts/evaluation/evaluate_model.py`) reports the
+same core evaluation set on the included processed NPZ test split: R2,
+RBF-MMD/RBF-MMD2, VA95, RPA, ADE, FDE, and CR. When trajectory metadata is
+available, it reconstructs stride-12 test trajectories and applies the
+semi-rollout ADE/FDE/CR protocol used by the revision evaluation code.

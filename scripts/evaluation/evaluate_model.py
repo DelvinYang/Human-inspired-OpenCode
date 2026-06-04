@@ -23,6 +23,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--device", default="auto")
     parser.add_argument("--num-workers", type=int, default=0)
     parser.add_argument("--pin-memory", action="store_true")
+    parser.add_argument("--rollout-mode", choices=["semi", "teacher"], default="semi")
+    parser.add_argument("--min-trajectory-steps", type=int, default=50)
+    parser.add_argument("--cr-rel-threshold", type=float, default=0.05)
+    parser.add_argument("--cr-abs-threshold", type=float, default=2.0)
+    parser.add_argument("--max-trajectories-per-dataset", type=int, default=0)
     return parser.parse_args()
 
 

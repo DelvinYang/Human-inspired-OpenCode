@@ -12,6 +12,7 @@ from torch.utils.data import DataLoader, Dataset
 
 
 ARRAY_KEYS = ("state", "action", "next_state", "next_action")
+META_KEYS = ("meta_dataset", "meta_scene", "meta_track_id", "meta_frame_k", "meta_frame_next")
 
 
 @dataclass
@@ -65,6 +66,7 @@ def load_dataset_split(
         raise FileNotFoundError(f"missing split={split} dataset={dataset} under {root}")
 
     chunks: dict[str, list[np.ndarray]] = {key: [] for key in ARRAY_KEYS}
+    meta_chunks: dict[str, list[np.ndarray]] = {key: [] for key in META_KEYS}
     rows_seen = rows_kept = loaded = 0
     tracks_seen: set[str] = set()
     tracks_kept: set[str] = set()
@@ -93,6 +95,9 @@ def load_dataset_split(
                 idx = idx[:remaining]
             for key in ARRAY_KEYS:
                 chunks[key].append(z[key][idx].astype(np.float32))
+            for key in META_KEYS:
+                if key in z.files:
+                    meta_chunks[key].append(z[key][idx])
             loaded += int(idx.size)
             rows_kept += int(idx.size)
             tracks_kept.update(keys[int(i)] for i in idx.tolist())
@@ -101,6 +106,7 @@ def load_dataset_split(
         raise ValueError(f"split={split} dataset={dataset} fraction={fraction} produced zero samples")
 
     arrays = {key: np.concatenate(parts, axis=0) for key, parts in chunks.items()}
+    arrays.update({key: np.concatenate(parts, axis=0) for key, parts in meta_chunks.items() if parts})
     if max_samples > 0 and rng is not None and len(arrays["action"]) > max_samples:
         idx = np.sort(rng.choice(len(arrays["action"]), size=max_samples, replace=False))
         arrays = {key: value[idx] for key, value in arrays.items()}
@@ -121,7 +127,11 @@ def load_dataset_split(
 def concat_arrays(parts: list[dict[str, np.ndarray]]) -> dict[str, np.ndarray]:
     if not parts:
         raise ValueError("cannot concatenate an empty dataset list")
-    return {key: np.concatenate([part[key] for part in parts], axis=0) for key in ARRAY_KEYS}
+    for key in ARRAY_KEYS:
+        if any(key not in part for part in parts):
+            raise KeyError(f"missing required array key {key!r}")
+    keys = [key for key in parts[0] if all(key in part for part in parts)]
+    return {key: np.concatenate([part[key] for part in parts], axis=0) for key in keys}
 
 
 def load_multi_split(

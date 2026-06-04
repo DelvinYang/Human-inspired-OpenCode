@@ -27,6 +27,7 @@ from cultural_align.training.data import (
 )
 from cultural_align.training.losses import bc_q_loss_from_hs, itd_loss_from_hs
 from cultural_align.training.metrics import regression_metrics
+from cultural_align.training.trajectory_metrics import complete_trajectory_metrics
 
 
 DOMAIN_DATASETS = {
@@ -455,6 +456,21 @@ def evaluate_checkpoint(config: dict[str, Any] | SimpleNamespace) -> dict[str, A
     model = _make_model_from_args(args, stats).to(device)
     model.load_state_dict(state_dict, strict=False)
     metrics = evaluate(model, loader, device, stats)
+    metrics.update(
+        complete_trajectory_metrics(
+            model,
+            stats,
+            concat_arrays(list(test_parts.values())),
+            device,
+            batch_size=int(args.eval_batch_size),
+            mode=getattr(args, "rollout_mode", "semi"),
+            min_pred_steps=int(getattr(args, "min_trajectory_steps", 50)),
+            cr_rel_threshold=float(getattr(args, "cr_rel_threshold", 0.05)),
+            cr_abs_threshold=float(getattr(args, "cr_abs_threshold", 2.0)),
+            max_trajectories_per_dataset=int(getattr(args, "max_trajectories_per_dataset", 0)),
+            seed=int(getattr(args, "seed", 20260517)),
+        )
+    )
     summary = {
         "checkpoint": str(args.checkpoint),
         "model": "ours",
