@@ -8,8 +8,8 @@ The repository is organized to make the reviewed method installable, auditable,
 and reproducible with runnable demos, released checkpoints, and scripts for the
 datasets used in the paper.
 
-Anonymous review repository:
-https://anonymous.4open.science/r/Human-inspired-OpenCode-7D46/
+GitHub repository:
+https://github.com/DelvinYang/Human-inspired-OpenCode.git
 
 ## Release Scope
 

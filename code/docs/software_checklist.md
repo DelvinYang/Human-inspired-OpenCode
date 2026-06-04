@@ -23,7 +23,7 @@ release.
 | How to run on user data | `code/INSTRUCTIONS.md`, `code/docs/reproducibility.md` | Provided |
 | Quantitative reproduction instructions | `code/docs/reproducibility.md` | Provided |
 | License | `code/LICENSE`, `code/INSTRUCTIONS.md` | MIT for code; datasets retain original licenses |
-| Open-source repository link | `code/INSTRUCTIONS.md` | Anonymous review repository available |
+| Open-source repository link | `README.md`, `code/INSTRUCTIONS.md` | GitHub repository available |
 | Data availability policy | `code/docs/data_policy.md` | Provided |
 
 ## Tested Environment
