@@ -43,33 +43,33 @@ artifacts/demo_ind/ours/evaluation_summary.json
 
 ## Demo Transfer From Released Metatype
 
-This example uses the released DE-source proposed-method metatype under
-`pretrained/metatypes/de_source_metatype/` and fine-tunes it on the same small
-inD demo subset.
+This example uses the released CN+US-source proposed-method metatype under
+`pretrained/metatypes/cn_us_source_metatype/` and fine-tunes it on the same
+small inD demo subset.
 
 ```bash
 python scripts/experiments/train_demo_transfer.py \
-  --config configs/experiments/demo_transfer_from_de_metatype.yaml \
+  --config configs/experiments/demo_transfer_from_cn_us_metatype.yaml \
   --clean
 
 python scripts/evaluation/evaluate_demo_transfer.py \
-  --config configs/experiments/demo_transfer_from_de_metatype.yaml
+  --config configs/experiments/demo_transfer_from_cn_us_metatype.yaml
 ```
 
 Expected transfer artifacts:
 
 ```text
-artifacts/demo_ind_transfer_from_de_metatype/calibrate_w/best_model.pt
-artifacts/demo_ind_transfer_from_de_metatype/calibrate_w/w_best.npy
-artifacts/demo_ind_transfer_from_de_metatype/calibrate_w/summary.json
-artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/best_model.pt
-artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/w_best.npy
-artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/summary.json
-artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/evaluation_summary.json
+artifacts/demo_ind_transfer_from_cn_us_metatype/calibrate_w/best_model.pt
+artifacts/demo_ind_transfer_from_cn_us_metatype/calibrate_w/w_best.npy
+artifacts/demo_ind_transfer_from_cn_us_metatype/calibrate_w/summary.json
+artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/best_model.pt
+artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/w_best.npy
+artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/summary.json
+artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/evaluation_summary.json
 ```
 
 On the tested local machine, this smoke run reports transfer-demo RMSE
-`[0.0149, 0.0041]` on 21 inD demo test samples.
+`[0.0106, 0.0100]` on 21 inD demo test samples.
 
 ## Demo Evaluation From Released inD Checkpoint
 

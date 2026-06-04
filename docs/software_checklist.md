@@ -8,7 +8,7 @@ release.
 | --- | --- | --- |
 | Source code | `src/cultural_align/`, `scripts/` | Dataset, reference-path preprocessing, training, transfer, demo-metatype, and evaluation code added |
 | Small demo/test dataset | `data/demo/ind/` | inD recording-04 excerpt added |
-| Reviewer metatype checkpoint | `pretrained/metatypes/de_source_metatype/` | One DE-source proposed-method checkpoint added for transfer-path reproduction |
+| Reviewer metatype checkpoint | `pretrained/metatypes/cn_us_source_metatype/` | One CN+US-source proposed-method checkpoint added for transfer-path reproduction |
 | Reviewer inD evaluation checkpoint | `pretrained/models/ind_5k_best/` | One inD checkpoint added for full demo evaluation output |
 | Appendix long-tail figure demo | `data/demo/longtail_cases/`, `scripts/visualization/plot_longtail_case_demo.R` | Complete R plotting demo added |
 | Paper metric code | `scripts/evaluation/paper_metrics/actual_used/`, `docs/metrics.md` | Actual revision metric scripts and metric mapping added |
@@ -17,7 +17,7 @@ release.
 | Tested software versions | this file | Preprocessing smoke-test versions recorded below |
 | Installation instructions | `README.md` | Provided |
 | Typical install time | `README.md`, this file | Environment-dependent; PyTorch wheel download dominates clean installs |
-| Demo instructions | `README.md`, `examples/README.md` | Preprocessing, training, evaluation, transfer, pretrained-evaluation, and long-tail figure demos implemented |
+| Demo instructions | `README.md`, `examples/README.md`, `scripts/run_release_demo.sh` | Preprocessing, training, evaluation, transfer, pretrained-evaluation, and long-tail figure demos implemented |
 | Expected demo output | `data/demo/ind/README.md`, `data/demo/longtail_cases/README.md`, `examples/README.md` | 153 samples across train/val/test plus demo-transfer, pretrained-evaluation, and three long-tail figure PDFs |
 | Expected demo run time | `examples/README.md` | Preprocessing smoke run is under one second on the tested local machine |
 | How to run on user data | `README.md`, `docs/reproducibility.md` | Provided |
@@ -42,9 +42,9 @@ release.
 - Demo evaluation run time: 0.90 s wall time for
   `scripts/evaluation/evaluate_demo.py --config configs/experiments/demo_ind.yaml`
 - Demo transfer run time: 2.27 s wall time for
-  `scripts/experiments/train_demo_transfer.py --config configs/experiments/demo_transfer_from_de_metatype.yaml --clean`
+  `scripts/experiments/train_demo_transfer.py --config configs/experiments/demo_transfer_from_cn_us_metatype.yaml --clean`
 - Demo transfer evaluation run time: 0.85 s wall time for
-  `scripts/evaluation/evaluate_demo_transfer.py --config configs/experiments/demo_transfer_from_de_metatype.yaml`
+  `scripts/evaluation/evaluate_demo_transfer.py --config configs/experiments/demo_transfer_from_cn_us_metatype.yaml`
 - Demo inD pretrained evaluation run time: 1.47 s wall time for
   `scripts/evaluation/evaluate_ind_pretrained_demo.py --config configs/experiments/demo_evaluate_ind_pretrained.yaml`
 - Appendix long-tail figure demo run time: 6.85 s wall time for

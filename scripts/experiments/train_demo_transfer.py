@@ -28,8 +28,8 @@ def load_config(path: Path) -> dict:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Fine-tune the released DE metatype on the inD demo subset.")
-    parser.add_argument("--config", type=Path, default=Path("configs/experiments/demo_transfer_from_de_metatype.yaml"))
+    parser = argparse.ArgumentParser(description="Fine-tune the released metatype on the inD demo subset.")
+    parser.add_argument("--config", type=Path, default=Path("configs/experiments/demo_transfer_from_cn_us_metatype.yaml"))
     parser.add_argument("--clean", action="store_true")
     return parser.parse_args()
 
@@ -39,7 +39,7 @@ def main() -> None:
     os.chdir(PROJECT_ROOT)
     config = load_config(resolve(args.config))
     dataset_config = load_config(resolve(config["dataset_config"]))
-    output_dir = resolve(config.get("output_dir", "artifacts/demo_ind_transfer_from_de_metatype"))
+    output_dir = resolve(config.get("output_dir", "artifacts/demo_ind_transfer_from_cn_us_metatype"))
     if args.clean and output_dir.exists():
         shutil.rmtree(output_dir)
     training = dict(config.get("training", {}))

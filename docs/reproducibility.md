@@ -32,17 +32,23 @@ The proposed model architecture fixes the temporal hidden dimension at `64` and
 the Psi/Phi feature dimension at `64`. These dimensions are kept as architecture
 constants, matching the released checkpoints and paper runs.
 
-The repository also includes one proposed-method DE-source metatype checkpoint.
-Reviewers can use it to exercise the paper's data-light transfer path on the
-small inD demo subset. The demo runs `calibrate_w` followed by
+The repository also includes one proposed-method CN+US-source metatype
+checkpoint. Reviewers can use it to exercise the paper's data-light transfer
+path on the small inD demo subset. The demo runs `calibrate_w` followed by
 `finetune_with_target_w`; paper-scale runs set the target fraction explicitly.
 
 ```bash
 python scripts/experiments/train_demo_transfer.py \
-  --config configs/experiments/demo_transfer_from_de_metatype.yaml \
+  --config configs/experiments/demo_transfer_from_cn_us_metatype.yaml \
   --clean
 python scripts/evaluation/evaluate_demo_transfer.py \
-  --config configs/experiments/demo_transfer_from_de_metatype.yaml
+  --config configs/experiments/demo_transfer_from_cn_us_metatype.yaml
+```
+
+The same demo sequence can be run with:
+
+```bash
+bash scripts/run_release_demo.sh
 ```
 
 The repository also includes one inD checkpoint for running the full released

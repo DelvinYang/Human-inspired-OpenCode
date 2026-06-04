@@ -1,31 +1,33 @@
 {
-  "name": "de_source_metatype",
+  "name": "cn_us_source_metatype",
   "checkpoint": "best_model.pt",
-  "sha256": "2579473cfc5e380f7ff6ec9a3794a5b447d0e76f09419a7f321e50291345a40a",
-  "size_bytes": 672634,
+  "sha256": "8efa0e04308c962561f1c8d12979de91e2833b1deee375698f2fd60dc3281352",
+  "size_bytes": 673367,
   "model": "HybridPsiCorrectionModel",
   "architecture": {
     "hidden_dim": 64,
     "feature_dim": 64
   },
   "schema": "trajvista_xy_psiphi_v1",
-  "source_domain": "DE",
+  "source_domain": "CN+US",
   "source_datasets": [
-    "HighD",
-    "inD"
+    "DJI",
+    "sinD",
+    "NGSIM",
+    "CitySim"
   ],
   "source_summary": {
     "final_test_raw_rmse": [
-      0.003998437896370888,
-      0.0031108083203434944
+      0.014092226512730122,
+      0.00880199484527111
     ],
     "final_test_raw_mae": [
-      0.0028249756433069706,
-      0.001675488892942667
+      0.006812984589487314,
+      0.0024015959352254868
     ],
-    "samples": 334636,
-    "best_epoch": 189,
-    "best_val_loss": 0.0002486308848950839
+    "samples": 316021,
+    "best_epoch": 144,
+    "best_val_loss": 0.0004499848904675545
   },
   "release_scope": "Reviewer reproduction checkpoint for the proposed method.",
   "release_preparation": {

@@ -15,8 +15,8 @@ paths. Full-data experiments use local dataset paths configured under
 - Configuration templates that point users to local dataset locations.
 - Reference-path processing and filtering code plus the reviewed reference-path
   metadata and track-assignment filters used by this release.
-- One compact DE-source metatype checkpoint under
-  `pretrained/metatypes/de_source_metatype/`.
+- One compact CN+US-source metatype checkpoint under
+  `pretrained/metatypes/cn_us_source_metatype/`.
 - One inD evaluation checkpoint under `pretrained/models/ind_5k_best/`.
 
 ## Full-Data Runs

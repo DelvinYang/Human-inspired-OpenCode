@@ -153,34 +153,41 @@ evaluation: 0.90 s
 `artifacts/` is ignored by git.
 
 The repository also includes a compact proposed-method metatype checkpoint
-trained on the Germany source domain (`HighD` and `inD`). It is provided so
-reviewers can exercise the transfer code path. Paper-scale data-light runs set
-the target fraction through `scripts/experiments/train_transfer.py`.
+trained on the China and U.S. source regions (`DJI`, `sinD`, `NGSIM`, and
+`CitySim`). It is provided so reviewers can exercise the transfer code path.
+Paper-scale data-light runs set the target fraction through
+`scripts/experiments/train_transfer.py`.
 
 ```bash
 python scripts/experiments/train_demo_transfer.py \
-  --config configs/experiments/demo_transfer_from_de_metatype.yaml \
+  --config configs/experiments/demo_transfer_from_cn_us_metatype.yaml \
   --clean
 
 python scripts/evaluation/evaluate_demo_transfer.py \
-  --config configs/experiments/demo_transfer_from_de_metatype.yaml
+  --config configs/experiments/demo_transfer_from_cn_us_metatype.yaml
 ```
 
 Expected transfer artifacts:
 
 ```text
-artifacts/demo_ind_transfer_from_de_metatype/calibrate_w/best_model.pt
-artifacts/demo_ind_transfer_from_de_metatype/calibrate_w/w_best.npy
-artifacts/demo_ind_transfer_from_de_metatype/calibrate_w/summary.json
-artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/best_model.pt
-artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/w_best.npy
-artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/summary.json
-artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/evaluation_summary.json
+artifacts/demo_ind_transfer_from_cn_us_metatype/calibrate_w/best_model.pt
+artifacts/demo_ind_transfer_from_cn_us_metatype/calibrate_w/w_best.npy
+artifacts/demo_ind_transfer_from_cn_us_metatype/calibrate_w/summary.json
+artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/best_model.pt
+artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/w_best.npy
+artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/summary.json
+artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/evaluation_summary.json
 ```
 
 On the tested local machine, this transfer demo reports test RMSE
-`[0.0149, 0.0041]` on 21 inD demo test samples. Runtime was approximately
+`[0.0106, 0.0100]` on 21 inD demo test samples. Runtime was approximately
 2.27 s for transfer training and 0.85 s for transfer evaluation.
+
+To run the release demo sequence in one command:
+
+```bash
+bash scripts/run_release_demo.sh
+```
 
 The repository also includes an inD checkpoint from a prior
 `trajvista_ind_xy_psiphi_5k` experiment. It runs the released evaluation output

@@ -12,7 +12,7 @@ from cultural_align.training.data import NormStats
 
 
 ROOT = Path(__file__).resolve().parents[1]
-METATYPE_ROOT = ROOT / "pretrained" / "metatypes" / "de_source_metatype"
+METATYPE_ROOT = ROOT / "pretrained" / "metatypes" / "cn_us_source_metatype"
 
 
 def iter_strings(value: Any):
@@ -33,8 +33,8 @@ class MetatypeReleaseTest(unittest.TestCase):
         self.assertEqual(sorted(payload.keys()), ["args", "model_state_dict", "release_metadata", "stats"])
 
         metadata = json.loads((METATYPE_ROOT / "metadata.json").read_text(encoding="utf-8"))
-        self.assertEqual(metadata["source_domain"], "DE")
-        self.assertEqual(metadata["source_datasets"], ["HighD", "inD"])
+        self.assertEqual(metadata["source_domain"], "CN+US")
+        self.assertEqual(metadata["source_datasets"], ["DJI", "sinD", "NGSIM", "CitySim"])
         self.assertEqual(metadata["architecture"], {"hidden_dim": HIDDEN_DIM, "feature_dim": FEATURE_DIM})
 
         stats = NormStats(**payload["stats"])

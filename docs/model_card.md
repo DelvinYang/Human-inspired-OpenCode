@@ -19,7 +19,7 @@ training, checkpoint loading, and evaluation. Paper-scale experiments require
 users to configure local dataset paths and run the released preprocessing
 scripts.
 
-The included DE-source metatype checkpoint is intended to verify the
+The included CN+US-source metatype checkpoint is intended to verify the
 proposed-model checkpoint-loading and data-light transfer path. The full
 paper-scale suite is covered by the reproduction pipeline.
 The included inD checkpoint is intended to verify the released evaluation path
@@ -40,13 +40,13 @@ These values check that the released code path is functioning.
 
 Full quantitative claims are reported by the paper-scale experiments.
 
-The released DE-source metatype metadata records source-domain test RMSE
-`[0.0040, 0.0031]` on 334,636 Germany-domain samples before demo fine-tuning.
+The released CN+US-source metatype metadata records source-domain test RMSE
+`[0.0141, 0.0088]` on 316,021 source-domain samples before demo fine-tuning.
 These numbers document the included checkpoint; the inD demo transfer command
 checks the transfer path on the repository demo subset.
 
 The released metatype transfer smoke test reports inD demo RMSE
-`[0.0149, 0.0041]` on 21 samples.
+`[0.0106, 0.0100]` on 21 samples.
 
 The released inD checkpoint evaluation demo reports RMSE `[0.0089, 0.0038]`,
 mean R2 `0.9995`, and RBF-MMD `0.000212` on the same 21-sample demo test split.
