@@ -20,7 +20,7 @@ env/
 !.env.example
 
 # Large generated artifacts
-artifacts/**
+code/artifacts/**
 outputs/**
 runs/**
 logs/**
@@ -30,7 +30,7 @@ models/**
 remote_results/**
 wandb/**
 tensorboard/**
-!artifacts/.gitkeep
+!code/artifacts/.gitkeep
 
 # Full or derived datasets are intentionally not versioned.
 data/raw/**
@@ -68,10 +68,10 @@ data/demo/**/Thumbs.db
 data/reference_paths/**/.DS_Store
 data/reference_paths/**/Thumbs.db
 
-# Publication-safe reviewer metatype checkpoint.
-!pretrained/
-!pretrained/**
-!pretrained/**/*.pt
+# Publication-safe reviewer checkpoints.
+!code/pretrained/
+!code/pretrained/**
+!code/pretrained/**/*.pt
 
 # Editor files
 .idea/

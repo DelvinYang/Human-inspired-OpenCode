@@ -1,0 +1,15 @@
+dataset: inD
+release_scope: demo
+raw_root: data/demo/ind/raw
+assignment_dir: data/demo/ind/assignments
+processed_root: data/demo/ind/processed
+expected_outputs: data/demo/ind/expected_outputs
+builder: code/scripts/datasets/ind/build_ind_demo.py
+source_recording: "04"
+frame_start: 2028
+frame_end: 3027
+t_hist: 12
+stride: 12
+shard_size: 1000
+max_samples: 0
+notes: "Small inD recording-04 excerpt for repository demos."

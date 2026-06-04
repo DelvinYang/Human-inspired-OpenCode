@@ -1,0 +1,6 @@
+dataset: INTERACTION
+release_scope: script_only
+raw_root: /path/to/INTERACTION/recorded_trackfiles
+processed_root: code/artifacts/datasets/trajvista_xy_psiphi_external_interaction_v1
+builder: code/scripts/datasets/interaction/build_interaction.py
+notes: "Builds country-specific INTERACTION_CHN, INTERACTION_DEU, and INTERACTION_USA shards from local INTERACTION CSV files."

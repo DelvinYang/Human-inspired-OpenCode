@@ -1,0 +1,13 @@
+dataset_root: /path/to/raw_dataset_root
+cache_root: code/artifacts/reference_paths_work/cache/scenes
+work_dir: code/artifacts/reference_paths_work
+supported_datasets:
+  - HighD
+  - inD
+  - CitySim
+  - sinD
+  - NGSIM
+  - DJI
+notes:
+  - "dataset_root is a local top-level directory containing raw dataset folders."
+  - "Reference-path outputs are derived metadata and should be checked against each dataset license before redistribution."

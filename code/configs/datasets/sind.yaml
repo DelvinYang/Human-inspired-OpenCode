@@ -1,0 +1,7 @@
+dataset: sinD
+release_scope: script_only
+raw_root: /path/to/sinD
+assignment_dir: data/reference_paths/assignments
+processed_root: code/artifacts/datasets/trajvista_xy_psiphi_v1
+builder: code/scripts/datasets/sind/build_sind.py
+notes: "Set raw_root to the local sinD dataset directory."
