@@ -22,6 +22,8 @@ locally under the dataset providers' terms.
 The included DE-source metatype checkpoint is intended to verify the
 proposed-model checkpoint-loading and data-light transfer path. It is not a
 substitute for the full paper-scale datasets or complete experiment suite.
+The included inD checkpoint is intended to verify the released evaluation path
+on the small inD demo/test split.
 
 ## Out-of-Scope Use
 
@@ -38,10 +40,8 @@ dimensions, with mean RMSE `0.0200`, mean R2 `0.9951`, and RBF-MMD `0.000417`.
 These values are expected for the small smooth demo excerpt and should be used
 only to check that the released code path is functioning.
 
-The corresponding previous-action reference RMSE is `[0.0236, 0.0216]`, so the
-demo model is modestly better than the local persistence reference on this tiny
-split. Full quantitative claims should be taken from the paper-scale
-experiments, not from this demo.
+Full quantitative claims should be taken from the paper-scale experiments, not
+from this demo.
 
 The released DE-source metatype metadata records source-domain test RMSE
 `[0.0040, 0.0031]` on 334,636 Germany-domain samples before demo fine-tuning.
@@ -50,8 +50,10 @@ transfer command remains a smoke test because it runs on only the small
 repository subset.
 
 After two demo fine-tuning epochs, the released metatype transfer smoke test
-reports inD demo RMSE `[0.0150, 0.0041]` on 21 samples, compared with
-previous-action reference RMSE `[0.0236, 0.0216]`.
+reports inD demo RMSE `[0.0150, 0.0041]` on 21 samples.
+
+The released inD checkpoint evaluation demo reports RMSE `[0.0089, 0.0038]`,
+mean R2 `0.9995`, and RBF-MMD `0.000212` on the same 21-sample demo test split.
 
 ## Data and License Notes
 

@@ -65,8 +65,7 @@ artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/evaluation_summary.js
 ```
 
 On the tested local machine, this smoke run reports transfer-demo RMSE
-`[0.0150, 0.0041]` on 21 inD demo test samples. The corresponding previous
-action reference RMSE is `[0.0236, 0.0216]`.
+`[0.0150, 0.0041]` on 21 inD demo test samples.
 
 ## Demo Evaluation From Released inD Checkpoint
 
@@ -86,4 +85,4 @@ artifacts/demo_ind_pretrained_eval/evaluation_summary.json
 
 On the tested local machine, this evaluation reports RMSE `[0.0089, 0.0038]`,
 R2 mean `0.9995`, and RBF-MMD `0.000212` on 21 inD demo test samples. Runtime
-was approximately 1.3 s.
+was approximately 1.6 s.

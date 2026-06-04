@@ -190,9 +190,8 @@ artifacts/demo_ind_pretrained_eval/evaluation_summary.json
 ```
 
 On the tested local machine, this evaluation reports RMSE `[0.0089, 0.0038]`,
-MAE `[0.0075, 0.0031]`, R2 mean `0.9995`, RBF-MMD `0.000212`, previous-action
-reference RMSE `[0.0236, 0.0216]`, and standardized loss `0.000111` on 21 inD
-demo test samples. Runtime was approximately 1.3 s.
+MAE `[0.0075, 0.0031]`, R2 mean `0.9995`, RBF-MMD `0.000212`, and standardized
+loss `0.000111` on 21 inD demo test samples. Runtime was approximately 1.6 s.
 
 Paper-scale source-domain and data-light transfer runs use
 `scripts/experiments/train_domain.py` and `scripts/experiments/train_transfer.py`.

@@ -44,5 +44,5 @@ release.
   `scripts/experiments/train_demo_transfer.py --config configs/experiments/demo_transfer_from_de_metatype.yaml --clean`
 - Demo transfer evaluation run time: 0.91 s wall time for
   `scripts/evaluation/evaluate_demo_transfer.py --config configs/experiments/demo_transfer_from_de_metatype.yaml`
-- Demo inD pretrained evaluation run time: 1.29 s wall time for
+- Demo inD pretrained evaluation run time: 1.47 s wall time for
   `scripts/evaluation/evaluate_ind_pretrained_demo.py --config configs/experiments/demo_evaluate_ind_pretrained.yaml`

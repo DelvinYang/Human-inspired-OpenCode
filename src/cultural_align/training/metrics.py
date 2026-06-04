@@ -32,7 +32,6 @@ def rbf_mmd(x: np.ndarray, y: np.ndarray, max_samples: int = 2048, seed: int = 4
 def regression_metrics(
     pred: np.ndarray,
     target: np.ndarray,
-    reference: np.ndarray | None = None,
     mmd_max_samples: int = 2048,
 ) -> dict[str, Any]:
     pred = np.asarray(pred, dtype=np.float64)
@@ -52,7 +51,4 @@ def regression_metrics(
         "target_std": target.std(axis=0).astype(float).tolist(),
         "samples": int(len(target)),
     }
-    if reference is not None:
-        ref_err = np.asarray(reference, dtype=np.float64) - target
-        out["previous_acc_reference_rmse"] = np.sqrt(np.mean(ref_err * ref_err, axis=0)).astype(float).tolist()
     return out

@@ -15,7 +15,7 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
 from cultural_align.data.schema import FEATURE_NAMES
-from cultural_align.models.trajvista import ACTION_FEATURE_INDICES, FEATURE_DIM, HIDDEN_DIM, make_model
+from cultural_align.models.trajvista import FEATURE_DIM, HIDDEN_DIM, make_model
 from cultural_align.training.data import (
     NormStats,
     compute_stats,
@@ -97,19 +97,14 @@ def model_to_raw_action(pred_norm: torch.Tensor, stats: NormStats, device: torch
     return pred_norm * action_std + action_mean
 
 
-def previous_action_reference(state_raw: torch.Tensor) -> torch.Tensor:
-    return state_raw[:, -1, list(ACTION_FEATURE_INDICES)]
-
-
 @torch.no_grad()
 def evaluate(model: nn.Module, loader: DataLoader, device: torch.device, stats: NormStats) -> dict[str, Any]:
     model.eval()
     pred_rows = []
     target_rows = []
-    reference_rows = []
     loss_sum = 0.0
     loss_count = 0
-    for state, action, _next_state, _next_action, action_raw, state_raw in loader:
+    for state, action, _next_state, _next_action, action_raw, _state_raw in loader:
         state = state.to(device)
         action = action.to(device)
         pred_norm = model(state)
@@ -117,11 +112,9 @@ def evaluate(model: nn.Module, loader: DataLoader, device: torch.device, stats: 
         loss_count += int(action.numel())
         pred_rows.append(model_to_raw_action(pred_norm, stats, device).cpu().numpy())
         target_rows.append(action_raw.numpy())
-        reference_rows.append(previous_action_reference(state_raw).numpy())
     pred = np.concatenate(pred_rows, axis=0)
     target = np.concatenate(target_rows, axis=0)
-    reference = np.concatenate(reference_rows, axis=0)
-    metrics = regression_metrics(pred, target, reference)
+    metrics = regression_metrics(pred, target)
     metrics["loss_standardized"] = float(loss_sum / max(loss_count, 1))
     return metrics
 

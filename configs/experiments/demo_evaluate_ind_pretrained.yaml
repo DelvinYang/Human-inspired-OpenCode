@@ -10,5 +10,4 @@ evaluation:
     - mae
     - r2
     - rbf_mmd
-    - previous_acc_reference_rmse
     - loss_standardized
