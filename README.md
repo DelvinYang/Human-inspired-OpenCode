@@ -12,9 +12,10 @@ provided so users with proper dataset access can reproduce the pipeline locally.
 
 ## Release Scope
 
-- Included: source code, configuration templates, documentation, and a small inD
-  demo/test subset, plus compact reviewer checkpoints for the proposed-method
-  transfer and inD evaluation paths.
+- Included: source code, configuration templates, documentation, a small inD
+  demo/test subset, fixed derived long-tail figure demo data, and compact
+  reviewer checkpoints for the proposed-method transfer and inD evaluation
+  paths.
 - Not included: full raw datasets, full processed datasets, model checkpoints
   other than the released reviewer checkpoints, or any artifacts whose
   redistribution is restricted by dataset providers.
@@ -26,10 +27,13 @@ provided so users with proper dataset access can reproduce the pipeline locally.
 ```text
 configs/                 Dataset and experiment configuration templates.
 data/demo/ind/           Small inD demo/test subset and expected demo outputs.
+data/demo/longtail_cases/
+                         Fixed derived data for Appendix long-tail case figures.
 docs/                    Data policy, reproducibility, and checklist mapping.
 examples/                End-to-end demo commands.
 pretrained/              Released reviewer checkpoints.
 scripts/                 Command-line entry points for data, training, and evaluation.
+scripts/visualization/   Figure reproduction scripts for derived demo data.
 scripts/evaluation/paper_metrics/
                          Actual revision metric scripts and metric notes.
 src/cultural_align/      Importable Python package for the method implementation.
@@ -71,6 +75,9 @@ pyyaml>=6.0
 pillow>=10.0
 pyproj>=3.5
 ```
+
+The Appendix long-tail figure demo additionally uses R with the packages
+`ggplot2`, `png`, and `scales`.
 
 Exact tested software versions and demo runtimes are recorded in
 `docs/software_checklist.md`.
@@ -192,6 +199,23 @@ artifacts/demo_ind_pretrained_eval/evaluation_summary.json
 On the tested local machine, this evaluation reports RMSE `[0.0089, 0.0038]`,
 MAE `[0.0075, 0.0031]`, R2 mean `0.9995`, RBF-MMD `0.000212`, and standardized
 loss `0.000111` on 21 inD demo test samples. Runtime was approximately 1.6 s.
+
+The three Appendix long-tail qualitative case figures can be recreated from the
+fixed derived data under `data/demo/longtail_cases/`. This visualization demo
+does not run model inference; proposed-method and baseline rollouts are saved
+figure data from the Appendix.
+
+```bash
+Rscript scripts/visualization/plot_longtail_case_demo.R
+```
+
+Expected output:
+
+```text
+artifacts/longtail_case_demo/longtail_case_main_figure_01_inD_02_track12_frame409.pdf
+artifacts/longtail_case_demo/longtail_case_main_figure_02_inD_18_track94_frame5270.pdf
+artifacts/longtail_case_demo/longtail_case_main_figure_03_inD_17_track301_frame20516.pdf
+```
 
 Paper-scale source-domain and data-light transfer runs use
 `scripts/experiments/train_domain.py` and `scripts/experiments/train_transfer.py`.

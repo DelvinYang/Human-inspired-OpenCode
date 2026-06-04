@@ -10,14 +10,15 @@ release.
 | Small demo/test dataset | `data/demo/ind/` | inD recording-04 excerpt added |
 | Reviewer metatype checkpoint | `pretrained/metatypes/de_source_metatype/` | One DE-source proposed-method checkpoint added for transfer-path reproduction |
 | Reviewer inD evaluation checkpoint | `pretrained/models/ind_5k_best/` | One sanitized inD checkpoint added for full demo evaluation output |
+| Appendix long-tail figure demo | `data/demo/longtail_cases/`, `scripts/visualization/plot_longtail_case_demo.R` | Fixed derived data and complete R plotting script added |
 | Paper metric code | `scripts/evaluation/paper_metrics/actual_used/`, `docs/metrics.md` | Actual revision metric scripts and metric mapping added |
 | System requirements | `README.md`, this file | Recorded for the tested demo environment |
 | Dependencies and OS versions | `requirements.txt`, this file | Dependencies listed; preprocessing smoke-test environment recorded below |
 | Tested software versions | this file | Preprocessing smoke-test versions recorded below |
 | Installation instructions | `README.md` | Provided |
 | Typical install time | `README.md`, this file | Environment-dependent; PyTorch wheel download dominates clean installs |
-| Demo instructions | `README.md`, `examples/README.md` | Preprocessing, training, and evaluation demo implemented |
-| Expected demo output | `data/demo/ind/README.md`, `examples/README.md` | 153 samples across train/val/test plus demo-transfer and pretrained-evaluation artifacts |
+| Demo instructions | `README.md`, `examples/README.md` | Preprocessing, training, evaluation, transfer, pretrained-evaluation, and long-tail figure demos implemented |
+| Expected demo output | `data/demo/ind/README.md`, `data/demo/longtail_cases/README.md`, `examples/README.md` | 153 samples across train/val/test plus demo-transfer, pretrained-evaluation, and three long-tail figure PDFs |
 | Expected demo run time | `examples/README.md` | Preprocessing smoke run is under one second on the tested local machine |
 | How to run on user data | `README.md`, `docs/reproducibility.md` | Provided |
 | Quantitative reproduction instructions | `docs/reproducibility.md` | Provided |
@@ -46,3 +47,5 @@ release.
   `scripts/evaluation/evaluate_demo_transfer.py --config configs/experiments/demo_transfer_from_de_metatype.yaml`
 - Demo inD pretrained evaluation run time: 1.47 s wall time for
   `scripts/evaluation/evaluate_ind_pretrained_demo.py --config configs/experiments/demo_evaluate_ind_pretrained.yaml`
+- Appendix long-tail figure demo run time: 6.85 s wall time for
+  `Rscript scripts/visualization/plot_longtail_case_demo.R`

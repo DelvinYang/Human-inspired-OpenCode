@@ -86,3 +86,20 @@ artifacts/demo_ind_pretrained_eval/evaluation_summary.json
 On the tested local machine, this evaluation reports RMSE `[0.0089, 0.0038]`,
 R2 mean `0.9995`, and RBF-MMD `0.000212` on 21 inD demo test samples. Runtime
 was approximately 1.6 s.
+
+## Appendix Long-Tail Case Figure Demo
+
+This example recreates the three Appendix long-tail qualitative case PDFs from
+fixed derived data. It does not run model inference.
+
+```bash
+Rscript scripts/visualization/plot_longtail_case_demo.R
+```
+
+Expected artifacts:
+
+```text
+artifacts/longtail_case_demo/longtail_case_main_figure_01_inD_02_track12_frame409.pdf
+artifacts/longtail_case_demo/longtail_case_main_figure_02_inD_18_track94_frame5270.pdf
+artifacts/longtail_case_demo/longtail_case_main_figure_03_inD_17_track301_frame20516.pdf
+```
