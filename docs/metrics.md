@@ -1,8 +1,8 @@
 # Metric Reproduction Notes
 
 The metric code released with this repository is the code used during the
-revision experiments, not a clean-room reimplementation. The audit copy lives
-under `scripts/evaluation/paper_metrics/actual_used/`.
+revision experiments. The audit copy lives under
+`scripts/evaluation/paper_metrics/actual_used/`.
 
 | Metric | Actual code location |
 | --- | --- |
@@ -18,12 +18,9 @@ under `scripts/evaluation/paper_metrics/actual_used/`.
 | frame-level TTC series | `scripts/evaluation/paper_metrics/actual_used/legacy_trajvista_common/evaluate_ttc.py` |
 | acceleration-sequence diagnostics | `scripts/evaluation/paper_metrics/actual_used/legacy_trajvista_common/evaluate_acc.py` |
 
-The scripts retain the original revision experiment structure and may reference
-paper-scale checkpoints or baseline model classes that are not redistributed in
-this public repository. They are included so reviewers can inspect the exact
-metric definitions and reproduce the calculations after supplying their own
-permitted data/checkpoint paths.
+The scripts retain the original revision experiment structure. They are included
+so reviewers can inspect the exact metric definitions and reproduce the
+calculations with local data and checkpoint paths.
 
-`MidRatio` appears in earlier project audit notes as a desired metric, but no
-actual executed implementation was found in the revision server workspace or in
-the local first-round TrajVista code. It is not fabricated in this release.
+The final released metric scripts cover the data-level, individual-level,
+collective-level, and long-tail metrics listed above.

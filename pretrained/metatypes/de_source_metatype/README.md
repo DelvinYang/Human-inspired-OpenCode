@@ -11,8 +11,7 @@ source domain (`HighD` and `inD`) with the paper architecture:
 The checkpoint was converted for release by removing local filesystem paths,
 renaming legacy recurrent-layer keys to the public `backbone.*` module layout,
 and dropping unused legacy `decoder.*` tensors. The resulting file loads with
-PyTorch `weights_only=True` and matches the released model without missing or
-unexpected keys.
+PyTorch `weights_only=True` and matches the released model keys.
 
 Use it with:
 

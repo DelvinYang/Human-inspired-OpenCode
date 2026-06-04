@@ -32,6 +32,5 @@ Expected preprocessing result:
 - action shape: `[N, 2]`
 - directory size: about `444 KB`; no single file is larger than `1 MB`
 
-Full inD data is not included. Users who need full-scale experiments should
-download inD from the original provider and update `configs/datasets/ind.yaml`
-or a separate local config file.
+For full-scale experiments, update `configs/datasets/ind.yaml` or a separate
+local config file with local inD paths.

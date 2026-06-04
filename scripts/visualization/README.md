@@ -1,7 +1,7 @@
 # Visualization Scripts
 
-`plot_longtail_case_demo.R` recreates the three Appendix long-tail qualitative
-case figures from the fixed derived data under `data/demo/longtail_cases/`.
+`plot_longtail_case_demo.R` writes the three Appendix long-tail qualitative case
+PDFs from `data/demo/longtail_cases/`.
 
 Run from the repository root:
 

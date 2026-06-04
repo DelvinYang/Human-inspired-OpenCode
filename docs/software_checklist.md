@@ -9,8 +9,8 @@ release.
 | Source code | `src/cultural_align/`, `scripts/` | Dataset, reference-path preprocessing, training, transfer, demo-metatype, and evaluation code added |
 | Small demo/test dataset | `data/demo/ind/` | inD recording-04 excerpt added |
 | Reviewer metatype checkpoint | `pretrained/metatypes/de_source_metatype/` | One DE-source proposed-method checkpoint added for transfer-path reproduction |
-| Reviewer inD evaluation checkpoint | `pretrained/models/ind_5k_best/` | One sanitized inD checkpoint added for full demo evaluation output |
-| Appendix long-tail figure demo | `data/demo/longtail_cases/`, `scripts/visualization/plot_longtail_case_demo.R` | Fixed derived data and complete R plotting script added |
+| Reviewer inD evaluation checkpoint | `pretrained/models/ind_5k_best/` | One inD checkpoint added for full demo evaluation output |
+| Appendix long-tail figure demo | `data/demo/longtail_cases/`, `scripts/visualization/plot_longtail_case_demo.R` | Complete R plotting demo added |
 | Paper metric code | `scripts/evaluation/paper_metrics/actual_used/`, `docs/metrics.md` | Actual revision metric scripts and metric mapping added |
 | System requirements | `README.md`, this file | Recorded for the tested demo environment |
 | Dependencies and OS versions | `requirements.txt`, this file | Dependencies listed; preprocessing smoke-test environment recorded below |

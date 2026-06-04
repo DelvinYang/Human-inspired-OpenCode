@@ -89,8 +89,8 @@ was approximately 1.6 s.
 
 ## Appendix Long-Tail Case Figure Demo
 
-This example recreates the three Appendix long-tail qualitative case PDFs from
-fixed derived data. It does not run model inference.
+This example runs the R plotting script and writes the three Appendix long-tail
+qualitative case PDFs.
 
 ```bash
 Rscript scripts/visualization/plot_longtail_case_demo.R

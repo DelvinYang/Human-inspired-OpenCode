@@ -1,11 +1,10 @@
 # Data Directory
 
-This repository does not redistribute full driving datasets.
+This directory stores repository demo inputs and reference-path artifacts.
 
-Only `data/demo/ind/`, `data/demo/longtail_cases/`, and publication-safe
-derived reference-path artifacts under `data/reference_paths/` are intended to
-be versioned. Full raw data, generated state/action tensors, caches,
-checkpoints, and paper-scale processed tensors are ignored by git.
+Versioned data in this repository includes `data/demo/ind/`,
+`data/demo/longtail_cases/`, and the reference-path artifacts under
+`data/reference_paths/`. Full-data runs write generated tensors, caches,
+checkpoints, and paper-scale outputs outside the tracked source tree.
 
-Users must obtain full datasets from the original providers and configure local
-paths under `configs/datasets/`.
+Configure local dataset paths under `configs/datasets/` for full-data runs.

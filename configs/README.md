@@ -1,6 +1,6 @@
 # Configuration Templates
 
-This directory stores publication-safe configuration templates.
+This directory stores configuration templates.
 
 - `datasets/ind_demo.yaml` targets the small inD demo/test subset that can be
   included in this repository.
@@ -14,5 +14,5 @@ This directory stores publication-safe configuration templates.
 - `experiments/demo_evaluate_ind_pretrained.yaml` defines the inD pretrained
   checkpoint evaluation demo.
 
-Do not commit local absolute paths, credentials, full processed datasets, or
-provider-restricted files.
+Keep local absolute paths, credentials, and generated paper-scale outputs in
+local artifact directories.

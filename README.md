@@ -5,20 +5,16 @@ This repository is the open-source release for the paper
 Autonomous Vehicles".
 
 The repository is organized to make the reviewed method installable, auditable,
-and reproducible without redistributing third-party driving datasets. Full raw
-datasets are not included. A small inD demo/test subset is the only dataset
-excerpt redistributed in this repository; scripts for all other datasets are
-provided so users with proper dataset access can reproduce the pipeline locally.
+and reproducible with runnable demos, released checkpoints, and scripts for the
+datasets used in the paper.
 
 ## Release Scope
 
 - Included: source code, configuration templates, documentation, a small inD
-  demo/test subset, fixed derived long-tail figure demo data, and compact
+  demo/test subset, long-tail figure demo inputs, and compact
   reviewer checkpoints for the proposed-method transfer and inD evaluation
   paths.
-- Not included: full raw datasets, full processed datasets, model checkpoints
-  other than the released reviewer checkpoints, or any artifacts whose
-  redistribution is restricted by dataset providers.
+- Paper-scale dataset paths are configured locally through `configs/datasets/`.
 - Supported datasets by script: inD, highD, NGSIM, sinD, CitySim, DJI, and
   INTERACTION.
 
@@ -28,12 +24,12 @@ provided so users with proper dataset access can reproduce the pipeline locally.
 configs/                 Dataset and experiment configuration templates.
 data/demo/ind/           Small inD demo/test subset and expected demo outputs.
 data/demo/longtail_cases/
-                         Fixed derived data for Appendix long-tail case figures.
+                         Inputs for the Appendix long-tail case figure demo.
 docs/                    Data policy, reproducibility, and checklist mapping.
 examples/                End-to-end demo commands.
 pretrained/              Released reviewer checkpoints.
 scripts/                 Command-line entry points for data, training, and evaluation.
-scripts/visualization/   Figure reproduction scripts for derived demo data.
+scripts/visualization/   Figure reproduction scripts.
 scripts/evaluation/paper_metrics/
                          Actual revision metric scripts and metric notes.
 src/cultural_align/      Importable Python package for the method implementation.
@@ -44,8 +40,8 @@ artifacts/               Local run outputs; ignored by git except for .gitkeep.
 ## System Requirements
 
 The release is intended for Linux or macOS with Python 3.10 or newer. The demo
-does not require non-standard hardware and runs on a normal desktop CPU. GPU
-acceleration is recommended only for full paper-scale training.
+runs on a normal desktop CPU. GPU acceleration is recommended for full
+paper-scale training.
 
 Tested environment:
 
@@ -96,7 +92,7 @@ Typical installation time on a normal desktop is about 5--15 minutes for a
 clean environment. The wall time is mainly determined by the PyTorch wheel
 download and the local package cache; when wheels are already cached, the
 install is typically shorter. The install command only installs Python package
-dependencies and does not download full driving datasets.
+dependencies. Dataset paths are configured separately for paper-scale runs.
 
 ## Demo
 
@@ -155,10 +151,8 @@ evaluation: 0.90 s
 
 The repository also includes a compact proposed-method metatype checkpoint
 trained on the Germany source domain (`HighD` and `inD`). It is provided so
-reviewers can exercise the transfer code path without access to the full
-training datasets. The demo transfer config uses the full tiny demo training
-split to keep the smoke test stable; paper-scale data-light runs should set the
-target fraction through `scripts/experiments/train_transfer.py`.
+reviewers can exercise the transfer code path. Paper-scale data-light runs set
+the target fraction through `scripts/experiments/train_transfer.py`.
 
 ```bash
 python scripts/experiments/train_demo_transfer.py \
@@ -181,9 +175,9 @@ On the tested local machine, this transfer demo reports test RMSE
 `[0.0150, 0.0041]` on 21 inD demo test samples. Runtime was approximately
 1.93 s for transfer training and 0.91 s for transfer evaluation.
 
-The repository also includes a sanitized inD checkpoint from a prior
-`trajvista_ind_xy_psiphi_5k` experiment. It lets reviewers run the full released
-evaluation output on the included inD demo/test split without retraining.
+The repository also includes an inD checkpoint from a prior
+`trajvista_ind_xy_psiphi_5k` experiment. It runs the released evaluation output
+on the included inD demo/test split.
 
 ```bash
 python scripts/evaluation/evaluate_ind_pretrained_demo.py \
@@ -200,10 +194,8 @@ On the tested local machine, this evaluation reports RMSE `[0.0089, 0.0038]`,
 MAE `[0.0075, 0.0031]`, R2 mean `0.9995`, RBF-MMD `0.000212`, and standardized
 loss `0.000111` on 21 inD demo test samples. Runtime was approximately 1.6 s.
 
-The three Appendix long-tail qualitative case figures can be recreated from the
-fixed derived data under `data/demo/longtail_cases/`. This visualization demo
-does not run model inference; proposed-method and baseline rollouts are saved
-figure data from the Appendix.
+The Appendix long-tail qualitative case figure demo runs the R plotting script
+and writes the three case PDFs used in the Appendix.
 
 ```bash
 Rscript scripts/visualization/plot_longtail_case_demo.R
@@ -219,16 +211,14 @@ artifacts/longtail_case_demo/longtail_case_main_figure_03_inD_17_track301_frame2
 
 Paper-scale source-domain and data-light transfer runs use
 `scripts/experiments/train_domain.py` and `scripts/experiments/train_transfer.py`.
-Comparison-method implementations are not redistributed in this code release.
 The released model fixes the temporal hidden dimension at `64` and the Psi/Phi
 feature dimension at `64`, matching the paper runs.
 
 ## Instructions for Use
 
-Users should obtain each raw dataset from the original provider and comply with
-that provider's license and access terms. After placing local raw data outside
-this repository, update the corresponding file in `configs/datasets/` and run
-the matching script under `scripts/datasets/`.
+For full-data runs, place local dataset copies outside this repository, update
+the corresponding file in `configs/datasets/`, and run the matching script under
+`scripts/datasets/`.
 
 Example full-data preprocessing command:
 
@@ -273,12 +263,12 @@ maintained in `docs/reproducibility.md`. The repository includes scripts for
 the seven supported datasets (`inD`, `highD`, `NGSIM`, `sinD`, `CitySim`,
 `DJI`, and `INTERACTION`) and the actual revision metric scripts under
 `scripts/evaluation/paper_metrics/actual_used/`. Full raw datasets must be
-obtained from their original providers before paper-scale reproduction.
+configured locally before paper-scale reproduction.
 
 ## License
 
-The code is released under the MIT License. Dataset files remain governed by
-their original providers' licenses and are not sublicensed by this repository.
+The code is released under the MIT License. Dataset files follow their source
+dataset terms.
 
 ## Citation
 

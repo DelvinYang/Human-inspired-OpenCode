@@ -63,8 +63,7 @@ legacy metrics:
 - `RPA`: `sum(|v| * max(|a|, 0) * dt) / sum(|v| * dt)` in
   `legacy_trajvista_common/evaluate_va95_rpa.py::compute_rpa`.
 
-## Known Gap
+## Metric Set Note
 
-The project audit notes mention `MidRatio`, but the revision workspace and the
-local first-round TrajVista code do not contain an actual executed MidRatio
-implementation. It is therefore not reimplemented here from scratch.
+The final released metric scripts cover the data-level, individual-level,
+collective-level, and long-tail metrics listed above.

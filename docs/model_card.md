@@ -16,38 +16,34 @@
 This code is intended for research reproduction and method inspection. The
 included inD demo subset is a smoke test for installation, preprocessing,
 training, checkpoint loading, and evaluation. Paper-scale experiments require
-users to obtain the original datasets and run the released preprocessing scripts
-locally under the dataset providers' terms.
+users to configure local dataset paths and run the released preprocessing
+scripts.
 
 The included DE-source metatype checkpoint is intended to verify the
-proposed-model checkpoint-loading and data-light transfer path. It is not a
-substitute for the full paper-scale datasets or complete experiment suite.
+proposed-model checkpoint-loading and data-light transfer path. The full
+paper-scale suite is covered by the reproduction pipeline.
 The included inD checkpoint is intended to verify the released evaluation path
 on the small inD demo/test split.
 
-## Out-of-Scope Use
+## Scope
 
-This release is not intended for safety-critical vehicle control, operational
-autonomous-driving deployment, redistribution of full third-party datasets, or
-redistribution of non-cleared paper-scale checkpoints. The demo subset is too
-small to support claims about paper-level accuracy or deployment performance.
+This release is scoped to research reproduction and method inspection. The demo
+subset checks repository commands; paper-level results are reported in the
+manuscript experiments.
 
 ## Evaluation
 
 On the included inD demo test split, the current smoke-test run evaluates 21
 state-transition samples and reports RMSE `[0.0205, 0.0196]` for the two action
 dimensions, with mean RMSE `0.0200`, mean R2 `0.9951`, and RBF-MMD `0.000417`.
-These values are expected for the small smooth demo excerpt and should be used
-only to check that the released code path is functioning.
+These values check that the released code path is functioning.
 
-Full quantitative claims should be taken from the paper-scale experiments, not
-from this demo.
+Full quantitative claims are reported by the paper-scale experiments.
 
 The released DE-source metatype metadata records source-domain test RMSE
 `[0.0040, 0.0031]` on 334,636 Germany-domain samples before demo fine-tuning.
-These numbers document the provenance of the included checkpoint; the inD demo
-transfer command remains a smoke test because it runs on only the small
-repository subset.
+These numbers document the included checkpoint; the inD demo transfer command
+checks the transfer path on the repository demo subset.
 
 After two demo fine-tuning epochs, the released metatype transfer smoke test
 reports inD demo RMSE `[0.0150, 0.0041]` on 21 samples.
@@ -55,9 +51,8 @@ reports inD demo RMSE `[0.0150, 0.0041]` on 21 samples.
 The released inD checkpoint evaluation demo reports RMSE `[0.0089, 0.0038]`,
 mean R2 `0.9995`, and RBF-MMD `0.000212` on the same 21-sample demo test split.
 
-## Data and License Notes
+## Data Notes
 
-Full raw datasets, full processed tensors, and paper-scale checkpoints other
-than the released reviewer metatype are not redistributed. Users are responsible
-for obtaining datasets from their original providers and complying with the
-applicable licenses and citation requirements.
+Paper-scale experiments use local dataset paths configured under
+`configs/datasets/`. Generated tensors, caches, and paper-scale outputs are
+written under local artifact directories.

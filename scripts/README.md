@@ -24,9 +24,9 @@ Script directories are organized by role and dataset.
   splits.
 - `evaluation/paper_metrics/actual_used/`: actual metric and table-generation
   scripts used in the paper revision experiments.
-- `visualization/plot_longtail_case_demo.R`: fixed-data R demo that recreates
-  the three Appendix long-tail qualitative case PDFs.
+- `visualization/plot_longtail_case_demo.R`: R demo that writes the three
+  Appendix long-tail qualitative case PDFs.
 
-All dataset scripts require local raw data obtained from the original providers.
-Do not place provider-restricted full raw or processed data inside the git
-repository.
+Dataset scripts read local dataset paths configured under `configs/datasets/`.
+Generated paper-scale outputs should be written under local artifact
+directories.

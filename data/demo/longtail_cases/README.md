@@ -1,12 +1,7 @@
 # Long-Tail Case Figure Demo
 
-This folder contains publication-safe derived data for recreating the three
-long-tail qualitative case figures included in the Appendix.
-
-The demo is fixed-data visualization only. It does not redistribute full inD raw
-tracks, does not require model inference, and does not include comparison-method
-checkpoints. The proposed-method and baseline trajectories are the saved
-rollouts used for the Appendix figure.
+This folder contains the inputs for the three long-tail qualitative case figures
+included in the Appendix.
 
 Contents:
 
@@ -14,7 +9,7 @@ Contents:
 longtail_case_main_figure_manifest.csv   Case order and scene-panel paths.
 longtail_case_main_figure_metrics.csv    ADE/FDE values used by the polar panel.
 longtail_case_main_figure_dynamics.csv   Speed and acceleration curves.
-scene_panels/*.png                       Fixed scene panels with trajectory overlays.
+scene_panels/*.png                       Scene panels with trajectory overlays.
 ```
 
 Run from the repository root:

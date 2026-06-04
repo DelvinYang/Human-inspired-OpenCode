@@ -29,15 +29,13 @@ python scripts/evaluation/evaluate_demo.py --config configs/experiments/demo_ind
 ```
 
 The proposed model architecture fixes the temporal hidden dimension at `64` and
-the Psi/Phi feature dimension at `64`. These dimensions are not exposed as
-configuration knobs, to keep released checkpoints and reproduced runs
-architecture-compatible.
+the Psi/Phi feature dimension at `64`. These dimensions are kept as architecture
+constants, matching the released checkpoints and paper runs.
 
 The repository also includes one proposed-method DE-source metatype checkpoint.
 Reviewers can use it to exercise the paper's data-light transfer path on the
-small inD demo subset. Because the included subset has only 106 training
-samples, the demo config uses `target_fraction: 1.0`; paper-scale runs should
-set the intended target fraction explicitly.
+small inD demo subset. The demo config uses `target_fraction: 1.0`; paper-scale
+runs set the target fraction explicitly.
 
 ```bash
 python scripts/experiments/train_demo_transfer.py \
@@ -47,8 +45,8 @@ python scripts/evaluation/evaluate_demo_transfer.py \
   --config configs/experiments/demo_transfer_from_de_metatype.yaml
 ```
 
-The repository also includes one sanitized inD checkpoint for running the full
-released evaluation output on the included inD demo/test split:
+The repository also includes one inD checkpoint for running the full released
+evaluation output on the included inD demo/test split:
 
 ```bash
 python scripts/evaluation/evaluate_ind_pretrained_demo.py \
@@ -57,8 +55,7 @@ python scripts/evaluation/evaluate_ind_pretrained_demo.py \
 
 ## Level 2: Paper-Scale Reproduction
 
-This level requires users to obtain the full datasets from their original
-providers and configure local paths under `configs/datasets/`.
+This level uses local dataset paths configured under `configs/datasets/`.
 
 Reference-path pipeline:
 
@@ -69,7 +66,7 @@ Reference-path pipeline:
    `scripts/reference_paths/finalize_candidates.py`. When a matching
    `reference_paths/manual_selection/<dataset>/<scene_id>.json` file exists,
    this step applies the manually accepted, deleted, and rejected candidate IDs.
-4. Assign raw tracks to saved reference paths with
+4. Assign raw tracks to final reference paths with
    `scripts/reference_paths/assign_tracks.py`.
 
 Dataset preprocessing scripts:
@@ -96,8 +93,7 @@ collective-level, and long-tail evaluations are included under
 `scripts/evaluation/paper_metrics/actual_used/`. See `docs/metrics.md` for the
 metric-to-script mapping.
 
-All command examples should use local paths outside this repository for full
-raw datasets and provider-restricted processed outputs.
+Full-data command examples use local paths outside this repository.
 
 The release includes the reviewed reference-path metadata and final assignment
-filters under `data/reference_paths/`; raw trajectory caches remain excluded.
+filters under `data/reference_paths/`.
