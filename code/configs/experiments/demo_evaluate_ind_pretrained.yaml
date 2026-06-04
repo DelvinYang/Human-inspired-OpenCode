@@ -1,7 +1,7 @@
 experiment: demo_evaluate_ind_pretrained
 dataset_config: code/configs/datasets/ind_demo.yaml
 checkpoint: code/pretrained/models/ind_5k_best/best_model.pt
-out_dir: code/artifacts/demo_ind_pretrained_eval
+out_dir: results/demo_ind_pretrained_eval
 evaluation:
   eval_batch_size: 4096
   device: cpu

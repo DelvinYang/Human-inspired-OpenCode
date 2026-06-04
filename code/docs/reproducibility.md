@@ -104,4 +104,4 @@ Full-data command examples use local paths outside this repository.
 
 Paper-scale reference-path metadata and final assignment filters are generated
 locally under the configured `work_dir`, typically
-`code/artifacts/reference_paths_work/`.
+`results/reference_paths_work/`.

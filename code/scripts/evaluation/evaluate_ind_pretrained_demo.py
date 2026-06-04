@@ -43,7 +43,7 @@ def main() -> None:
         "checkpoint": str(resolve(config["checkpoint"])),
         "dataset_dir": dataset_config["processed_root"],
         "datasets": [dataset_config.get("dataset", "inD")],
-        "out_dir": str(resolve(config.get("out_dir", "code/artifacts/demo_ind_pretrained_eval"))),
+        "out_dir": str(resolve(config.get("out_dir", "results/demo_ind_pretrained_eval"))),
         "eval_batch_size": evaluation.get("eval_batch_size", 4096),
         "device": evaluation.get("device", "auto"),
     }

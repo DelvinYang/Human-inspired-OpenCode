@@ -1,7 +1,7 @@
 dataset: HighD
 release_scope: script_only
 raw_root: /path/to/highD/data
-assignment_dir: code/artifacts/reference_paths_work/assignments
-processed_root: code/artifacts/datasets/trajvista_xy_psiphi_v1
+assignment_dir: results/reference_paths_work/assignments
+processed_root: results/datasets/trajvista_xy_psiphi_v1
 builder: code/scripts/datasets/highd/build_highd.py
 notes: "Set raw_root to the local highD dataset directory."

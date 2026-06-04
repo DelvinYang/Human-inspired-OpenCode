@@ -40,7 +40,7 @@ def main() -> None:
     os.chdir(PROJECT_ROOT)
     config = load_config(resolve(args.config))
     dataset_config = load_config(resolve(config["dataset_config"]))
-    output_dir = resolve(config.get("output_dir", "code/artifacts/demo_ind_transfer_from_cn_us_metatype"))
+    output_dir = resolve(config.get("output_dir", "results/demo_ind_transfer_from_cn_us_metatype"))
     if args.clean and output_dir.exists():
         shutil.rmtree(output_dir)
     training = dict(config.get("training", {}))

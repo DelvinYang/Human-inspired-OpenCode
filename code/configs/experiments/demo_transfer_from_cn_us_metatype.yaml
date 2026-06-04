@@ -1,7 +1,7 @@
 experiment: demo_transfer_from_cn_us_metatype
 dataset_config: code/configs/datasets/ind_demo.yaml
 source_checkpoint: code/pretrained/metatypes/cn_us_source_metatype/best_model.pt
-output_dir: code/artifacts/demo_ind_transfer_from_cn_us_metatype
+output_dir: results/demo_ind_transfer_from_cn_us_metatype
 seed: 20260515
 training:
   target_fraction: 1.0

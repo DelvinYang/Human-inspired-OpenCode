@@ -190,7 +190,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Individual-level LORO rollout metrics on reconstructed complete test trajectories.")
     parser.add_argument("--dataset-dir", type=Path, default=Path("reference_paths_work/model_dataset_full/trajvista_xy_psiphi_v1"))
     parser.add_argument("--split", default="test")
-    parser.add_argument("--out-dir", type=Path, default=Path("reference_paths_work/model_dataset_full/trajvista_xy_psiphi_v1/runs/individual_loro_rollout"))
+    parser.add_argument("--out-dir", type=Path, default=Path("results/paper_metrics/individual_loro_rollout"))
     parser.add_argument("--mode", choices=["semi", "teacher"], default="semi")
     parser.add_argument("--min-pred-steps", type=int, default=50)
     parser.add_argument("--max-trajectories-per-dataset", type=int, default=0, help="0 means use all reconstructed trajectories.")

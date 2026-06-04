@@ -12,18 +12,18 @@ release.
 | Reviewer inD evaluation checkpoint | `code/pretrained/models/ind_5k_best/` | One inD checkpoint added for full demo evaluation output |
 | Appendix long-tail figure demo | `data/demo/longtail_cases/`, `code/scripts/visualization/plot_longtail_case_demo.R` | Complete R plotting demo added |
 | Paper metric code | `code/scripts/evaluation/paper_metrics/actual_used/`, `code/docs/metrics.md` | Actual revision metric scripts and metric mapping added |
-| System requirements | `code/README.md`, this file | Recorded for the tested demo environment |
+| System requirements | `code/INSTRUCTIONS.md`, this file | Recorded for the tested demo environment |
 | Dependencies and OS versions | `code/requirements.txt`, this file | Dependencies listed; preprocessing smoke-test environment recorded below |
 | Tested software versions | this file | Preprocessing smoke-test versions recorded below |
-| Installation instructions | `code/README.md` | Provided |
-| Typical install time | `code/README.md`, this file | Environment-dependent; PyTorch wheel download dominates clean installs |
-| Demo instructions | `code/README.md`, `code/examples/README.md`, `code/scripts/run_release_demo.sh` | Preprocessing, training, evaluation, transfer, pretrained-evaluation, and long-tail figure demos implemented |
-| Expected demo output | `data/demo/ind/README.md`, `data/demo/longtail_cases/README.md`, `code/examples/README.md` | 153 samples across train/val/test plus demo-transfer, pretrained-evaluation, and three long-tail figure PDFs |
-| Expected demo run time | `code/examples/README.md` | Preprocessing smoke run is under one second on the tested local machine |
-| How to run on user data | `code/README.md`, `code/docs/reproducibility.md` | Provided |
+| Installation instructions | `code/INSTRUCTIONS.md` | Provided |
+| Typical install time | `code/INSTRUCTIONS.md`, this file | Environment-dependent; PyTorch wheel download dominates clean installs |
+| Demo instructions | `code/INSTRUCTIONS.md`, `code/examples/NOTES.md`, `code/scripts/run_release_demo.sh` | Preprocessing, training, evaluation, transfer, pretrained-evaluation, and long-tail figure demos implemented |
+| Expected demo output | `data/demo/ind/NOTES.md`, `data/demo/longtail_cases/NOTES.md`, `code/examples/NOTES.md` | 153 samples across train/val/test plus demo-transfer, pretrained-evaluation, and three long-tail figure PDFs |
+| Expected demo run time | `code/examples/NOTES.md` | Preprocessing smoke run is under one second on the tested local machine |
+| How to run on user data | `code/INSTRUCTIONS.md`, `code/docs/reproducibility.md` | Provided |
 | Quantitative reproduction instructions | `code/docs/reproducibility.md` | Provided |
-| License | `code/LICENSE`, `code/README.md` | MIT for code; datasets retain original licenses |
-| Open-source repository link | `code/README.md` | Anonymous review repository available |
+| License | `code/LICENSE`, `code/INSTRUCTIONS.md` | MIT for code; datasets retain original licenses |
+| Open-source repository link | `code/INSTRUCTIONS.md` | Anonymous review repository available |
 | Data availability policy | `code/docs/data_policy.md` | Provided |
 
 ## Tested Environment

@@ -1,6 +1,6 @@
 experiment: ind_demo
 dataset_config: code/configs/datasets/ind_demo.yaml
-output_dir: code/artifacts/demo_ind
+output_dir: results/demo_ind
 seed: 42
 training:
   epochs: 3

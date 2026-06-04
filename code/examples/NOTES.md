@@ -21,9 +21,9 @@ wall_time_local=0.83 s
 The generated shards are:
 
 ```text
-data/demo/ind/processed/train/inD/inD_psiphi_xy_00000.npz
-data/demo/ind/processed/val/inD/inD_psiphi_xy_00000.npz
-data/demo/ind/processed/test/inD/inD_psiphi_xy_00000.npz
+results/demo/ind/processed/train/inD/inD_psiphi_xy_00000.npz
+results/demo/ind/processed/val/inD/inD_psiphi_xy_00000.npz
+results/demo/ind/processed/test/inD/inD_psiphi_xy_00000.npz
 ```
 
 Train and evaluate the demo model:
@@ -36,9 +36,9 @@ python code/scripts/evaluation/evaluate_demo.py --config code/configs/experiment
 Expected training artifacts:
 
 ```text
-code/artifacts/demo_ind/ours/best_model.pt
-code/artifacts/demo_ind/ours/summary.json
-code/artifacts/demo_ind/ours/evaluation_summary.json
+results/demo_ind/ours/best_model.pt
+results/demo_ind/ours/summary.json
+results/demo_ind/ours/evaluation_summary.json
 ```
 
 ## Demo Transfer From Released Metatype
@@ -59,13 +59,13 @@ python code/scripts/evaluation/evaluate_demo_transfer.py \
 Expected transfer artifacts:
 
 ```text
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/calibrate_w/best_model.pt
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/calibrate_w/w_best.npy
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/calibrate_w/summary.json
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/best_model.pt
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/w_best.npy
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/summary.json
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/evaluation_summary.json
+results/demo_ind_transfer_from_cn_us_metatype/calibrate_w/best_model.pt
+results/demo_ind_transfer_from_cn_us_metatype/calibrate_w/w_best.npy
+results/demo_ind_transfer_from_cn_us_metatype/calibrate_w/summary.json
+results/demo_ind_transfer_from_cn_us_metatype/ours_transfer/best_model.pt
+results/demo_ind_transfer_from_cn_us_metatype/ours_transfer/w_best.npy
+results/demo_ind_transfer_from_cn_us_metatype/ours_transfer/summary.json
+results/demo_ind_transfer_from_cn_us_metatype/ours_transfer/evaluation_summary.json
 ```
 
 On the tested local machine, this smoke run reports transfer-demo RMSE
@@ -84,7 +84,7 @@ python code/scripts/evaluation/evaluate_ind_pretrained_demo.py \
 Expected artifact:
 
 ```text
-code/artifacts/demo_ind_pretrained_eval/evaluation_summary.json
+results/demo_ind_pretrained_eval/evaluation_summary.json
 ```
 
 On the tested local machine, this evaluation reports RMSE `[0.0089, 0.0038]`,
@@ -103,7 +103,7 @@ Rscript code/scripts/visualization/plot_longtail_case_demo.R
 Expected artifacts:
 
 ```text
-code/artifacts/longtail_case_demo/longtail_case_main_figure_01_inD_02_track12_frame409.pdf
-code/artifacts/longtail_case_demo/longtail_case_main_figure_02_inD_18_track94_frame5270.pdf
-code/artifacts/longtail_case_demo/longtail_case_main_figure_03_inD_17_track301_frame20516.pdf
+results/longtail_case_demo/longtail_case_main_figure_01_inD_02_track12_frame409.pdf
+results/longtail_case_demo/longtail_case_main_figure_02_inD_18_track94_frame5270.pdf
+results/longtail_case_demo/longtail_case_main_figure_03_inD_17_track301_frame20516.pdf
 ```

@@ -358,7 +358,7 @@ def main() -> None:
     parser.add_argument("--ind-root", type=Path)
     parser.add_argument("--citysim-root", type=Path)
     parser.add_argument("--dji-root", type=Path)
-    parser.add_argument("--out-dir", type=Path, default=Path("reference_paths_work/model_dataset_full/trajvista_xy_psiphi_v1_saml_tailness/top05/runs/longtail_complete_track_four_methods"))
+    parser.add_argument("--out-dir", type=Path, default=Path("results/paper_metrics/longtail_complete_track_four_methods"))
     parser.add_argument("--max-radius", type=float, default=60.0)
     parser.add_argument("--max-recordings-per-dataset", type=int, default=10)
     parser.add_argument("--citysim-scenes", nargs="*", default=["IntersectionA", "IntersectionB"], choices=list(citysim.CITYSIM_INTERSECTIONS))

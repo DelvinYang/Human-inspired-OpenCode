@@ -24,20 +24,20 @@ https://anonymous.4open.science/r/Human-inspired-OpenCode-7D46/
 ## Repository Layout
 
 ```text
-code/configs/                 Dataset and experiment configuration templates.
+code/configs/            Dataset and experiment configuration templates.
 data/demo/ind/           Small inD demo/test subset and expected demo outputs.
 data/demo/longtail_cases/
                          Inputs for the Appendix long-tail case figure demo.
-code/docs/                    Data policy, reproducibility, and checklist mapping.
-code/examples/                End-to-end demo commands.
-code/pretrained/              Released reviewer checkpoints.
-code/scripts/                 Command-line entry points for data, training, and evaluation.
-code/scripts/visualization/   Figure reproduction scripts.
+code/docs/               Data policy, reproducibility, and checklist mapping.
+code/examples/           End-to-end demo commands.
+code/pretrained/         Released reviewer checkpoints.
+code/scripts/            Command-line entry points for data, training, and evaluation.
+code/scripts/visualization/ Figure reproduction scripts.
 code/scripts/evaluation/paper_metrics/
                          Actual revision metric scripts and metric notes.
-code/src/cultural_align/      Importable Python package for the method implementation.
-code/tests/                   Lightweight tests using the inD demo subset.
-code/artifacts/               Local run outputs; ignored by git except for .gitkeep.
+code/src/cultural_align/ Importable Python package for the method implementation.
+code/tests/              Lightweight tests using the inD demo subset.
+results/                 Local run outputs; ignored by git except for .gitkeep.
 ```
 
 ## System Requirements
@@ -100,7 +100,7 @@ dependencies. Dataset paths are configured separately for paper-scale runs.
 ## Demo
 
 The demo uses only the small inD recording-04 excerpt under `data/demo/ind/`.
-The included processed test dataset is:
+The included processed test split is:
 
 ```text
 data/demo/ind/processed/test/inD/inD_psiphi_xy_00000.npz
@@ -132,12 +132,12 @@ action shape: [N, 2]
 Expected demo artifacts:
 
 ```text
-data/demo/ind/processed/train/inD/inD_psiphi_xy_00000.npz
-data/demo/ind/processed/val/inD/inD_psiphi_xy_00000.npz
-data/demo/ind/processed/test/inD/inD_psiphi_xy_00000.npz
-code/artifacts/demo_ind/ours/best_model.pt
-code/artifacts/demo_ind/ours/summary.json
-code/artifacts/demo_ind/ours/evaluation_summary.json
+results/demo/ind/processed/train/inD/inD_psiphi_xy_00000.npz
+results/demo/ind/processed/val/inD/inD_psiphi_xy_00000.npz
+results/demo/ind/processed/test/inD/inD_psiphi_xy_00000.npz
+results/demo_ind/ours/best_model.pt
+results/demo_ind/ours/summary.json
+results/demo_ind/ours/evaluation_summary.json
 ```
 
 On the tested local machine, the demo reports test RMSE
@@ -153,7 +153,8 @@ training: 2.36 s
 evaluation: 0.90 s
 ```
 
-`code/artifacts/` is ignored by git.
+All generated demo outputs are written under the repository-root `results/`
+directory for CodeOcean reproducible-run snapshots.
 
 The repository also includes a compact proposed-method metatype checkpoint
 trained on the China and U.S. source regions (`DJI`, `sinD`, `NGSIM`, and
@@ -173,13 +174,13 @@ python code/scripts/evaluation/evaluate_demo_transfer.py \
 Expected transfer artifacts:
 
 ```text
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/calibrate_w/best_model.pt
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/calibrate_w/w_best.npy
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/calibrate_w/summary.json
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/best_model.pt
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/w_best.npy
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/summary.json
-code/artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/evaluation_summary.json
+results/demo_ind_transfer_from_cn_us_metatype/calibrate_w/best_model.pt
+results/demo_ind_transfer_from_cn_us_metatype/calibrate_w/w_best.npy
+results/demo_ind_transfer_from_cn_us_metatype/calibrate_w/summary.json
+results/demo_ind_transfer_from_cn_us_metatype/ours_transfer/best_model.pt
+results/demo_ind_transfer_from_cn_us_metatype/ours_transfer/w_best.npy
+results/demo_ind_transfer_from_cn_us_metatype/ours_transfer/summary.json
+results/demo_ind_transfer_from_cn_us_metatype/ours_transfer/evaluation_summary.json
 ```
 
 On the tested local machine, this transfer demo reports test RMSE
@@ -209,7 +210,7 @@ python code/scripts/evaluation/evaluate_ind_pretrained_demo.py \
 Expected output:
 
 ```text
-code/artifacts/demo_ind_pretrained_eval/evaluation_summary.json
+results/demo_ind_pretrained_eval/evaluation_summary.json
 ```
 
 On the tested local machine, this evaluation reports RMSE `[0.0089, 0.0038]`,
@@ -228,9 +229,9 @@ Rscript code/scripts/visualization/plot_longtail_case_demo.R
 Expected output:
 
 ```text
-code/artifacts/longtail_case_demo/longtail_case_main_figure_01_inD_02_track12_frame409.pdf
-code/artifacts/longtail_case_demo/longtail_case_main_figure_02_inD_18_track94_frame5270.pdf
-code/artifacts/longtail_case_demo/longtail_case_main_figure_03_inD_17_track301_frame20516.pdf
+results/longtail_case_demo/longtail_case_main_figure_01_inD_02_track12_frame409.pdf
+results/longtail_case_demo/longtail_case_main_figure_02_inD_18_track94_frame5270.pdf
+results/longtail_case_demo/longtail_case_main_figure_03_inD_17_track301_frame20516.pdf
 ```
 
 Paper-scale source-domain and data-light transfer runs use
@@ -253,8 +254,8 @@ Example full-data preprocessing command:
 ```bash
 python code/scripts/datasets/highd/build_highd.py \
   --raw-root /path/to/highD/data \
-  --assignment-dir code/artifacts/reference_paths_work/assignments \
-  --out-dir code/artifacts/datasets/trajvista_xy_psiphi_v1
+  --assignment-dir results/reference_paths_work/assignments \
+  --out-dir results/datasets/trajvista_xy_psiphi_v1
 ```
 
 Reference-path preparation is split into explicit steps:
@@ -262,27 +263,27 @@ Reference-path preparation is split into explicit steps:
 ```bash
 python code/scripts/reference_paths/precache.py \
   --dataset-root /path/to/raw_dataset_root \
-  --cache-root code/artifacts/reference_paths_work/cache/scenes \
+  --cache-root results/reference_paths_work/cache/scenes \
   --dataset HighD
 
 python code/scripts/reference_paths/mine_candidates.py \
-  --cache-root code/artifacts/reference_paths_work/cache/scenes \
-  --work-dir code/artifacts/reference_paths_work \
+  --cache-root results/reference_paths_work/cache/scenes \
+  --work-dir results/reference_paths_work \
   --dataset HighD
 
 python code/scripts/reference_paths/finalize_candidates.py \
-  --candidate-file code/artifacts/reference_paths_work/reference_paths/candidates/HighD/HighD_01.json \
-  --cache-root code/artifacts/reference_paths_work/cache/scenes \
-  --work-dir code/artifacts/reference_paths_work
+  --candidate-file results/reference_paths_work/reference_paths/candidates/HighD/HighD_01.json \
+  --cache-root results/reference_paths_work/cache/scenes \
+  --work-dir results/reference_paths_work
 
 python code/scripts/reference_paths/assign_tracks.py \
-  --cache-root code/artifacts/reference_paths_work/cache/scenes \
-  --work-dir code/artifacts/reference_paths_work \
+  --cache-root results/reference_paths_work/cache/scenes \
+  --work-dir results/reference_paths_work \
   --dataset HighD
 ```
 
 Reference-path outputs and track-assignment filters for full-data runs are
-generated under `code/artifacts/reference_paths_work/` by the commands above.
+generated under `results/reference_paths_work/` by the commands above.
 
 ## Reproduction Instructions
 

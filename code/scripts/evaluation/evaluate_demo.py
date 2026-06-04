@@ -38,7 +38,7 @@ def main() -> None:
     os.chdir(PROJECT_ROOT)
     config = load_config(resolve(args.config))
     dataset_config = load_config(resolve(config["dataset_config"]))
-    output_dir = resolve(config.get("output_dir", "code/artifacts/demo_ind")) / "ours"
+    output_dir = resolve(config.get("output_dir", "results/demo_ind")) / "ours"
     payload = {
         "checkpoint": str(output_dir / "best_model.pt"),
         "dataset_dir": dataset_config["processed_root"],

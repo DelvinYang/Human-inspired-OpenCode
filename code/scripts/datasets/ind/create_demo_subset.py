@@ -175,8 +175,8 @@ def create_subset(args: argparse.Namespace) -> dict[str, Any]:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Create the small inD demo subset used by this release.")
     parser.add_argument("--source-root", type=Path, required=True, help="Directory containing full local inD CSV files.")
-    parser.add_argument("--assignment-dir", type=Path, default=Path("code/artifacts/reference_paths_work/assignments"))
-    parser.add_argument("--out-root", type=Path, default=Path("data/demo/ind"))
+    parser.add_argument("--assignment-dir", type=Path, default=Path("results/reference_paths_work/assignments"))
+    parser.add_argument("--out-root", type=Path, default=Path("results/demo_subset/ind"))
     parser.add_argument("--recording", default=DEFAULT_RECORDING)
     parser.add_argument("--frame-start", type=int, default=DEFAULT_FRAME_START)
     parser.add_argument("--frame-end", type=int, default=DEFAULT_FRAME_END)

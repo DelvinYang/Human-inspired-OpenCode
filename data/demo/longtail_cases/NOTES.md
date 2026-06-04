@@ -15,15 +15,15 @@ scene_panels/*.png                       Scene panels with trajectory overlays.
 Run from the repository root:
 
 ```bash
-Rscript scripts/visualization/plot_longtail_case_demo.R
+Rscript code/scripts/visualization/plot_longtail_case_demo.R
 ```
 
 Expected output:
 
 ```text
-artifacts/longtail_case_demo/longtail_case_main_figure_01_inD_02_track12_frame409.pdf
-artifacts/longtail_case_demo/longtail_case_main_figure_02_inD_18_track94_frame5270.pdf
-artifacts/longtail_case_demo/longtail_case_main_figure_03_inD_17_track301_frame20516.pdf
+results/longtail_case_demo/longtail_case_main_figure_01_inD_02_track12_frame409.pdf
+results/longtail_case_demo/longtail_case_main_figure_02_inD_18_track94_frame5270.pdf
+results/longtail_case_demo/longtail_case_main_figure_03_inD_17_track301_frame20516.pdf
 ```
 
 The script was tested with R 4.5.2 and the R packages `ggplot2`, `png`, and

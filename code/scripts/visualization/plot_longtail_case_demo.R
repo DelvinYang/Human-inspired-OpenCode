@@ -87,7 +87,7 @@ find_project_root <- function(script_dir) {
   )
   for (path in candidates) {
     if (file.exists(file.path(path, "code", "pyproject.toml")) &&
-        file.exists(file.path(path, "code", "README.md")) &&
+        file.exists(file.path(path, "code", "INSTRUCTIONS.md")) &&
         dir.exists(file.path(path, "data"))) {
       return(normalizePath(path))
     }
@@ -784,7 +784,7 @@ load_longtail_case_main_figure_data <- function() {
   }
   output_dir <- Sys.getenv("LONGTAIL_CASE_DEMO_OUT_DIR")
   if (output_dir == "") {
-    output_dir <- file.path(project_root, "code", "artifacts", "longtail_case_demo")
+    output_dir <- file.path(project_root, "results", "longtail_case_demo")
   }
   dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 

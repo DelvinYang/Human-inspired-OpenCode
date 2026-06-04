@@ -10,10 +10,10 @@ cd "$ROOT_DIR"
 SCRATCH_CONFIG="code/configs/experiments/demo_ind.yaml"
 TRANSFER_CONFIG="code/configs/experiments/demo_transfer_from_cn_us_metatype.yaml"
 DATASET_CONFIG="code/configs/datasets/ind_demo.yaml"
-DATASET_DIR="data/demo/ind/processed"
-SCRATCH_CHECKPOINT="code/artifacts/demo_ind/ours/best_model.pt"
-TRANSFER_CHECKPOINT="code/artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/best_model.pt"
-EVAL_ROOT="code/artifacts/release_demo_eval"
+DATASET_DIR="results/demo/ind/processed"
+SCRATCH_CHECKPOINT="results/demo_ind/ours/best_model.pt"
+TRANSFER_CHECKPOINT="results/demo_ind_transfer_from_cn_us_metatype/ours_transfer/best_model.pt"
+EVAL_ROOT="results/release_demo_eval"
 
 run_step() {
   echo
@@ -48,10 +48,10 @@ import json
 from pathlib import Path
 
 rows = [
-    ("Scratch demo", Path("code/artifacts/demo_ind/ours/evaluation_summary.json")),
-    ("CN+US metatype transfer", Path("code/artifacts/demo_ind_transfer_from_cn_us_metatype/ours_transfer/evaluation_summary.json")),
-    ("Scratch full evaluation", Path("code/artifacts/release_demo_eval/scratch/evaluation_summary.json")),
-    ("Transfer full evaluation", Path("code/artifacts/release_demo_eval/transfer/evaluation_summary.json")),
+    ("Scratch demo", Path("results/demo_ind/ours/evaluation_summary.json")),
+    ("CN+US metatype transfer", Path("results/demo_ind_transfer_from_cn_us_metatype/ours_transfer/evaluation_summary.json")),
+    ("Scratch full evaluation", Path("results/release_demo_eval/scratch/evaluation_summary.json")),
+    ("Transfer full evaluation", Path("results/release_demo_eval/transfer/evaluation_summary.json")),
 ]
 
 def metrics(path):
@@ -86,6 +86,6 @@ for label, path in rows:
     print(f"{label:<28} {rmse:<24} {item['mean_rmse']:>10.4f} {item['r2_mean']:>10.4f} {item['rbf_mmd']:>12.6f} {va95:>17} {rpa:>17} {item['ade']:>10.4f} {item['fde']:>10.4f} {item['cr']:>8.3f} {nt:>9}")
 
 print("\nLong-tail PDFs:")
-for path in sorted(Path("code/artifacts/longtail_case_demo").glob("*.pdf")):
+for path in sorted(Path("results/longtail_case_demo").glob("*.pdf")):
     print(path)
 PY

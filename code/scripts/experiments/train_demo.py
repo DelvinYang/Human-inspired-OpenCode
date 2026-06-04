@@ -41,7 +41,7 @@ def main() -> None:
     config_path = resolve(args.config)
     config = load_config(config_path)
     dataset_config = load_config(resolve(config["dataset_config"]))
-    output_dir = resolve(config.get("output_dir", "code/artifacts/demo_ind"))
+    output_dir = resolve(config.get("output_dir", "results/demo_ind"))
     if args.clean and output_dir.exists():
         shutil.rmtree(output_dir)
     training = config.get("training", {})

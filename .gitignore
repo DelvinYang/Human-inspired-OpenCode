@@ -20,7 +20,7 @@ env/
 !.env.example
 
 # Large generated artifacts
-code/artifacts/**
+results/**
 outputs/**
 runs/**
 logs/**
@@ -30,7 +30,7 @@ models/**
 remote_results/**
 wandb/**
 tensorboard/**
-!code/artifacts/.gitkeep
+!results/.gitkeep
 
 # Full or derived datasets are intentionally not versioned.
 data/raw/**

@@ -16,4 +16,4 @@ LONGTAIL_CASE_DEMO_DATA_DIR   Override the input data directory.
 LONGTAIL_CASE_DEMO_OUT_DIR    Override the output directory.
 ```
 
-Default output is written to `code/artifacts/longtail_case_demo/`.
+Default output is written to `results/longtail_case_demo/`.
