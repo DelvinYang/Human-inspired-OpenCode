@@ -67,3 +67,23 @@ artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/evaluation_summary.js
 On the tested local machine, this smoke run reports transfer-demo RMSE
 `[0.0150, 0.0041]` on 21 inD demo test samples. The corresponding previous
 action reference RMSE is `[0.0236, 0.0216]`.
+
+## Demo Evaluation From Released inD Checkpoint
+
+This example evaluates the released inD checkpoint under
+`pretrained/models/ind_5k_best/` on the included inD demo/test split.
+
+```bash
+python scripts/evaluation/evaluate_ind_pretrained_demo.py \
+  --config configs/experiments/demo_evaluate_ind_pretrained.yaml
+```
+
+Expected artifact:
+
+```text
+artifacts/demo_ind_pretrained_eval/evaluation_summary.json
+```
+
+On the tested local machine, this evaluation reports RMSE `[0.0089, 0.0038]`,
+R2 mean `0.9995`, and RBF-MMD `0.000212` on 21 inD demo test samples. Runtime
+was approximately 1.3 s.

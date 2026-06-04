@@ -1,8 +1,14 @@
 # Pretrained Artifacts
 
-This directory contains the only trained model artifact redistributed with this
-release: a compact reviewer metatype checkpoint for the proposed method.
+This directory contains the trained model artifacts redistributed with this
+release:
 
-The checkpoint is included to let reviewers verify checkpoint loading and
-data-light transfer without receiving the full third-party training datasets.
-It contains trained parameters and normalization statistics only.
+- `metatypes/de_source_metatype/`: compact Germany-source metatype checkpoint
+  for the proposed-method transfer demo.
+- `models/ind_5k_best/`: sanitized inD checkpoint for running the full released
+  evaluation output on the included inD demo/test subset.
+
+These checkpoints are included to let reviewers verify checkpoint loading,
+data-light transfer, and evaluation without receiving the full third-party
+training datasets. They contain trained parameters and normalization statistics
+only.

@@ -47,6 +47,14 @@ python scripts/evaluation/evaluate_demo_transfer.py \
   --config configs/experiments/demo_transfer_from_de_metatype.yaml
 ```
 
+The repository also includes one sanitized inD checkpoint for running the full
+released evaluation output on the included inD demo/test split:
+
+```bash
+python scripts/evaluation/evaluate_ind_pretrained_demo.py \
+  --config configs/experiments/demo_evaluate_ind_pretrained.yaml
+```
+
 ## Level 2: Paper-Scale Reproduction
 
 This level requires users to obtain the full datasets from their original

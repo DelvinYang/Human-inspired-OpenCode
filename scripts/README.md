@@ -18,6 +18,8 @@ Script directories are organized by role and dataset.
 - `experiments/train_transfer.py`: data-light target adaptation for the
   proposed model.
 - `evaluation/evaluate_demo.py`: demo checkpoint evaluation.
+- `evaluation/evaluate_ind_pretrained_demo.py`: full released evaluation output
+  for the included inD pretrained checkpoint on the demo/test split.
 - `evaluation/evaluate_model.py`: paper-scale checkpoint evaluation on NPZ test
   splits.
 - `evaluation/paper_metrics/actual_used/`: actual metric and table-generation

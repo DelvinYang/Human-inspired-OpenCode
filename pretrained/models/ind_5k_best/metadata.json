@@ -1,0 +1,45 @@
+{
+  "name": "ind_5k_best",
+  "description": "Sanitized inD proposed-method checkpoint from the prior trajvista_ind_xy_psiphi_5k smoke experiment.",
+  "dataset": "inD",
+  "source_dataset_note": "5k inD model-dataset smoke split used in the prior experiment; not the full inD raw dataset.",
+  "schema": "trajvista_xy_psiphi_v1",
+  "converted_for_release": true,
+  "conversion_notes": [
+    "added backbone. prefix to recurrent encoder keys",
+    "dropped legacy decoder.* keys that are not used by the released model",
+    "removed local PosixPath values from checkpoint args"
+  ],
+  "model_dimensions": {
+    "hidden_dim": 64,
+    "feature_dim": 64
+  },
+  "training": {
+    "seed": 20260515,
+    "epochs": 300,
+    "best_val_loss": 0.00032781415425062996,
+    "final_test": {
+      "loss_standardized": 8.155633337222612e-05,
+      "raw_rmse": [
+        0.006403859239071608,
+        0.00419972138479352
+      ],
+      "raw_mae": [
+        0.002851292258128524,
+        0.0023397619370371103
+      ],
+      "previous_acc_baseline_rmse": [
+        0.019175434485077858,
+        0.012206576764583588
+      ],
+      "target_std": [
+        0.398089736700058,
+        0.30109870433807373
+      ],
+      "samples": 520
+    }
+  },
+  "sha256": "0db37d101d26cfa00d35188b0a4657058a0a0dac6baada09384e17df05981e3d",
+  "source_run_id": "trajvista_ind_xy_psiphi_5k/hybrid_additive_aux01_e300_fused_fp32",
+  "source_note": "Converted from a trusted prior inD 5k smoke experiment checkpoint before public release."
+}

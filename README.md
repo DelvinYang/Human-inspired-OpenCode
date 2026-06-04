@@ -13,10 +13,10 @@ provided so users with proper dataset access can reproduce the pipeline locally.
 ## Release Scope
 
 - Included: source code, configuration templates, documentation, and a small inD
-  demo/test subset, plus one compact DE-source metatype checkpoint for reviewer
-  reproduction of the proposed-model transfer path.
+  demo/test subset, plus compact reviewer checkpoints for the proposed-method
+  transfer and inD evaluation paths.
 - Not included: full raw datasets, full processed datasets, model checkpoints
-  other than the single released reviewer metatype, or any artifacts whose
+  other than the released reviewer checkpoints, or any artifacts whose
   redistribution is restricted by dataset providers.
 - Supported datasets by script: inD, highD, NGSIM, sinD, CitySim, DJI, and
   INTERACTION.
@@ -28,7 +28,7 @@ configs/                 Dataset and experiment configuration templates.
 data/demo/ind/           Small inD demo/test subset and expected demo outputs.
 docs/                    Data policy, reproducibility, and checklist mapping.
 examples/                End-to-end demo commands.
-pretrained/              Single released reviewer metatype checkpoint.
+pretrained/              Released reviewer checkpoints.
 scripts/                 Command-line entry points for data, training, and evaluation.
 scripts/evaluation/paper_metrics/
                          Actual revision metric scripts and metric notes.
@@ -173,6 +173,26 @@ artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/evaluation_summary.js
 On the tested local machine, this transfer demo reports test RMSE
 `[0.0150, 0.0041]` on 21 inD demo test samples. Runtime was approximately
 1.93 s for transfer training and 0.91 s for transfer evaluation.
+
+The repository also includes a sanitized inD checkpoint from a prior
+`trajvista_ind_xy_psiphi_5k` experiment. It lets reviewers run the full released
+evaluation output on the included inD demo/test split without retraining.
+
+```bash
+python scripts/evaluation/evaluate_ind_pretrained_demo.py \
+  --config configs/experiments/demo_evaluate_ind_pretrained.yaml
+```
+
+Expected output:
+
+```text
+artifacts/demo_ind_pretrained_eval/evaluation_summary.json
+```
+
+On the tested local machine, this evaluation reports RMSE `[0.0089, 0.0038]`,
+MAE `[0.0075, 0.0031]`, R2 mean `0.9995`, RBF-MMD `0.000212`, previous-action
+reference RMSE `[0.0236, 0.0216]`, and standardized loss `0.000111` on 21 inD
+demo test samples. Runtime was approximately 1.3 s.
 
 Paper-scale source-domain and data-light transfer runs use
 `scripts/experiments/train_domain.py` and `scripts/experiments/train_transfer.py`.

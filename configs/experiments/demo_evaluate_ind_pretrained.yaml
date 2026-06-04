@@ -1,0 +1,14 @@
+experiment: demo_evaluate_ind_pretrained
+dataset_config: configs/datasets/ind_demo.yaml
+checkpoint: pretrained/models/ind_5k_best/best_model.pt
+out_dir: artifacts/demo_ind_pretrained_eval
+evaluation:
+  eval_batch_size: 4096
+  device: cpu
+  metrics:
+    - rmse
+    - mae
+    - r2
+    - rbf_mmd
+    - previous_acc_reference_rmse
+    - loss_standardized
