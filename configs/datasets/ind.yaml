@@ -4,4 +4,4 @@ raw_root: /path/to/inD/data
 assignment_dir: data/reference_paths/assignments
 processed_root: artifacts/datasets/trajvista_xy_psiphi_v1
 builder: scripts/datasets/ind/build_ind.py
-notes: "Full inD data is not redistributed; only the separate demo subset may be included."
+notes: "Set raw_root to the local inD dataset directory."

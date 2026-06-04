@@ -12,4 +12,4 @@ t_hist: 12
 stride: 12
 shard_size: 1000
 max_samples: 0
-notes: "Small inD recording-04 excerpt only; full inD data is not redistributed."
+notes: "Small inD recording-04 excerpt for repository demos."

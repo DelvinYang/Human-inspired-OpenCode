@@ -32,7 +32,7 @@ def set_seed(seed: int) -> None:
 
 def stable_unit_hash(value: str) -> float:
     digest = hashlib.blake2b(value.encode("utf-8"), digest_size=8).digest()
-    return int.from_bytes(digest, byteorder="little", signed=False) / float(2**64)
+    return int.from_bytes(digest, byteorder="big", signed=False) / float(2**64 - 1)
 
 
 def fraction_mask(dataset: str, scene: np.ndarray, track: np.ndarray, fraction: float) -> np.ndarray:

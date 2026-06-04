@@ -23,7 +23,7 @@ release.
 | How to run on user data | `README.md`, `docs/reproducibility.md` | Provided |
 | Quantitative reproduction instructions | `docs/reproducibility.md` | Provided |
 | License | `LICENSE`, `README.md` | MIT for code; datasets retain original licenses |
-| Open-source repository link | `README.md` | Add the public URL after the repository is created remotely |
+| Open-source repository link | `README.md` | Anonymous review repository available |
 | Data availability policy | `docs/data_policy.md` | Provided |
 
 ## Tested Environment
@@ -41,9 +41,9 @@ release.
   `scripts/experiments/train_demo.py --config configs/experiments/demo_ind.yaml --clean`
 - Demo evaluation run time: 0.90 s wall time for
   `scripts/evaluation/evaluate_demo.py --config configs/experiments/demo_ind.yaml`
-- Demo transfer run time: 1.93 s wall time for
+- Demo transfer run time: 2.27 s wall time for
   `scripts/experiments/train_demo_transfer.py --config configs/experiments/demo_transfer_from_de_metatype.yaml --clean`
-- Demo transfer evaluation run time: 0.91 s wall time for
+- Demo transfer evaluation run time: 0.85 s wall time for
   `scripts/evaluation/evaluate_demo_transfer.py --config configs/experiments/demo_transfer_from_de_metatype.yaml`
 - Demo inD pretrained evaluation run time: 1.47 s wall time for
   `scripts/evaluation/evaluate_ind_pretrained_demo.py --config configs/experiments/demo_evaluate_ind_pretrained.yaml`

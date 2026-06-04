@@ -45,8 +45,8 @@ The released DE-source metatype metadata records source-domain test RMSE
 These numbers document the included checkpoint; the inD demo transfer command
 checks the transfer path on the repository demo subset.
 
-After two demo fine-tuning epochs, the released metatype transfer smoke test
-reports inD demo RMSE `[0.0150, 0.0041]` on 21 samples.
+The released metatype transfer smoke test reports inD demo RMSE
+`[0.0149, 0.0041]` on 21 samples.
 
 The released inD checkpoint evaluation demo reports RMSE `[0.0089, 0.0038]`,
 mean R2 `0.9995`, and RBF-MMD `0.000212` on the same 21-sample demo test split.

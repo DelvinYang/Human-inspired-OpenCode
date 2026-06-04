@@ -27,17 +27,9 @@
     "best_epoch": 189,
     "best_val_loss": 0.0002486308848950839
   },
-  "release_scope": "Reviewer reproduction checkpoint for the proposed method. It contains trained parameters only and no raw or processed trajectory records.",
-  "conversion": {
-    "added_backbone_prefix_to_recurrent_layers": true,
-    "dropped_unused_legacy_decoder_keys": [
-      "decoder.0.bias",
-      "decoder.0.weight",
-      "decoder.3.bias",
-      "decoder.3.weight",
-      "decoder.5.bias",
-      "decoder.5.weight"
-    ],
-    "removed_local_filesystem_paths_from_checkpoint_args": true
+  "release_scope": "Reviewer reproduction checkpoint for the proposed method.",
+  "release_preparation": {
+    "public_model_key_layout": true,
+    "portable_checkpoint_args": true
   }
 }

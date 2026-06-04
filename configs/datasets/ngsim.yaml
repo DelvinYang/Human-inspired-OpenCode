@@ -4,4 +4,4 @@ raw_root: /path/to/NGSIM
 assignment_dir: data/reference_paths/assignments
 processed_root: artifacts/datasets/trajvista_xy_psiphi_v1
 builder: scripts/datasets/ngsim/build_ngsim.py
-notes: "Template only. Obtain NGSIM from the original provider."
+notes: "Set raw_root to the local NGSIM dataset directory."

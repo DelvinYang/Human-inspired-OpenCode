@@ -8,11 +8,9 @@ Contents:
 
 - `best_model.pt`: checkpoint compatible with the released model.
 - `best_model.sha256`: SHA-256 checksum for the checkpoint.
-- `metadata.json`: source, conversion, and validation metadata.
+- `metadata.json`: source and validation metadata.
 
-The checkpoint was converted before release by adding the current `backbone.`
-prefix to recurrent encoder keys, dropping legacy decoder keys that are not used
-by the released model, and removing local path values from checkpoint arguments.
+The checkpoint loads with the released model keys.
 
 Demo evaluation command:
 

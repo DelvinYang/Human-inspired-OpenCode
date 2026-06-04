@@ -42,18 +42,30 @@ def main() -> None:
     output_dir = resolve(config.get("output_dir", "artifacts/demo_ind_transfer_from_de_metatype"))
     if args.clean and output_dir.exists():
         shutil.rmtree(output_dir)
-    training = config.get("training", {})
+    training = dict(config.get("training", {}))
     dataset_root = dataset_config["processed_root"]
-    payload = {
-        **training,
+    common = {
+        **{key: value for key, value in training.items() if key not in {"calibrate_epochs", "finetune_epochs"}},
         "seed": config.get("seed", 20260515),
         "dataset_dir": dataset_root,
         "target_dataset_dir": dataset_root,
         "target_datasets": [dataset_config.get("dataset", "inD")],
         "source_checkpoint": str(resolve(config["source_checkpoint"])),
-        "out_dir": str(output_dir / "ours_transfer"),
     }
-    train_transfer(payload)
+    calibrate_dir = output_dir / "calibrate_w"
+    train_transfer({
+        **common,
+        "phase": "calibrate_w",
+        "epochs": int(training.get("calibrate_epochs", 1)),
+        "out_dir": str(calibrate_dir),
+    })
+    train_transfer({
+        **common,
+        "phase": "finetune_with_target_w",
+        "epochs": int(training.get("finetune_epochs", training.get("epochs", 2))),
+        "target_w_path": str(calibrate_dir / "w_best.npy"),
+        "out_dir": str(output_dir / "ours_transfer"),
+    })
 
 
 if __name__ == "__main__":

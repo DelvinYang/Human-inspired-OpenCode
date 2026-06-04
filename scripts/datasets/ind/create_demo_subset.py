@@ -166,7 +166,7 @@ def create_subset(args: argparse.Namespace) -> dict[str, Any]:
             f"{recording}_recordingMeta.csv",
         ],
         "assignment_file": str(assignment_out.relative_to(out_root)),
-        "notes": "Small provider-data excerpt for repository smoke tests; not a full inD recording.",
+        "notes": "Small inD recording-04 excerpt for repository demos.",
     }
     write_json(out_root / "demo_manifest.json", manifest)
     return manifest

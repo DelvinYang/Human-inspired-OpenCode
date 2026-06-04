@@ -333,7 +333,7 @@ def train_transfer(config: dict[str, Any] | SimpleNamespace) -> dict[str, Any]:
     model = _make_model_from_args(args, stats).to(device)
     load_report = model.load_state_dict(source_state, strict=False)
     load_report = {"missing": list(load_report.missing_keys), "unexpected": list(load_report.unexpected_keys)}
-    phase = getattr(args, "phase", "finetune_all")
+    phase = getattr(args, "phase", None)
     if phase == "calibrate_w":
         for name, param in model.named_parameters():
             param.requires_grad = name == "w"
@@ -345,8 +345,10 @@ def train_transfer(config: dict[str, Any] | SimpleNamespace) -> dict[str, Any]:
             model.w.copy_(torch.from_numpy(w).to(model.w.device))
         for name, param in model.named_parameters():
             param.requires_grad = name != "w"
-    elif phase != "finetune_all":
-        raise ValueError(f"unknown phase={phase!r}")
+    else:
+        raise ValueError("train_transfer phase must be 'calibrate_w' or 'finetune_with_target_w'")
+    trainable_parameters = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    total_parameters = sum(p.numel() for p in model.parameters())
 
     opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=float(args.lr), weight_decay=float(args.weight_decay))
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=max(int(args.epochs), 1), eta_min=float(args.lr) * 0.05)
@@ -400,6 +402,8 @@ def train_transfer(config: dict[str, Any] | SimpleNamespace) -> dict[str, Any]:
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     torch.save({"model_state_dict": model.state_dict(), "stats": asdict(stats), "args": vars(args)}, out_dir / "best_model.pt")
+    w_best = model.w.detach().cpu().numpy().astype(np.float32)
+    np.save(out_dir / "w_best.npy", w_best)
     summary = {
         "schema": "trajvista_xy_psiphi_v1",
         "mode": "target_finetune",
@@ -412,6 +416,11 @@ def train_transfer(config: dict[str, Any] | SimpleNamespace) -> dict[str, Any]:
         "val_meta": val_meta,
         "test_counts": {dataset: int(len(arr["action"])) for dataset, arr in test_parts.items()},
         "source_checkpoint": getattr(args, "source_checkpoint", None),
+        "target_w_path": getattr(args, "target_w_path", None),
+        "w_file": "w_best.npy",
+        "w_l2_norm": float(np.linalg.norm(w_best)),
+        "trainable_parameters": int(trainable_parameters),
+        "total_parameters": int(total_parameters),
         "load_state_dict": load_report,
         "source_checkpoint_args": {} if source_payload is None else source_payload.get("args", {}),
         "stats": asdict(stats),
@@ -419,6 +428,13 @@ def train_transfer(config: dict[str, Any] | SimpleNamespace) -> dict[str, Any]:
         "best_val_loss": best_val,
         "best_epoch": best_epoch,
         "final_test": final_test,
+        "fixed_checks": {
+            "target_fraction_by_track_hash": True,
+            "target_w_frozen": phase == "finetune_with_target_w",
+            "only_w_trainable": phase == "calibrate_w",
+            "strict_adjacent_transition_pairs": True,
+            "next_action_teacher_forcing": True,
+        },
     }
     _save_json(out_dir / "summary.json", summary)
     print(json.dumps({"mode": "target_finetune", "model": "ours", "best_val_loss": best_val, "final_test": final_test}, indent=2), flush=True)

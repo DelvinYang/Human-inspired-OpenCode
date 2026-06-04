@@ -34,8 +34,8 @@ constants, matching the released checkpoints and paper runs.
 
 The repository also includes one proposed-method DE-source metatype checkpoint.
 Reviewers can use it to exercise the paper's data-light transfer path on the
-small inD demo subset. The demo config uses `target_fraction: 1.0`; paper-scale
-runs set the target fraction explicitly.
+small inD demo subset. The demo runs `calibrate_w` followed by
+`finetune_with_target_w`; paper-scale runs set the target fraction explicitly.
 
 ```bash
 python scripts/experiments/train_demo_transfer.py \
@@ -84,7 +84,8 @@ Paper-scale pipeline:
 1. Build dataset-specific trajectory states.
 2. Train source-domain or pooled proposed models with
    `scripts/experiments/train_domain.py`.
-3. Run data-light transfer with `scripts/experiments/train_transfer.py`.
+3. Run data-light transfer with `scripts/experiments/train_transfer.py` using
+   `calibrate_w` followed by `finetune_with_target_w`.
 4. Evaluate proposed-model checkpoints with `scripts/evaluation/evaluate_model.py`.
 5. Regenerate paper tables and supplementary figures.
 

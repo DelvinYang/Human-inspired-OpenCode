@@ -8,6 +8,9 @@ The repository is organized to make the reviewed method installable, auditable,
 and reproducible with runnable demos, released checkpoints, and scripts for the
 datasets used in the paper.
 
+Anonymous review repository:
+https://anonymous.4open.science/r/Human-inspired-OpenCode-7D46/
+
 ## Release Scope
 
 - Included: source code, configuration templates, documentation, a small inD
@@ -166,14 +169,18 @@ python scripts/evaluation/evaluate_demo_transfer.py \
 Expected transfer artifacts:
 
 ```text
+artifacts/demo_ind_transfer_from_de_metatype/calibrate_w/best_model.pt
+artifacts/demo_ind_transfer_from_de_metatype/calibrate_w/w_best.npy
+artifacts/demo_ind_transfer_from_de_metatype/calibrate_w/summary.json
 artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/best_model.pt
+artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/w_best.npy
 artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/summary.json
 artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/evaluation_summary.json
 ```
 
 On the tested local machine, this transfer demo reports test RMSE
-`[0.0150, 0.0041]` on 21 inD demo test samples. Runtime was approximately
-1.93 s for transfer training and 0.91 s for transfer evaluation.
+`[0.0149, 0.0041]` on 21 inD demo test samples. Runtime was approximately
+2.27 s for transfer training and 0.85 s for transfer evaluation.
 
 The repository also includes an inD checkpoint from a prior
 `trajvista_ind_xy_psiphi_5k` experiment. It runs the released evaluation output
@@ -213,6 +220,10 @@ Paper-scale source-domain and data-light transfer runs use
 `scripts/experiments/train_domain.py` and `scripts/experiments/train_transfer.py`.
 The released model fixes the temporal hidden dimension at `64` and the Psi/Phi
 feature dimension at `64`, matching the paper runs.
+
+For paper-scale data-light transfer, run `train_transfer.py` first with
+`--phase calibrate_w`, then run it with `--phase finetune_with_target_w` and
+`--target-w-path` pointing to the first stage `w_best.npy`.
 
 ## Instructions for Use
 

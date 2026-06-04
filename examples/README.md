@@ -59,13 +59,17 @@ python scripts/evaluation/evaluate_demo_transfer.py \
 Expected transfer artifacts:
 
 ```text
+artifacts/demo_ind_transfer_from_de_metatype/calibrate_w/best_model.pt
+artifacts/demo_ind_transfer_from_de_metatype/calibrate_w/w_best.npy
+artifacts/demo_ind_transfer_from_de_metatype/calibrate_w/summary.json
 artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/best_model.pt
+artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/w_best.npy
 artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/summary.json
 artifacts/demo_ind_transfer_from_de_metatype/ours_transfer/evaluation_summary.json
 ```
 
 On the tested local machine, this smoke run reports transfer-demo RMSE
-`[0.0150, 0.0041]` on 21 inD demo test samples.
+`[0.0149, 0.0041]` on 21 inD demo test samples.
 
 ## Demo Evaluation From Released inD Checkpoint
 

@@ -4,4 +4,4 @@ raw_root: /path/to/DJI
 assignment_dir: data/reference_paths/assignments
 processed_root: artifacts/datasets/trajvista_xy_psiphi_v1
 builder: scripts/datasets/dji/build_dji.py
-notes: "Template only. Obtain DJI data from the original provider."
+notes: "Set raw_root to the local DJI dataset directory."
