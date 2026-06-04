@@ -18,7 +18,7 @@ https://github.com/DelvinYang/Human-inspired-OpenCode.git
   reviewer checkpoints for the proposed-method transfer and inD evaluation
   paths.
 - Paper-scale dataset paths are configured locally through `code/configs/datasets/`.
-- Supported datasets by script: inD, highD, NGSIM, sinD, CitySim, DJI, and
+- Supported datasets by script: inD, highD, NGSIM, sinD, CitySim, AD4CHE, and
   INTERACTION.
 
 ## Repository Layout
@@ -157,7 +157,7 @@ All generated demo outputs are written under the repository-root `results/`
 directory for CodeOcean reproducible-run snapshots.
 
 The repository also includes a compact proposed-method metatype checkpoint
-trained on the China and U.S. source regions (`DJI`, `sinD`, `NGSIM`, and
+trained on the China and U.S. source regions (`AD4CHE`, `sinD`, `NGSIM`, and
 `CitySim`). It is provided so reviewers can exercise the transfer code path.
 Paper-scale data-light runs set the target fraction through
 `code/scripts/experiments/train_transfer.py`.
@@ -290,7 +290,7 @@ generated under `results/reference_paths_work/` by the commands above.
 Full data preparation and paper-level quantitative reproduction notes are
 maintained in `code/docs/reproducibility.md`. The repository includes scripts for
 the seven supported datasets (`inD`, `highD`, `NGSIM`, `sinD`, `CitySim`,
-`DJI`, and `INTERACTION`) and the actual revision metric scripts under
+`AD4CHE`, and `INTERACTION`) and the actual revision metric scripts under
 `code/scripts/evaluation/paper_metrics/actual_used/`. Full raw datasets and
 paper-scale reference-path outputs must be configured or generated locally
 before paper-scale reproduction.

@@ -2,7 +2,7 @@
 
 `best_model.pt` is a proposed-method source metatype trained on the China and
 U.S. source regions from the revision pooled-source experiment. The source
-datasets are `DJI`, `sinD`, `NGSIM`, and `CitySim`.
+datasets are `AD4CHE`, `sinD`, `NGSIM`, and `CitySim`.
 
 - temporal hidden dimension: `64`
 - Psi/Phi feature dimension: `64`

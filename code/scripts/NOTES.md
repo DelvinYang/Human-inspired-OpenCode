@@ -7,7 +7,7 @@ Script directories are organized by role and dataset.
 - `datasets/citysim/build_citysim.py`: CitySim ABDE state/action shard builder.
 - `datasets/sind/build_sind.py`: sinD state/action shard builder.
 - `datasets/ngsim/build_ngsim.py`: NGSIM state/action shard builder.
-- `datasets/dji/build_dji.py`: DJI state/action shard builder.
+- `datasets/dji/build_dji.py`: AD4CHE state/action shard builder.
 - `datasets/interaction/build_interaction.py`: INTERACTION CHN/DEU/USA shard
   builder.
 - `reference_paths/`: raw-scene caching, candidate mining, candidate
