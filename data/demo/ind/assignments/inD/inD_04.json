@@ -5,7 +5,7 @@
     "recording": "04",
     "frame_start": 2028,
     "frame_end": 3027,
-    "source_assignment": "data/reference_paths/assignments/inD/inD_04.json"
+    "source_assignment": "full-data reference-path assignment output; not required by the demo release"
   },
   "assignments": [
     {

@@ -102,5 +102,6 @@ metric-to-script mapping.
 
 Full-data command examples use local paths outside this repository.
 
-The release includes the reviewed reference-path metadata and final assignment
-filters under `data/reference_paths/`.
+Paper-scale reference-path metadata and final assignment filters are generated
+locally under the configured `work_dir`, typically
+`code/artifacts/reference_paths_work/`.

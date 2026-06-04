@@ -253,7 +253,7 @@ Example full-data preprocessing command:
 ```bash
 python code/scripts/datasets/highd/build_highd.py \
   --raw-root /path/to/highD/data \
-  --assignment-dir data/reference_paths/assignments \
+  --assignment-dir code/artifacts/reference_paths_work/assignments \
   --out-dir code/artifacts/datasets/trajvista_xy_psiphi_v1
 ```
 
@@ -281,8 +281,8 @@ python code/scripts/reference_paths/assign_tracks.py \
   --dataset HighD
 ```
 
-The manually reviewed reference paths and track-assignment filters used by the
-release are included under `data/reference_paths/`.
+Reference-path outputs and track-assignment filters for full-data runs are
+generated under `code/artifacts/reference_paths_work/` by the commands above.
 
 ## Reproduction Instructions
 
@@ -290,8 +290,9 @@ Full data preparation and paper-level quantitative reproduction notes are
 maintained in `code/docs/reproducibility.md`. The repository includes scripts for
 the seven supported datasets (`inD`, `highD`, `NGSIM`, `sinD`, `CitySim`,
 `DJI`, and `INTERACTION`) and the actual revision metric scripts under
-`code/scripts/evaluation/paper_metrics/actual_used/`. Full raw datasets must be
-configured locally before paper-scale reproduction.
+`code/scripts/evaluation/paper_metrics/actual_used/`. Full raw datasets and
+paper-scale reference-path outputs must be configured or generated locally
+before paper-scale reproduction.
 
 ## License
 

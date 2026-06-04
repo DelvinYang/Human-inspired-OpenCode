@@ -137,7 +137,7 @@ def create_subset(args: argparse.Namespace) -> dict[str, Any]:
             "recording": recording,
             "frame_start": int(args.frame_start),
             "frame_end": int(args.frame_end),
-            "source_assignment": f"data/reference_paths/assignments/inD/{scene_id}.json",
+            "source_assignment": "full-data reference-path assignment output; not required by the demo release",
         },
         "assignments": assignment_items,
         "summary": {
@@ -175,7 +175,7 @@ def create_subset(args: argparse.Namespace) -> dict[str, Any]:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Create the small inD demo subset used by this release.")
     parser.add_argument("--source-root", type=Path, required=True, help="Directory containing full local inD CSV files.")
-    parser.add_argument("--assignment-dir", type=Path, default=Path("data/reference_paths/assignments"))
+    parser.add_argument("--assignment-dir", type=Path, default=Path("code/artifacts/reference_paths_work/assignments"))
     parser.add_argument("--out-root", type=Path, default=Path("data/demo/ind"))
     parser.add_argument("--recording", default=DEFAULT_RECORDING)
     parser.add_argument("--frame-start", type=int, default=DEFAULT_FRAME_START)
