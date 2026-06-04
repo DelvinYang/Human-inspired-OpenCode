@@ -187,7 +187,9 @@ On the tested local machine, this transfer demo reports test RMSE
 reports R2 mean `0.9987`, RBF-MMD `0.006032`, VA95 pred/true
 `11.8533/11.6891`, RPA pred/true `0.4484/0.4561`, ADE `0.1073`, FDE `0.2505`,
 and CR `1.000` on 2 reconstructed demo trajectories. Runtime was approximately
-2.27 s for transfer training and 0.85 s for transfer evaluation.
+2.27 s for transfer training and 0.85 s for transfer evaluation. On this
+compact demo test split, the transfer run is better than the scratch run on
+most reported metrics.
 
 To run the release demo sequence in one command:
 

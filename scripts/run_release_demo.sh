@@ -77,19 +77,14 @@ def metrics(path):
 print("\n== Demo metric summary")
 print(f"{'Run':<28} {'RMSE [ax, ay]':<24} {'Mean RMSE':>10} {'R2 mean':>10} {'RBF-MMD':>12} {'VA95 p/t':>17} {'RPA p/t':>17} {'ADE':>10} {'FDE':>10} {'CR':>8} {'N/T':>9}")
 print("-" * 161)
-values = []
 for label, path in rows:
     item = metrics(path)
-    values.append((label, item))
     rmse = "[" + ", ".join(f"{v:.4f}" for v in item["rmse"]) + "]"
     nt = f"{item['samples']}/{item['trajectories']}"
     va95 = f"{item['va95_pred']:.4f}/{item['va95_true']:.4f}"
     rpa = f"{item['rpa_pred']:.4f}/{item['rpa_true']:.4f}"
     print(f"{label:<28} {rmse:<24} {item['mean_rmse']:>10.4f} {item['r2_mean']:>10.4f} {item['rbf_mmd']:>12.6f} {va95:>17} {rpa:>17} {item['ade']:>10.4f} {item['fde']:>10.4f} {item['cr']:>8.3f} {nt:>9}")
 
-scratch = values[0][1]["mean_rmse"]
-transfer = values[1][1]["mean_rmse"]
-print(f"\nTransfer mean RMSE change vs scratch: {(scratch - transfer) / scratch * 100:.1f}%")
 print("\nLong-tail PDFs:")
 for path in sorted(Path("artifacts/longtail_case_demo").glob("*.pdf")):
     print(path)
